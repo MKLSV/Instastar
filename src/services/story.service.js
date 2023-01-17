@@ -3,10 +3,9 @@ import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { storageService } from './async-storage.service.js'
-
 
 const STORAGE_KEY = 'story'
+_createSrories()
 
 export const storyService = {
     query,
@@ -63,5 +62,29 @@ function getEmptyStory() {
 
 
 
-
+async function _createSrories() {
+    const story = [
+        {
+            id: "s101",
+            txt: "Best trip ever",
+            imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQts6Lwc6Qnjvkse8MNNRbUCvJSsE0RoEXKVaLM4b6f&s"
+        },
+        {
+            id: "s102",
+            txt: "Best trip ever",
+            imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3-GCC3JniRESwNTjZkcmoEL9MOU59RB7cNrbEbNk&s"
+        },
+        {
+            id: "s103",
+            txt: "Best trip ever",
+            imgUrl: "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+        },
+        {
+            id: "s104",
+            txt: "Best trip ever",
+            imgUrl: "https://www.dictionary.com/e/wp-content/uploads/2018/06/pics-300x300.jpg"
+        }
+    ]
+    storageService._save(STORAGE_KEY, story)
+}
 

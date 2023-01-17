@@ -1,24 +1,42 @@
 .contant-container {
-    padding: 0 100px;
     width: 100%;
+    margin-left: 250px;
+    background-color: #fafafa;
+}
+
+.contant {
     display: grid;
-    grid-template-columns: 70% 30%;
-    // display: flex;
-    // justify-content: space-between;
+    grid-template-columns: 80% 20%;
+    height: 100%;
+    padding-top: 30px;
 
+    .stories-list {
 
-    .pics {
-        
-        display: grid;
-        grid-area: "pics";
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        margin: 0 auto;
+
         img {
             width: 200px;
+        }
+
+        .story-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            margin: 0 auto;
+            gap: 50px;
         }
     }
 
     .suggestions {
         grid-area: "suggestions";
-        background-color: lightcoral;
+        background-color: rgba(184, 184, 184, 0.534);
     }
+}
+
+// STORY PREVIEW
+
+.story-preview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

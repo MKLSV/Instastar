@@ -6,6 +6,8 @@ import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 import { CreateStory } from './create'
 import { Profile } from '../pages/profile'
+import { HomePage } from '../pages/home-page'
+import { CarIndex } from '../pages/car-index'
 
 export function SideBar() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -36,11 +38,14 @@ export function SideBar() {
     }
 
     return (
-        // <header className="side-bar">
-        <nav className="side-bar">
-            {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
-            <Profile />
-            {/* {user &&
+        <section className="side-bar">
+            <a href='/'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png' style={{ width: "130px" }} /></a>
+            <nav>
+
+
+                {routes.map(route => <NavLink className='nav-btn' key={route.path} to={route.path}>{route.label}</NavLink>)}
+
+                {/* {user &&
                     <span className="user-info">
                         <Link to={`user/${user._id}`}>
                             {user.imgUrl && <img src={user.imgUrl} />}
@@ -55,7 +60,8 @@ export function SideBar() {
                         <LoginSignup onLogin={onLogin} onSignup={onSignup} />
                     </section>
                 } */}
-        </nav>
-        // </header>
+            </nav>
+            <a>More</a>
+        </section>
     )
 }

@@ -3,15 +3,18 @@ import { useSelector } from 'react-redux'
 import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/car.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { StoriesList } from '../cmps/stories-list.jsx'
 // import { carService } from '../services/story.service.js'
 
 export function CarIndex() {
 
-    const cars = useSelector(storeState => storeState.carModule.cars)
+    const stories = useSelector(storeState => storeState.carModule.cars)
 
     useEffect(() => {
         loadCars()
     }, [])
+
+
 
     async function onRemoveCar(carId) {
         try {
@@ -55,10 +58,9 @@ export function CarIndex() {
     }
 
     return (
-        <div className='contant-container'>
-            <div className='pics'>
-                <img src='https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?cs=srgb&dl=pexels-tom%C3%A9-louro-1666779.jpg&fm=jpg' />
-                <img src='https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?cs=srgb&dl=pexels-tom%C3%A9-louro-1666779.jpg&fm=jpg' />
+        <div className='contant'>
+            <div className='stories-list'>
+                <StoriesList stories={stories}/>
             </div>
             <div className='suggestions'>
                 suggestions

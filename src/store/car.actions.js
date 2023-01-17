@@ -4,6 +4,7 @@ import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ADD_CAR, ADD_TO_CART, CLEAR_CART, REMOVE_CAR, REMOVE_FROM_CART, SET_CARS, UNDO_REMOVE_CAR, UPDATE_CAR } from "./car.reducer.js";
 import { SET_SCORE } from "./user.reducer.js";
+import { storyService } from "../services/story.service.js";
 
 // Action Creators:
 export function getActionRemoveCar(carId) {
@@ -27,7 +28,7 @@ export function getActionUpdateCar(car) {
 
 export async function loadCars() {
     try {
-        const cars = await carService.query()
+        const cars = await storyService.query()
         console.log('Cars from DB:', cars)
         store.dispatch({
             type: SET_CARS,

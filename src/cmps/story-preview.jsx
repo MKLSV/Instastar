@@ -6,7 +6,8 @@ import { ImgUploader } from "./img-uploader";
 export function StoryPreview({ story, onRemoveStory }) {
 
     return <article className="story-preview">
-            <img src={story.img} />
+        <img src={story.imgUrl} />
+        <a>{story.txt}</a>
         <div className="btn-container">
             <button onClick={() => onRemoveStory(story._id)}>Delete</button>
             <Link className="nice-link" to={`/story/${story._id}`}> Details</Link>
