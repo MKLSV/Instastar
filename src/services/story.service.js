@@ -1,5 +1,5 @@
 
-// import { storageService } from './async-storage.service.js'
+import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
@@ -19,7 +19,7 @@ window.cs = storyService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
-    return storageService.query(STORAGE_KEY, storyId)
+    return storageService.query(STORAGE_KEY)
     // return httpService.get(STORAGE_KEY, filterBy)
 }
 

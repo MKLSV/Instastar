@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/car.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { carService } from '../services/story.service.js'
+// import { carService } from '../services/story.service.js'
 
 export function CarIndex() {
 
@@ -22,16 +22,16 @@ export function CarIndex() {
         }
     }
 
-    async function onAddCar() {
-        const car = carService.getEmptyCar()
-        car.vendor = prompt('Vendor?')
-        try {
-            const savedCar = await addCar(car)
-            showSuccessMsg(`Car added (id: ${savedCar._id})`)
-        } catch (err) {
-            showErrorMsg('Cannot add car')
-        }
-    }
+    // async function onAddCar() {
+    //     const car = carService.getEmptyCar()
+    //     car.vendor = prompt('Vendor?')
+    //     try {
+    //         const savedCar = await addCar(car)
+    //         showSuccessMsg(`Car added (id: ${savedCar._id})`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot add car')
+    //     }
+    // }
 
     async function onUpdateCar(car) {
         const price = +prompt('New price?')
