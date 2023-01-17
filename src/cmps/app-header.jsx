@@ -54,7 +54,7 @@ export function AppHeader() {
                     </section>
                 }
             </nav>
-            <h1>My App</h1>
+            <h1>Sprint 4 test</h1>
         </header>
     )
 }
