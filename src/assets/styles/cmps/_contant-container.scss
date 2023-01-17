@@ -1,0 +1,21 @@
+.contant-container {
+    padding: 0 100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+
+
+    .pics {
+        display: grid;
+        grid-area: "pics";
+        // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        img {
+            width: 200px;
+        }
+    }
+
+    .suggestions {
+        grid-area: "suggestions";
+        background-color: lightcoral;
+    }
+}

@@ -1,0 +1,13 @@
+.app-container{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas: 'bar' 'app';
+
+    .side-bar{
+        grid-area: 'bar'
+    }
+    
+    .app-content{
+        grid-area: 'app'
+    }
+}

@@ -1,9 +1,11 @@
 import { Link, NavLink } from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import routes from '../routes'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
+import { CreateStory } from './create'
+import { Profile } from '../pages/profile'
 
 export function SideBar() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -12,7 +14,7 @@ export function SideBar() {
         try {
             const user = await login(credentials)
             showSuccessMsg(`Welcome: ${user.fullname}`)
-        } catch(err) {
+        } catch (err) {
             showErrorMsg('Cannot login')
         }
     }
@@ -20,7 +22,7 @@ export function SideBar() {
         try {
             const user = await signup(credentials)
             showSuccessMsg(`Welcome new user: ${user.fullname}`)
-        } catch(err) {
+        } catch (err) {
             showErrorMsg('Cannot signup')
         }
     }
@@ -28,17 +30,17 @@ export function SideBar() {
         try {
             await logout()
             showSuccessMsg(`Bye now`)
-        } catch(err) {
+        } catch (err) {
             showErrorMsg('Cannot logout')
         }
     }
 
     return (
-        <header className="app-header">
-            <nav>
-                {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
-
-                {user &&
+        // <header className="side-bar">
+        <nav className="side-bar">
+            {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
+            <Profile />
+            {/* {user &&
                     <span className="user-info">
                         <Link to={`user/${user._id}`}>
                             {user.imgUrl && <img src={user.imgUrl} />}
@@ -52,9 +54,8 @@ export function SideBar() {
                     <section className="user-info">
                         <LoginSignup onLogin={onLogin} onSignup={onSignup} />
                     </section>
-                }
-            </nav>
-            <h1>Sprint 4 test</h1>
-        </header>
+                } */}
+        </nav>
+        // </header>
     )
 }
