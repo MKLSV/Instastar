@@ -3,6 +3,7 @@
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { storageService } from './async-storage.service.js'
 
 
 const STORAGE_KEY = 'story'
@@ -18,8 +19,8 @@ export const storyService = {
 window.cs = storyService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    return storageService.query(STORAGE_KEY, storyId)
+async function query() {
+    return storageService.query(STORAGE_KEY)
     // return httpService.get(STORAGE_KEY, filterBy)
 }
 

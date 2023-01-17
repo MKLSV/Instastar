@@ -1,5 +1,6 @@
 .app-container{
     display: grid;
+    width: 100%;
     grid-template-columns: 200px 1fr;
     grid-template-areas: 'bar' 'app';
 
