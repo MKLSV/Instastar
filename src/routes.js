@@ -37,6 +37,16 @@ const routes = [
         component: <AdminApp />,
         label: 'Admin Only'
     }
+    // {
+    //     path: 'profile',
+    //     component: <ProfilePage />,
+    //     label: 'profile'
+    // }
+    // {
+    //     path: 'chat',
+    //     component: <MessagePage />,
+    //     label: 'Chat'
+    // }
 ]
 
 export default routes
