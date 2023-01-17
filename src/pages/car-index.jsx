@@ -16,7 +16,7 @@ export function CarIndex() {
     async function onRemoveCar(carId) {
         try {
             await removeCar(carId)
-            showSuccessMsg('Car removed')            
+            showSuccessMsg('Car removed')
         } catch (err) {
             showErrorMsg('Cannot remove car')
         }
@@ -30,7 +30,7 @@ export function CarIndex() {
             showSuccessMsg(`Car added (id: ${savedCar._id})`)
         } catch (err) {
             showErrorMsg('Cannot add car')
-        }        
+        }
     }
 
     async function onUpdateCar(car) {
@@ -41,10 +41,10 @@ export function CarIndex() {
             showSuccessMsg(`Car updated, new price: ${savedCar.price}`)
         } catch (err) {
             showErrorMsg('Cannot update car')
-        }        
+        }
     }
 
-    function onAddToCart(car){
+    function onAddToCart(car) {
         console.log(`Adding ${car.vendor} to Cart`)
         addToCart(car)
         showSuccessMsg('Added to Cart')
@@ -55,9 +55,17 @@ export function CarIndex() {
     }
 
     return (
-        <div>
-            <h3>Cars App</h3>
-            <main>
+        <div className='contant-container'>
+            <div className='pics'>
+                <img src='https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?cs=srgb&dl=pexels-tom%C3%A9-louro-1666779.jpg&fm=jpg' />
+                <img src='https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?cs=srgb&dl=pexels-tom%C3%A9-louro-1666779.jpg&fm=jpg' />
+            </div>
+            <div className='suggestions'>
+                suggestions
+            </div>
+
+
+            {/* <main>
                 <button onClick={onAddCar}>Add Car ⛐</button>
                 <ul className="car-list">
                     {cars.map(car =>
@@ -76,7 +84,7 @@ export function CarIndex() {
                         </li>)
                     }
                 </ul>
-            </main>
+            </main> */}
         </div>
     )
 }

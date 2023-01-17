@@ -4,13 +4,12 @@ import { Routes, Route } from 'react-router'
 import routes from './routes'
 
 import { SideBar } from './cmps/side-bar'
-import { AppFooter } from './cmps/app-footer'
 import { UserDetails } from './pages/user-details'
 
 export function RootCmp() {
 
     return (
-        <div>
+        <div className='app-container'>
             <SideBar />
             <main>
                 <Routes>
@@ -18,7 +17,6 @@ export function RootCmp() {
                     <Route path="user/:id" element={<UserDetails />} />
                 </Routes>
             </main>
-            <AppFooter />
         </div>
     )
 }

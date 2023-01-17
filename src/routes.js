@@ -36,7 +36,8 @@ const routes = [
         path: 'admin',
         component: <AdminApp />,
         label: 'Admin Only'
-    }
+    },
+
     // {
     //     path: 'profile',
     //     component: <ProfilePage />,
