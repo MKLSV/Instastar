@@ -1,22 +1,41 @@
 {
-    "_id": "u101",
-    "username": "Muko",
-    "password": "mukmuk",
-    "fullname": "Muki Muka",
-    "imgUrl": "http://some-img",
-    "following": [
-      {
-        "_id": "u106",
-        "fullname": "Dob",
-        "imgUrl": "http://some-img"
-      }
-    ],
-    "followers": [
-      {
-        "_id": "u105",
-        "fullname": "Bob",
-        "imgUrl": "http://some-img"
-      }
-    ],
-    "savedStoryIds": ["s104", "s111", "s123"]
-  }
+  "_id": "u101",
+  "username": "Muko",
+  "password": "mukmuk",
+  "fullname": "Muki Muka",
+  "imgUrl": "http://some-img",
+  "following": [
+    {
+      "_id": "u106",
+      "fullname": "Dob",
+      "imgUrl": "http://some-img"
+    },
+    {
+      "_id": "u100",
+      "fullname": "Rob",
+      "imgUrl": "http://some-img"
+    }
+  ],
+  "followers": [
+    {
+      "_id": "u115",
+      "fullname": "Mob",
+      "imgUrl": "http://some-img"
+    },
+    {
+      "_id": "u125",
+      "fullname": "Gob",
+      "imgUrl": "http://some-img"
+    },
+    {
+      "_id": "u135",
+      "fullname": "Fob",
+      "imgUrl": "http://some-img"
+    }
+  ],
+  "savedStoryIds": [
+    "s104",
+    "s111",
+    "s123"
+  ]
+}

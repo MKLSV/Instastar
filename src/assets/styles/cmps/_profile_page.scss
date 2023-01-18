@@ -1,0 +1,66 @@
+.profile-container {
+    height: 100vh;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 50px;
+
+
+    .profile-photo {
+        padding: 0 30px;
+
+        img {
+            width: 150px;
+            border-radius: 50%;
+        }
+    }
+
+    .profile-info {
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+        width: 100%;
+        font-family: 'Segoe UI';
+        font-size: 16px;
+        // align-items: center;
+
+        .profile-info-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+
+            .user-number {
+                font-weight: 600;
+            }
+        }
+
+        .user-bio {
+            display: flex;
+            flex-direction: column;
+
+            .user-name {
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.profile-stories {
+    padding: 0 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    img{
+        width: 239px;
+        height: 239px;
+    }
+}
