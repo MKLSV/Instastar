@@ -11,9 +11,9 @@ export function StoryPreview({ story, onRemoveStory }) {
         <img className="story-img" src={imgUrl} />
         <section className="story-footer">
             <div className="btn-container">
-                <a><i class="fa-regular fa-heart"></i></a>
-                <a><i class="fa-regular fa-comment"></i></a>
-                <a><i class="fa-regular fa-paper-plane"></i></a>
+                <a><i className="fa-regular fa-heart"></i></a>
+                <a><i className="fa-regular fa-comment"></i></a>
+                <a><i className="fa-regular fa-paper-plane"></i></a>
             </div>
             <a className="story-likes">{likedBy.length} likes</a>
             <a><span className="story-user-name">{by.username}</span> <span className="story-text">{txt}</span></a>
