@@ -55,8 +55,15 @@ async function addStoryMsg(storyId, txt) {
 
 function getEmptyStory() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        id: "",
+        txt: "",
+        imgUrl: "",
+        by: {
+            _id: "",
+            fullname: "",
+            imgUrl: ""
+        },
+
     }
 }
 
@@ -71,7 +78,7 @@ async function _createSrories() {
             by: {
                 _id: "u101",
                 fullname: "Deniska",
-                imgUrl:"https://robohash.org/Deniska?set=set2" 
+                imgUrl: "https://robohash.org/Deniska?set=set2"
             },
         },
         {
@@ -81,8 +88,8 @@ async function _createSrories() {
             by: {
                 _id: "u101",
                 fullname: "Ulash Ulashi",
-                imgUrl:"https://robohash.org/Ulashi?set=set2" 
-              },
+                imgUrl: "https://robohash.org/Ulashi?set=set2"
+            },
         },
         {
             id: "s102",
@@ -91,7 +98,7 @@ async function _createSrories() {
             by: {
                 _id: "u102",
                 fullname: "Bobby bob",
-                imgUrl:"https://robohash.org/Bobby?set=set2" 
+                imgUrl: "https://robohash.org/Bobby?set=set2"
             },
         },
 
@@ -102,7 +109,7 @@ async function _createSrories() {
             by: {
                 _id: "u101",
                 fullname: "Yaron Baton",
-                imgUrl:"https://robohash.org/Baton?set=set2" 
+                imgUrl: "https://robohash.org/Baton?set=set2"
             },
         }
     ]
