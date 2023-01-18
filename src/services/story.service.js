@@ -13,10 +13,24 @@ export const storyService = {
     save,
     remove,
     getEmptyStory,
-    addStoryMsg
+    onAddStoryMsg,
+    onRemoveStoryMsg
 }
 window.cs = storyService
 
+// async function addStoryMsg(storyId, txt) {
+//     const savedMsg = await httpService.post(`story/${storyId}/msg`, { txt })
+//     return savedMsg
+// }
+
+function onAddStoryMsg(txt){
+    return storageService.post(STORAGE_KEY)
+}
+
+function onRemoveStoryMsg() {
+    return storageService.remove(STORAGE_KEY, msgId)
+
+}
 
 async function query() {
     return storageService.query(STORAGE_KEY)
@@ -47,12 +61,6 @@ async function save(story) {
     return savedStory
 }
 
-async function addStoryMsg(storyId, txt) {
-    const savedMsg = await httpService.post(`story/${storyId}/msg`, { txt })
-    return savedMsg
-}
-
-
 function getEmptyStory() {
     return {
         id: "",
@@ -66,8 +74,6 @@ function getEmptyStory() {
 
     }
 }
-
-
 
 async function _createSrories() {
     const story = [
