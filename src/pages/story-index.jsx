@@ -7,8 +7,6 @@ export function StoryIndex() {
     const stories = useSelector(storeState => storeState.carModule.cars)
     const user = useSelector(storeState => storeState.userModule.user)
     console.log(user)
-    console.log(user)
-    console.log(user)
 
     useEffect(() => {
         loadStories()
