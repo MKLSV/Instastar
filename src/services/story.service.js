@@ -79,13 +79,77 @@ async function _createSrories() {
     const story = [
         {
             id: "s103",
-            txt: "Best trip ever",
+            txt: "Exhibition  curated by @giulioaprin presents a spectrum of aerial photographers that push themselves into finding unusual and different point of view bringing us extraordinary facets of our reality.",
             imgUrl: "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg",
             by: {
                 _id: "u101",
                 fullname: "Deniska",
+                username: "denchik1996",
                 imgUrl: "https://robohash.org/Deniska?set=set2"
             },
+            comments: [
+                {
+                  id: "c1005",
+                  by: {
+                    _id: "u105",
+                    username: "Amarama_1990",
+                    fullname: "Bob",
+                    imgUrl: "http://some-img"
+                  },
+          
+                  txt: "good one!",
+          
+                  likedBy: [ 
+                    {
+                      _id: "u105",
+                      fullname: "Bob",
+                      imgUrl: "http://some-img"
+                    }
+                  ]
+                }, {
+                    id: "c1001",
+                    by: {
+                      _id: "u105",
+                      username: "miniGun777",
+                      fullname: "Bob",
+                      imgUrl: "http://some-img"
+                    },
+            
+                    txt: "very nice!",
+            
+                    likedBy: [ 
+                      {
+                        _id: "u105",
+                        fullname: "Bob",
+                        imgUrl: "http://some-img"
+                      }
+                    ]
+                  },
+          
+                {
+                  id: "c1002",
+                  by: {
+                    _id: "u106",
+                    fullname: "Dob",
+                    imgUrl: "http://some-img"
+                  },
+                  txt: "not good!"
+                }
+              ],
+          
+              likedBy: [
+                {
+                  _id: "u105",
+                  fullname: "Bob",
+                  imgUrl: "http://some-img"
+                },
+          
+                {
+                  _id: "u106",
+                  fullname: "Dob",
+                  imgUrl: "http://some-img"
+                }
+              ]
         },
         {
             id: "s101",
@@ -94,8 +158,54 @@ async function _createSrories() {
             by: {
                 _id: "u101",
                 fullname: "Ulash Ulashi",
+                username: "denchik1996",
                 imgUrl: "https://robohash.org/Ulashi?set=set2"
             },
+            comments: [
+                {
+                  id: "c1001",
+                  by: {
+                    _id: "u105",
+                    fullname: "Bob",
+                    username: "Amarama_1990",
+                    imgUrl: "http://some-img"
+                  },
+          
+                  txt: "good one!",
+          
+                  likedBy: [ 
+                    {
+                      _id: "u105",
+                      fullname: "Bob",
+                      imgUrl: "http://some-img"
+                    }
+                  ]
+                },
+          
+                {
+                  id: "c1002",
+                  by: {
+                    _id: "u106",
+                    fullname: "Dob",
+                    imgUrl: "http://some-img"
+                  },
+                  txt: "not good!"
+                }
+              ],
+          
+              likedBy: [
+                {
+                  _id: "u105",
+                  fullname: "Bob",
+                  imgUrl: "http://some-img"
+                },
+          
+                {
+                  _id: "u106",
+                  fullname: "Dob",
+                  imgUrl: "http://some-img"
+                }
+              ]
         },
         {
             id: "s102",
@@ -104,8 +214,54 @@ async function _createSrories() {
             by: {
                 _id: "u102",
                 fullname: "Bobby bob",
+                username: "denchik1996",
                 imgUrl: "https://robohash.org/Bobby?set=set2"
             },
+            comments: [
+                {
+                  id: "c1001",
+                  by: {
+                    _id: "u105",
+                    fullname: "Bob",
+                    username: "Amarama_1990",
+                    imgUrl: "http://some-img"
+                  },
+          
+                  txt: "good one!",
+          
+                  likedBy: [ 
+                    {
+                      _id: "u105",
+                      fullname: "Bob",
+                      imgUrl: "http://some-img"
+                    }
+                  ]
+                },
+          
+                {
+                  id: "c1002",
+                  by: {
+                    _id: "u106",
+                    fullname: "Dob",
+                    imgUrl: "http://some-img"
+                  },
+                  txt: "not good!"
+                }
+              ],
+          
+              likedBy: [
+                {
+                  _id: "u105",
+                  fullname: "Bob",
+                  imgUrl: "http://some-img"
+                },
+          
+                {
+                  _id: "u106",
+                  fullname: "Dob",
+                  imgUrl: "http://some-img"
+                }
+              ]
         },
 
         {
@@ -115,8 +271,54 @@ async function _createSrories() {
             by: {
                 _id: "u101",
                 fullname: "Yaron Baton",
+                username: "denchik1996",
                 imgUrl: "https://robohash.org/Baton?set=set2"
             },
+            comments: [
+                {
+                  id: "c1001",
+                  by: {
+                    _id: "u105",
+                    fullname: "Bob",
+                    username: "Amarama_1990",
+                    imgUrl: "http://some-img"
+                  },
+          
+                  txt: "good one!",
+          
+                  likedBy: [ 
+                    {
+                      _id: "u105",
+                      fullname: "Bob",
+                      imgUrl: "http://some-img"
+                    }
+                  ]
+                },
+          
+                {
+                  id: "c1002",
+                  by: {
+                    _id: "u106",
+                    fullname: "Dob",
+                    imgUrl: "http://some-img"
+                  },
+                  txt: "not good!"
+                }
+              ],
+          
+              likedBy: [
+                {
+                  _id: "u105",
+                  fullname: "Bob",
+                  imgUrl: "http://some-img"
+                },
+          
+                {
+                  _id: "u106",
+                  fullname: "Dob",
+                  imgUrl: "http://some-img"
+                }
+              ]
         }
     ]
     storageService._save(STORAGE_KEY, story)

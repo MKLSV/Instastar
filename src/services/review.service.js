@@ -1,4 +1,4 @@
-import { httpService } from './http.service'
+// import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
 import { userService } from './user.service'
 
@@ -35,7 +35,6 @@ async function add({txt, aboutUserId}) {
     }
   }
 
-  reviewToAdd.byUser.score += 10
   await userService.update(reviewToAdd.byUser)
   const addedReview = await storageService.post('review', reviewToAdd)
   return addedReview

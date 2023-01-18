@@ -1,7 +1,4 @@
-import { CarIndex, StoryIndex } from './pages/story-index.jsx'
-import { ReviewIndex } from './pages/review-index.jsx'
-import { ChatApp } from './pages/chat-app.jsx'
-import { AdminApp } from './pages/admin-app.jsx'
+import { StoryIndex } from './pages/story-index.jsx'
 import { ProfilePage } from './pages/profile.jsx'
 import { CreateStory } from './cmps/create.jsx'
 
@@ -10,7 +7,8 @@ const routes = [
     {
         path: '/',
         component: <StoryIndex />,
-        label: 'Home',
+        label: ' Home',
+        icon: <i class="fa-solid fa-house"></i>
     },
     {
         path: 'create',
@@ -22,36 +20,7 @@ const routes = [
         component: <ProfilePage />,
         label: 'Profile'
     },
-    // {
-    //     path: '/cars',
-    //     component: <CarIndex />,
-    //     label: 'Cars'
-    // },
-    // {
-    //     path: 'review',
-    //     component: <ReviewIndex />,
-    //     label: 'Reviews'
-    // },
-    // {
-    //     path: 'chat',
-    //     component: <ChatApp />,
-    //     label: 'Chat'
-    // },
-    // {
-    //     path: 'about',
-    //     component: <AboutUs />,
-    //     label: 'About us'
-    // },
-    // {
-    //     path: 'admin',
-    //     component: <AdminApp />,
-    //     label: 'Admin Only'
-    // },
-    // {
-    //     path: 'chat',
-    //     component: <MessagePage />,
-    //     label: 'Chat'
-    // }
+   
 ]
 
 export default routes

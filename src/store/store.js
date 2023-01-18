@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux'
 
-import { carReducer } from './car.reducer.js'
+import { carReducer } from './story.reducer.js'
 import { userReducer } from './user.reducer.js'
 import { reviewReducer } from './review.reducer'
 import { systemReducer } from './system.reducer'
