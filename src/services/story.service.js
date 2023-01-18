@@ -13,22 +13,22 @@ export const storyService = {
     save,
     remove,
     getEmptyStory,
-    onAddStoryMsg,
-    onRemoveStoryMsg
+    onAddStoryMsg: onAddStoryComment,
+    onRemoveStoryMsg: onRemoveStoryComment
 }
-window.cs = storyService
+window.ss = storyService
 
 // async function addStoryMsg(storyId, txt) {
 //     const savedMsg = await httpService.post(`story/${storyId}/msg`, { txt })
 //     return savedMsg
 // }
 
-function onAddStoryMsg(txt){
+function onAddStoryComment(txt) {
     return storageService.post(STORAGE_KEY)
 }
 
-function onRemoveStoryMsg() {
-    return storageService.remove(STORAGE_KEY)
+function onRemoveStoryComment(storyId) {
+    return storageService.remove(STORAGE_KEY, storyId)
 
 }
 

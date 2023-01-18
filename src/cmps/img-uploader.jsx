@@ -4,8 +4,6 @@ import { uploadService } from '../services/upload.service'
 export function ImgUploader({ onUploaded = null , onUploadSuccess}) {
   const [imgData, setImgData] = useState({
     imgUrl: null,
-    height: 500,
-    width: 500,
   })
   const [isUploading, setIsUploading] = useState(false)
 

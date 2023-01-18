@@ -1,13 +1,9 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/car.actions.js'
-
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { loadCars} from '../store/car.actions.js'
 import { StoriesList } from '../cmps/stories-list.jsx'
-// import { carService } from '../services/story.service.js'
 
 export function StoryIndex() {
-
     const stories = useSelector(storeState => storeState.carModule.cars)
     const user = useSelector(storeState => storeState.userModule.user)
     console.log(user)
@@ -15,7 +11,6 @@ export function StoryIndex() {
     useEffect(() => {
         loadCars()
     }, [])
-
 
     return (
         <div className='contant'>

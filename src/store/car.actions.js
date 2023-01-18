@@ -1,4 +1,4 @@
-import { carService } from "../services/car.service.local.js";
+// import { carService } from "../services/car.service.local.js";
 import { userService } from "../services/user.service.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
@@ -43,38 +43,38 @@ export async function loadCars() {
 }
 
 export async function removeCar(carId) {
-    try {
-        await carService.remove(carId)
-        store.dispatch(getActionRemoveCar(carId))
-    } catch (err) {
-        console.log('Cannot remove car', err)
-        throw err
-    }
+    // try {
+    //     await carService.remove(carId)
+    //     store.dispatch(getActionRemoveCar(carId))
+    // } catch (err) {
+    //     console.log('Cannot remove car', err)
+    //     throw err
+    // }
 }
 
 export async function addCar(car) {
-    try {
-        const savedCar = await carService.save(car)
-        console.log('Added Car', savedCar)
-        store.dispatch(getActionAddCar(savedCar))
-        return savedCar
-    } catch (err) {
-        console.log('Cannot add car', err)
-        throw err
-    }
+    // try {
+    //     const savedCar = await carService.save(car)
+    //     console.log('Added Car', savedCar)
+    //     store.dispatch(getActionAddCar(savedCar))
+    //     return savedCar
+    // } catch (err) {
+    //     console.log('Cannot add car', err)
+    //     throw err
+    // }
 }
 
 export function updateCar(car) {
-    return carService.save(car)
-        .then(savedCar => {
-            console.log('Updated Car:', savedCar)
-            store.dispatch(getActionUpdateCar(savedCar))
-            return savedCar
-        })
-        .catch(err => {
-            console.log('Cannot save car', err)
-            throw err
-        })
+    // return carService.save(car)
+    //     .then(savedCar => {
+    //         console.log('Updated Car:', savedCar)
+    //         store.dispatch(getActionUpdateCar(savedCar))
+    //         return savedCar
+    //     })
+    //     .catch(err => {
+    //         console.log('Cannot save car', err)
+    //         throw err
+    //     })
 }
 
 export function addToCart(car) {
@@ -113,15 +113,15 @@ export function onRemoveCarOptimistic(carId) {
     })
     showSuccessMsg('Car removed')
 
-    carService.remove(carId)
-        .then(() => {
-            console.log('Server Reported - Deleted Succesfully');
-        })
-        .catch(err => {
-            showErrorMsg('Cannot remove car')
-            console.log('Cannot load cars', err)
-            store.dispatch({
-                type: UNDO_REMOVE_CAR,
-            })
-        })
+    // carService.remove(carId)
+    //     .then(() => {
+    //         console.log('Server Reported - Deleted Succesfully');
+    //     })
+    //     .catch(err => {
+    //         showErrorMsg('Cannot remove car')
+    //         console.log('Cannot load cars', err)
+    //         store.dispatch({
+    //             type: UNDO_REMOVE_CAR,
+    //         })
+    //     })
 }

@@ -1,31 +1,34 @@
-.side-bar{
+.side-bar {
     padding: 40px 20px;
-    display : grid; 
+    display: grid;
     position: fixed;
     grid-template-rows: 80px 1fr 10px;
-    background-color : rgb(255, 255, 255); 
-    height : 100vh; 
-    width : 250px; 
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 250px;
     border-right: 1px solid rgb(219, 219, 219);
-     
-    nav{
+
+    nav {
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
-    .nav-btn{
+
+    .nav-btn {
         color: #262626;
         padding: 15px 15px;
         border-radius: 25px;
         font-family: 'Segoe UI', sans-serif;
-        text-decoration:none
-    }
-    .nav-btn:hover{
-        background-color: #fafafa;
-    }
-    .nav-btn.active{
-        color: black;
-        font-weight: 700;
+        text-decoration: none;
+
+        &.active {
+            color: black;
+            font-weight: 700;
+        }
+
+        &:hover {
+            background-color: #fafafa;
+        }
     }
 
 }

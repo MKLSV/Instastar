@@ -5,26 +5,25 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import { storyService } from "../services/story.service";
 import { ImgUploader } from "./img-uploader";
-import { eventBusService, showSuccessMsg } from "../services/event-bus.service.js"
 
 
 export function CreateStory(story) {
 
     const navigate = useNavigate()
-    const [createdStory, SetCreatedStory] = useState(storyService.getEmptyStory())
+    const [createdStory, setCreatedStory] = useState(storyService.getEmptyStory())
 
     // useEffect(() => {
     //     console.log(createdStory)
     // }, [createdStory])
 
     function onUploadSuccess(imgUrl) {
-        SetCreatedStory(prevState => ({ ...prevState, imgUrl }))
+        setCreatedStory(prevState => ({ ...prevState, imgUrl }))
     }
 
     function handleChange({ target }) {
         let { value, type, name: field } = target
         value = type === 'number' ? +value : value
-        SetCreatedStory((prevStory) => ({ ...prevStory, [field]: value }))
+        setCreatedStory((prevStory) => ({ ...prevStory, [field]: value }))
     }
 
     function onSaveStory(ev) {

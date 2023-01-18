@@ -13,22 +13,15 @@
 
 
 // Views
-@import "views/about-us";
-@import "views/home-page";
-@import "views/car-app";
-@import "views/review-app";
-@import "views/user-details";
 
 // Components
 // @import "cmps/app-header";
-@import "cmps/app-footer";
 @import "cmps/user-msg";
-@import "cmps/shopping-cart";
-@import "cmps/_side-bar";
-@import "cmps/_contant-container";
-@import "cmps/_app-container";
+@import "cmps/side-bar";
+@import "cmps/contant-container";
+@import "cmps/app-container";
 @import "cmps/story-index";
-@import "cmps/_profile_page";
+@import "cmps/profile_page";
 
 
 
