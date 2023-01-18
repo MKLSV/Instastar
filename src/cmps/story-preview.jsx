@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { ImgUploader } from "./img-uploader";
 
 export function StoryPreview({ story, onRemoveStory }) {
-    const { by, imgUrl, txt, _id, likedBy, comments } = story
+    const { by, imgUrl, txt, likedBy, comments } = story
 
     return <article className="story-preview">
         <section className="story-header">
