@@ -28,7 +28,7 @@ function onAddStoryMsg(txt){
 }
 
 function onRemoveStoryMsg() {
-    return storageService.remove(STORAGE_KEY, msgId)
+    return storageService.remove(STORAGE_KEY)
 
 }
 
