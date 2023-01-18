@@ -7,7 +7,7 @@ import { LoginSignup } from './login-signup.jsx'
 import { CreateStory } from './create'
 import { Profile } from '../pages/profile'
 import { HomePage } from '../pages/home-page'
-import { CarIndex } from '../pages/car-index'
+import { CarIndex } from '../pages/story-index'
 
 export function SideBar() {
     const user = useSelector(storeState => storeState.userModule.user)
