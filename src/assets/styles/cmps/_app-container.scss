@@ -1,8 +1,6 @@
 .app-container{
-    // display: grid;
     display: flex;
     justify-content: space-between;
-    // width: 100%;
     grid-template-columns: 350px 1fr;
 
 }
