@@ -8,7 +8,7 @@ const routes = [
         path: '/',
         component: <StoryIndex />,
         label: ' Home',
-        icon: <i class="fa-solid fa-house"></i>
+        icon: <i className="fa-solid fa-house"></i>
     },
     {
         path: 'create',
