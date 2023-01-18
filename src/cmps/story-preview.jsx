@@ -7,11 +7,11 @@ export function StoryPreview({ story, onRemoveStory }) {
 
     return <article className="story-preview">
         <section className="story-header">
-            <img src={story.by.imgUrl} />
+            <img className="prew-user-img" src={story.by.imgUrl} />
             <a>{story.by.fullname}</a>
 
         </section>
-        <img src={story.imgUrl} />
+        <img className="story-img" src={story.imgUrl} />
         <section className="story-footer">
             <a>{story.txt}</a>
             <div className="btn-container">

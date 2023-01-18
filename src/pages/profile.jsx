@@ -1,10 +1,11 @@
 import { userService } from "../services/user.service"
-
+import { useSelector } from 'react-redux'
 
 export function ProfilePage() {
 
-    const user = userService.getLoggedinUser()
+    const user = useSelector(storeState => storeState.userModule.user)
     console.log(user)
+
     return <div className="profile-container">
         <section className="profile-header">
             <section className="profile-photo"><img src={user.imgUrl} /></section>
@@ -24,6 +25,11 @@ export function ProfilePage() {
                 </div>
             </section>
         </section>
+        <section className="profile-links">
+            <a className="profile-pics-link active">POSTS</a>
+            <a className="profile-pics-link">SAVED</a>
+            <a className="profile-pics-link">TAGGED</a>
+            </section>
         <section className="profile-stories">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQts6Lwc6Qnjvkse8MNNRbUCvJSsE0RoEXKVaLM4b6f&s" />
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQts6Lwc6Qnjvkse8MNNRbUCvJSsE0RoEXKVaLM4b6f&s" />
