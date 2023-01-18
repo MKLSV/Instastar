@@ -15,7 +15,7 @@
         margin: 0 auto;
 
         img {
-            width: 200px;
+            width: 300px;
         }
 
         .story-list {
@@ -34,9 +34,36 @@
 
 // STORY PREVIEW
 
-.story-preview{
+.story-preview {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
+    
+    
+    .story-header {
+        display: flex;
+        height: 50px;
+        padding: 5px;
+        gap: 20px;
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid rgb(219, 219, 219);;
+        border-top-left-radius:10px;
+        border-top-right-radius:10px;
+
+        img {
+            width: 40px;
+            border-radius: 50%;
+        }
+    }
+    .story-footer{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid rgb(219, 219, 219);;
+        border-bottom-left-radius:10px;
+        border-bottom-right-radius:10px;
+    }
 }

@@ -65,24 +65,45 @@ function getEmptyStory() {
 async function _createSrories() {
     const story = [
         {
+            id: "s103",
+            txt: "Best trip ever",
+            imgUrl: "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg",
+            by: {
+                _id: "u101",
+                fullname: "Deniska",
+                imgUrl:"https://robohash.org/Deniska?set=set2" 
+            },
+        },
+        {
             id: "s101",
             txt: "Best trip ever",
-            imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQts6Lwc6Qnjvkse8MNNRbUCvJSsE0RoEXKVaLM4b6f&s"
+            imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQts6Lwc6Qnjvkse8MNNRbUCvJSsE0RoEXKVaLM4b6f&s",
+            by: {
+                _id: "u101",
+                fullname: "Ulash Ulashi",
+                imgUrl:"https://robohash.org/Ulashi?set=set2" 
+              },
         },
         {
             id: "s102",
             txt: "Best trip ever",
-            imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3-GCC3JniRESwNTjZkcmoEL9MOU59RB7cNrbEbNk&s"
+            imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3-GCC3JniRESwNTjZkcmoEL9MOU59RB7cNrbEbNk&s",
+            by: {
+                _id: "u102",
+                fullname: "Bobby bob",
+                imgUrl:"https://robohash.org/Bobby?set=set2" 
+            },
         },
-        {
-            id: "s103",
-            txt: "Best trip ever",
-            imgUrl: "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
-        },
+
         {
             id: "s104",
             txt: "Best trip ever",
-            imgUrl: "https://www.dictionary.com/e/wp-content/uploads/2018/06/pics-300x300.jpg"
+            imgUrl: "https://www.dictionary.com/e/wp-content/uploads/2018/06/pics-300x300.jpg",
+            by: {
+                _id: "u101",
+                fullname: "Yaron Baton",
+                imgUrl:"https://robohash.org/Baton?set=set2" 
+            },
         }
     ]
     storageService._save(STORAGE_KEY, story)
