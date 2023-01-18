@@ -65,11 +65,11 @@ export function StoryIndex() {
             <div className='suggestions'>
                 suggestions for you:
                 <ul>
-                    <li><img src="https://robohash.org/Deniska?set=set2" />Lebron James  Follow</li>
-                    <li><img src="https://robohash.org/tony?set=set2" />chanelofficial  Follow </li>
-                    <li><img src="https://robohash.org/boby?set=set2" />lakers  Follow</li> 
-                    <li><img src="https://robohash.org/dima?set=set2" />bmwi  Follow</li>
-                    <li><img src="https://robohash.org/daniel?set=set2" />nike  Follow</li>
+                    <li> <div><img src="https://robohash.org/Deniska?set=set2" /></div>Lebron <span>Follow</span></li>
+                    <li> <div><img src="https://robohash.org/tony?set=set2" /></div>chanel <span>Follow</span></li>
+                    <li> <div><img src="https://robohash.org/boby?set=set2" /></div>lakers <span>Follow</span></li>
+                    <li> <div><img src="https://robohash.org/dima?set=set2" /></div>bmwi <span>Follow</span></li>
+                    <li> <div><img src="https://robohash.org/daniel?set=set2" /></div>nike <span>Follow</span></li>
                 </ul>
             </div>
 
