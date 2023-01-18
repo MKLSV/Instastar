@@ -18,6 +18,8 @@ export function StoryIndex() {
                 <StoriesList stories={stories} />
             </div>
             <div className='suggestions'>
+                <div className= 'user-photo'><img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"/></div>
+                <p>Demo User</p>
                 suggestions for you:
                 <ul>
                     <li> <div><img src="https://robohash.org/Deniska?set=set2" /></div>Lebron <span>Follow</span></li>

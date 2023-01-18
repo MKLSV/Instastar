@@ -6,7 +6,6 @@ li {
     justify-content: space-between;
 
     img {
-
         height: 30px;
         width: 30px;
     }
@@ -14,5 +13,12 @@ li {
     span {
         color: blue;
     }
+}
 
+.user-photo {
+    img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
 }

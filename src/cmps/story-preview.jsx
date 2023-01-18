@@ -1,16 +1,11 @@
-import { Link, Navigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useRef, useState } from "react"
-import { ImgUploader } from "./img-uploader";
+import { Link } from "react-router-dom";
 
 export function StoryPreview({ story, onRemoveStory }) {
     const { by, imgUrl, txt, _id } = story
-
     return <article className="story-preview">
         <section className="story-header">
             <img className="prew-user-img" src={by.imgUrl} />
             <a>{by.fullname}</a>
-
         </section>
         <img className="story-img" src={imgUrl} />
         <section className="story-footer">

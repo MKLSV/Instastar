@@ -1,15 +1,10 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useRef, useState } from "react"
-
-import { storyService } from '../services/story.service.js'
+import { Link} from "react-router-dom";
+import { useEffect, useState } from "react"
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { filterStorys, loadStorys, removeStory, saveStory } from "../store/story.action.js"
+import { removeStory} from "../store/story.action.js"
 import { StoriesList } from "./stories-list.jsx"
-import { StoryFilter } from "../cmps/story-filter.jsx";
 
 export function StoryIndex() {
-
     const [storys, setStorys] = useState([])
 
     useEffect(() => {
@@ -23,6 +18,7 @@ export function StoryIndex() {
     }
 
     function onRemoveStory(storyId) {
+        console.log('storyId:', storyId);
         removeStory(storyId)
             .then(() => {
                 showSuccessMsg('Story removed')
@@ -34,7 +30,7 @@ export function StoryIndex() {
 
     return <section className='storys-index'>
         <div className="new-story-container">
-        <Link className="nice-link" to="/story/edit">Add Story</Link>
+            <Link className="nice-link" to="/story/edit">Add Story</Link>
         </div>
         {storys && <StoriesList
             storys={storys}
