@@ -65,13 +65,51 @@
             font-size: 14px;
         }
     }
+
     .story-footer{
         display: flex;
         flex-direction: column;
-        padding: 10px;
         background-color: #fff;
         border: 1px solid rgb(219, 219, 219);;
         border-bottom-left-radius:10px;
         border-bottom-right-radius:10px;
+        padding: 0 10px;
+        padding-bottom: 10px;
+        font-size: 15px;
+        gap: 7px;
+    }
+
+    .btn-container{
+        display: flex;
+        gap: 13px;
+        // padding: 5px 0;
+
+        a{
+            font-size: 24px;
+            padding: 5px 0px;
+            cursor: pointer;
+        }
+    }
+
+    .story-likes{
+        font-weight: 600;
+        cursor: pointer;
+        // padding-bottom: 10px;
+    }
+
+    .story-user-name{
+        font-weight: 600;
+        cursor: pointer;
+
+    }
+    .story-text{
+        padding-bottom: 10px;
+    }
+    .story-comments-view{
+        color: #8e8e8e;
+        cursor: pointer;
+    }
+    .hide{
+        display: none;
     }
 }

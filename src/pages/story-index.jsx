@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadCars} from '../store/car.actions.js'
+import { loadStories} from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
 
 export function StoryIndex() {
@@ -9,7 +9,7 @@ export function StoryIndex() {
     console.log(user)
 
     useEffect(() => {
-        loadCars()
+        loadStories()
     }, [])
 
     return (
