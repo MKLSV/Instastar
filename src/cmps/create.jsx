@@ -13,9 +13,9 @@ export function CreateStory(story) {
     const navigate = useNavigate()
     const [createdStory, SetCreatedStory] = useState(storyService.getEmptyStory())
 
-    useEffect(() => {
-        console.log(createdStory)
-    }, [createdStory])
+    // useEffect(() => {
+    //     console.log(createdStory)
+    // }, [createdStory])
 
     function onUploadSuccess(imgUrl) {
         SetCreatedStory(prevState => ({ ...prevState, imgUrl }))
@@ -39,14 +39,16 @@ export function CreateStory(story) {
         <div>
             <h1> Hello from create</h1>
             <ImgUploader story={story} onUploadSuccess={onUploadSuccess} />
+            {createdStory.imgUrl && <img src={createdStory.imgUrl}/>}
             <form onSubmit={onSaveStory}>
                 <label htmlFor="text">your post: </label>
                 <input type="text"
-                    name="text"
-                    id="text"
+                    name="txt"
+                    id="txt"
                     placeholder="Enter your post"
                     value={createdStory.txt}
                     onChange={handleChange}
+
                 />
             </form>
         </div>
