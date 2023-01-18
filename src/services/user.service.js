@@ -18,7 +18,6 @@ export const userService = {
 
 window.userService = userService
 
-
 function getUsers() {
     return storageService.query('user')
     // return httpService.get(`user`)
@@ -37,7 +36,7 @@ function remove(userId) {
     // return httpService.delete(`user/${userId}`)
 }
 
-async function update({_id, score}) {
+async function update({ _id, score }) {
     const user = await storageService.get('user', _id)
     user.score = score
     await storageService.put('user', user)
@@ -81,21 +80,68 @@ async function changeScore(by) {
 
 
 function saveLocalUser(user) {
-    user = {_id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score}
+    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, savedStoryIds: user.savedStoryIds, following: user.following, followers: user.followers }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
 
 function getLoggedinUser() {
+    const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+    if (!user) _createUser()
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+function _createUser() {
+    userService.signup(user)
 
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
+}
+const user = {
+    _id: "u101",
+    username: "MukoPuko99",
+    password: "mukmuk",
+    fullname: "Muki Muka",
+    imgUrl: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    following: [
+        {
+            _id: "u106",
+            fullname: "Dob",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u100",
+            fullname: "Rob",
+            imgUrl: "http://some-img"
+        }
+    ],
+    followers: [
+        {
+            _id: "u115",
+            fullname: "Mob",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u125",
+            fullname: "Gob",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u135",
+            fullname: "Fob",
+            imgUrl: "http://some-img"
+        }
+    ],
+    savedStoryIds: [
+        "s104",
+        "s111",
+        "s123"
+    ]
+}
+// ; (async () => {
+//     await userService.signup({ fullname: 'Puki Norma', username: 'puki', password: '123', imgUrl: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', isAdmin: false })
+//     // await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
+//     // await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
 // })()
+
 
 
 

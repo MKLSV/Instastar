@@ -6,7 +6,6 @@ import { ImgUploader } from "./img-uploader";
 
 
 export function CreateStory(story) {
-
     const [createdStory, SetCreatedStory] = useState(storyService.getEmptyStory())
 
     function onUploadSuccess(imgUrl) {

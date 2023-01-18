@@ -4,11 +4,14 @@ import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/car.
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { StoriesList } from '../cmps/stories-list.jsx'
+import { userService } from '../services/user.service.js'
 // import { carService } from '../services/story.service.js'
 
 export function CarIndex() {
 
     const stories = useSelector(storeState => storeState.carModule.cars)
+    const user = userService.getLoggedinUser()
+    console.log(user)
 
     useEffect(() => {
         loadCars()
