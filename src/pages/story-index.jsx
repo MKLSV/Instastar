@@ -10,9 +10,9 @@ export function StoryIndex() {
 
     const stories = useSelector(storeState => storeState.carModule.cars)
 
-    // useEffect(() => {
-    //     loadCars()
-    // }, [])
+    useEffect(() => {
+        loadCars()
+    }, [])
 
 
 
