@@ -1,7 +1,6 @@
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react"
 import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
 
 export function MsgForm({ comment, setComment, addStoryComment }) {
 

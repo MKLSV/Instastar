@@ -48,6 +48,7 @@ export function StoryPreview({ story, onRemoveStory }) {
     //     // })
     // }
 
+console.log('imgUrl:', imgUrl);
 
     return <article className="story-preview">
         <section className="story-header">
