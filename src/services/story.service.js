@@ -5,7 +5,6 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'story'
-_createSrories()
 
 export const storyService = {
   query,
@@ -33,7 +32,11 @@ function onRemoveStoryComment(storyId) {
 }
 
 async function query() {
+  const stories = storageService.query(STORAGE_KEY)
+  if(!stories) _createSrories()
   return storageService.query(STORAGE_KEY)
+
+  
   // return httpService.get(STORAGE_KEY, filterBy)
 }
 

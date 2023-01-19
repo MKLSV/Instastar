@@ -8,6 +8,7 @@ export function StoryPreview({ story, onRemoveStory }) {
         <section className="story-header">
             <img className="prew-user-img" src={by.imgUrl} />
             <a>{by.username}</a>
+            <button>X</button>
         </section>
         <img className="story-img" src={imgUrl} />
         <section className="story-footer">

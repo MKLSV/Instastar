@@ -6,31 +6,31 @@
 
 .contant {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
     height: 100%;
     padding: 30px 0;
 
-    .stories-list {
 
+
+    .story-list {
+        // margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         margin: 0 auto;
+        gap: 50px;
 
         .story-img {
             width: 450px;
             height: 450px;
         }
 
-        .story-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            margin: 0 auto;
-            gap: 50px;
-        }
 
         .story {
             width: 450px;
         }
-
     }
+
+
 }
 
 // SUGGESTIONS
@@ -160,10 +160,6 @@
             color: #00436f;
         }
     }
-
-
-
-
 }
 
 // STORY PREVIEW
@@ -171,7 +167,6 @@
 .story-preview {
     display: flex;
     flex-direction: column;
-    
     // justify-content: center;
     // align-items: center;
 
@@ -224,7 +219,7 @@
 
             &:focus {
                 outline: none;
-    
+
             }
         }
 

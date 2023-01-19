@@ -14,9 +14,7 @@ export function StoryIndex() {
 
     return (
         <div className='contant'>
-            <div className='stories-list'>
                 <StoriesList stories={stories} />
-            </div>
             <div className='suggestions'>
 
                 <div className='suggestion-header'>
