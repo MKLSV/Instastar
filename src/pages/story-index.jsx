@@ -15,7 +15,7 @@ export function StoryIndex() {
 
     return (
         <div className='contant'>
-                <StoriesList stories={stories} />
+            <StoriesList stories={stories} />
             <div className='suggestions'>
 
                 <div className='suggestion-header'>

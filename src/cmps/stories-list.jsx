@@ -6,7 +6,7 @@ export function StoriesList({ stories, onRemoveStory, onEditStory }) {
         {stories.map(story => <div
             className="story"
             key={story._id}>
-            <StoryPreview story={story}
+            <StoryPreview story={story} 
                 onRemoveStory={onRemoveStory} onEditStory={onEditStory}
             />
         </div>)}

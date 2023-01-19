@@ -1,10 +1,15 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { storyService } from "../services/story.service";
+import { userService } from "../services/user.service";
 import { removeStory } from "../store/story.actions";
+import { MsgForm } from "./msg-form";
 
 export function StoryPreview({ story, onRemoveStory }) {
-
-    const [createdComment, setCreatedComment] = useState('')
+    
+    const [comment, setComment] = useState({ txt: '' })
+    // const [msg, setMsg] = useState({ txt: '' })
     const { by, imgUrl, txt, likedBy, comments } = story
 
 
@@ -12,27 +17,35 @@ export function StoryPreview({ story, onRemoveStory }) {
         try {
             console.log('storyId:', storyId);
             await removeStory(storyId)
-            // showSuccessMsg('Story removed')
         } catch (err) {
-            // showErrorMsg('Cannot remove story')
+            console.log(err)
         }
     }
 
-    function handleChange({ target }) {
-        let { value, type, name: field } = target
-        value = type === 'number' ? +value : value
-        setCreatedComment(prevStory => ({ ...prevStory, [field]: value }))
-    }
-
-
-    function onSaveComment(ev) {
+    async function addStoryComment(ev) {
         ev.preventDefault()
-        console.log(createdComment)
-        // storyService.save(createdStory).then((story) => {
-        //     console.log('story saved', story);
-        //     navigate('/')
-        // })
+        console.log(comment)
+        const user = userService.getLoggedinUser()
+        const msgFromBack = await storyService.onAddStoryComment(story._id, comment.txt, user)
+        // showSuccessMsg(`Msg Added, id:${msgFromBack.id}`)
+        // navigate('/toy')
     }
+
+    // function handleChange({ target }) {
+    //     let { value, type, name: field } = target
+    //     value = type === 'number' ? +value : value
+    //     setCreatedComment(prevStory => ({ ...prevStory, [field]: value }))
+    // }
+
+
+    // function onSaveComment(ev) {
+    //     ev.preventDefault()
+    //     console.log(createdComment)
+    //     // storyService.save(createdStory).then((story) => {
+    //     //     console.log('story saved', story);
+    //     //     navigate('/')
+    //     // })
+    // }
 
 
     return <article className="story-preview">
@@ -52,9 +65,10 @@ export function StoryPreview({ story, onRemoveStory }) {
             <a><span className="story-user-name">{by.username}</span> <span className="story-text">{txt}</span></a>
             <a className={comments.length > 2 ? "story-comments-view" : "hide"}>View all {comments.length} comments</a>
             {comments.length && <a className="story-comment"><span className="story-user-name">{comments[0].by.username}</span> <span className="story-text">{comments[0].txt}</span></a>}
-            <form onSubmit={onSaveComment}>
+            <MsgForm comment={comment} setComment={setComment} addStoryComment={addStoryComment} />
+            {/* <form onSubmit={onSaveComment}>
                 <input type="text" name="txt" id="txt" placeholder="Add a comment..." value={createdComment.txt} onChange={handleChange} />
-            </form>
+            </form> */}
         </section>
     </article>
 }

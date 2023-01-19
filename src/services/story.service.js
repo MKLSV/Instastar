@@ -12,8 +12,8 @@ export const storyService = {
   save,
   remove,
   getEmptyStory,
-  onAddStoryMsg: onAddStoryComment,
-  onRemoveStoryMsg: onRemoveStoryComment
+  onAddStoryComment,
+  onRemoveStoryComment
 }
 window.ss = storyService
 
@@ -22,21 +22,22 @@ window.ss = storyService
 //     return savedMsg
 // }
 
-function onAddStoryComment(txt) {
-  return storageService.post(STORAGE_KEY)
+async function onAddStoryComment(storyId, txt, user) {
+  const updatedStory = await storageService.get(STORAGE_KEY, storyId)
+  updatedStory.comments.push(_createComment(txt, user))
+  console.log(updatedStory)
+  save(updatedStory)
+  // return storageService.post(STORAGE_KEY)
 }
 
 function onRemoveStoryComment(storyId) {
   return storageService.remove(STORAGE_KEY, storyId)
-
 }
 
 async function query() {
-  const stories = storageService.query(STORAGE_KEY)
+  const stories = await storageService.query(STORAGE_KEY)
   if (!stories || !stories.length) _createSrories()
   return storageService.query(STORAGE_KEY)
-
-
   // return httpService.get(STORAGE_KEY, filterBy)
 }
 
@@ -64,6 +65,28 @@ async function save(story) {
   return savedStory
 }
 
+function _createComment(txt, user) {
+  return {
+    id: _makeId(),
+    by: {
+      _id: user._id,
+      username: user.username,
+      fullname: user.fullname,
+      imgUrl: user.imgUrl
+    },
+    txt
+  }
+}
+
+function _makeId(length = 4) {
+  var text = ''
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  for (var i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length))
+  }
+  return text
+}
+
 function getEmptyStory() {
 
   return {
@@ -82,7 +105,7 @@ function getEmptyStory() {
   }
 }
 
-async function _createSrories() {
+function _createSrories() {
   const story = [
     {
       _id: "s103",
