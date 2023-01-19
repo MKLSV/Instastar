@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
 import { storyService } from "../services/story.service";
 import { userService } from "../services/user.service";
 import { removeStory } from "../store/story.actions";
 import { MsgForm } from "./msg-form";
 
 export function StoryPreview({ story, onRemoveStory }) {
-    
+
     const [comment, setComment] = useState({ txt: '' })
     // const [msg, setMsg] = useState({ txt: '' })
     const { by, imgUrl, txt, likedBy, comments } = story
@@ -54,7 +55,10 @@ export function StoryPreview({ story, onRemoveStory }) {
             <a>{by.username}</a>
             <button onClick={() => onRemoveStory(story._id)}>X</button>
         </section>
-        <img className="story-img" src={imgUrl} />
+        <Slider dots={true}>
+            <img className="story-img" src={imgUrl[0]} />
+            <img className="story-img" src={imgUrl[1]} />
+        </Slider>
         <section className="story-footer">
             <div className="btn-container">
                 <a><i className="fa-regular fa-heart"></i></a>
@@ -64,7 +68,7 @@ export function StoryPreview({ story, onRemoveStory }) {
             <a className="story-likes">{likedBy.length} likes</a>
             <a><span className="story-user-name">{by.username}</span> <span className="story-text">{txt}</span></a>
             <a className={comments.length > 2 ? "story-comments-view" : "hide"}>View all {comments.length} comments</a>
-            {comments.length && <a className="story-comment"><span className="story-user-name">{comments[0].by.username}</span> <span className="story-text">{comments[0].txt}</span></a>}
+            {comments.length ? <a className="story-comment"><span className="story-user-name">{comments[0].by.username}</span> <span className="story-text">{comments[0].txt}</span></a> : null}
             <MsgForm comment={comment} setComment={setComment} addStoryComment={addStoryComment} />
             {/* <form onSubmit={onSaveComment}>
                 <input type="text" name="txt" id="txt" placeholder="Add a comment..." value={createdComment.txt} onChange={handleChange} />

@@ -90,7 +90,7 @@ function _makeId(length = 4) {
 function getEmptyStory() {
 
   return {
-    id: "",
+    _id: "",
     txt: "",
     imgUrl: "",
     comments: [],
@@ -110,7 +110,7 @@ function _createSrories() {
     {
       _id: "s103",
       txt: "Exhibition  curated by @giulioaprin presents a spectrum of aerial photographers that push themselves into finding unusual and different point of view bringing us extraordinary facets of our reality.",
-      imgUrl: "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg",
+      imgUrl: ["https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg", "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"],
       by: {
         _id: "u101",
         fullname: "Deniska",
@@ -184,7 +184,7 @@ function _createSrories() {
     {
       _id: "s101",
       txt: "Let Me See Your Likes!",
-      imgUrl: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      imgUrl: ["https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"],
       by: {
         _id: "u101",
         fullname: "Ulash Ulashi",
@@ -240,7 +240,7 @@ function _createSrories() {
     {
       _id: "s102",
       txt: "Best trip ever",
-      imgUrl: "https://images.pexels.com/photos/1540977/pexels-photo-1540977.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      imgUrl: ["https://images.pexels.com/photos/1540977/pexels-photo-1540977.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"],
       by: {
         _id: "u102",
         fullname: "Bobby bob",
@@ -297,7 +297,7 @@ function _createSrories() {
     {
       _id: "s104",
       txt: "Your reaction? 😍",
-      imgUrl: "https://images.pexels.com/photos/1557652/pexels-photo-1557652.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      imgUrl: ["https://images.pexels.com/photos/1557652/pexels-photo-1557652.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"],
       by: {
         _id: "u101",
         fullname: "Baron Baton",
