@@ -29,7 +29,6 @@ export function getActionUpdateStory(story) {
 export async function loadStories() {
     try {
         const stories = await storyService.query()
-        console.log('Storys from DB:', stories)
         store.dispatch({
             type: SET_STORIES,
             stories

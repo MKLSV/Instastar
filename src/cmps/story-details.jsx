@@ -9,12 +9,15 @@ export function StoryDetails() {
     const params = useParams()
     const navigate = useNavigate()
 
+    console.log('parans:', params);
+    
+
     useEffect(() => {
         loadStory()
     }, [])
 
     function loadStory() {
-        storyService.query()
+        storyService.getById()
             .then((story) => setStory(story))
             .catch((err) => {
                 console.log('Had issues in story details', err)
@@ -28,6 +31,7 @@ export function StoryDetails() {
 
     if (!story) return <div>Loading...</div>
     return <section className="story-details">
+        <img src={story.imgUrl} />
         <h1>{story.txt}</h1>
         <h2> {story.comments.txt}</h2>
         <button onClick={onGoBack}>Go Back</button>
