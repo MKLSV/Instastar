@@ -33,10 +33,10 @@ function onRemoveStoryComment(storyId) {
 
 async function query() {
   const stories = storageService.query(STORAGE_KEY)
-  if(!stories) _createSrories()
+  if (!stories || !stories.length) _createSrories()
   return storageService.query(STORAGE_KEY)
 
-  
+
   // return httpService.get(STORAGE_KEY, filterBy)
 }
 
@@ -65,6 +65,7 @@ async function save(story) {
 }
 
 function getEmptyStory() {
+
   return {
     id: "",
     txt: "",
@@ -84,7 +85,7 @@ function getEmptyStory() {
 async function _createSrories() {
   const story = [
     {
-      id: "s103",
+      _id: "s103",
       txt: "Exhibition  curated by @giulioaprin presents a spectrum of aerial photographers that push themselves into finding unusual and different point of view bringing us extraordinary facets of our reality.",
       imgUrl: "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg",
       by: {
@@ -158,7 +159,7 @@ async function _createSrories() {
       ]
     },
     {
-      id: "s101",
+      _id: "s101",
       txt: "Let Me See Your Likes!",
       imgUrl: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       by: {
@@ -214,7 +215,7 @@ async function _createSrories() {
       ]
     },
     {
-      id: "s102",
+      _id: "s102",
       txt: "Best trip ever",
       imgUrl: "https://images.pexels.com/photos/1540977/pexels-photo-1540977.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       by: {
@@ -271,7 +272,7 @@ async function _createSrories() {
     },
 
     {
-      id: "s104",
+      _id: "s104",
       txt: "Your reaction? 😍",
       imgUrl: "https://images.pexels.com/photos/1557652/pexels-photo-1557652.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       by: {

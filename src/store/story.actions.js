@@ -43,13 +43,13 @@ export async function loadStories() {
 }
 
 export async function removeStory(storyId) {
-    // try {
-    //     await storyService.remove(storyId)
-    //     store.dispatch(getActionRemoveStory(storyId))
-    // } catch (err) {
-    //     console.log('Cannot remove story', err)
-    //     throw err
-    // }
+    try {
+        await storyService.remove(storyId)
+        store.dispatch(getActionRemoveStory(storyId))
+    } catch (err) {
+        console.log('Cannot remove story', err)
+        throw err
+    }
 }
 
 export async function addStory(story) {

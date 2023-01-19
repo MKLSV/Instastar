@@ -5,6 +5,7 @@ import { StoriesList } from '../cmps/stories-list.jsx'
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
+    console.log(stories)
     const user = useSelector(storeState => storeState.userModule.user)
 
 
