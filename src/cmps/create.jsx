@@ -26,11 +26,11 @@ export function CreateStory(story) {
         })
     }
     return (
-        <div>
+        <div className='create-post'>
             <ImgUploader story={story} onUploadSuccess={onUploadSuccess} />
             {createdStory.imgUrl && <img src={createdStory.imgUrl}/>}
             <form onSubmit={onSaveStory}>
-                <label htmlFor="text">your post: </label>
+                <label htmlFor="text">Your post: </label>
                 <input type="text"
                     name="txt"
                     id="txt"

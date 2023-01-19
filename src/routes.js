@@ -7,18 +7,20 @@ const routes = [
     {
         path: '/',
         component: <StoryIndex />,
-        label: ' Home',
+        label: 'Home',
         icon: <i className="fa-solid fa-house"></i>
     },
     {
         path: 'create',
         component: <CreateStory />,
-        label: 'Create'
+        label: 'Create',
+        icon: <i className="fa-regular fa-square-plus"></i>
     },
     {
         path: 'profile',
         component: <ProfilePage />,
-        label: 'Profile'
+        label: 'Profile',
+        icon: <i className="fa-solid fa-user"></i>
     },
    
 ]
