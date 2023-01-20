@@ -92,6 +92,11 @@ function getLoggedinUser() {
 function _createUser() {
     userService.signup(user)
 
+    ;(async ()=>{
+        await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
+       
+    })()
+
 }
 
 const user = {
@@ -133,6 +138,50 @@ const user = {
         "s104",
         "s111",
         "s123"
+    ]
+}
+
+
+const user2 =  {
+    _id: "u102",
+    username: "ShukiD12",
+    password: "shuki",
+    fullname: "Mr.Shuki",
+    
+    imgUrl: 'https://st.depositphotos.com/1005844/1403/i/600/depositphotos_14039169-stock-photo-young-man-outdoor.jpg',
+    following: [
+        {
+            _id: "u107",
+            fullname: "Dudu",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u101",
+            fullname: "Roberto",
+            imgUrl: "http://some-img"
+        }
+    ],
+    followers: [
+        {
+            _id: "u116",
+            fullname: "Don",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u126",
+            fullname: "Goblin",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u136",
+            fullname: "Fobim",
+            imgUrl: "http://some-img"
+        }
+    ],
+    savedStoryIds: [
+        "s105",
+        "s112",
+        "s124"
     ]
 }
 // ; (async () => {
