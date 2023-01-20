@@ -21,7 +21,20 @@
             border-radius: 50%;
         }
     }
-
+    button{
+        width: 105px;
+        height: 32px;
+        border: none;
+        background: #efefef;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 7px;
+        cursor: pointer;
+        
+        &:hover{
+            background: #bcbcbc;
+        }
+    }
     .profile-info {
         display: flex;
         gap: 15px;
@@ -94,14 +107,11 @@
     
 }
 .profile-stories {
-    justify-content: center;
     display: grid;
-    // flex-wrap: wrap;
-    /* gap: 5%; */
-    gap: 40px;
-    padding-bottom: 50px;
+    margin: 0 auto;
+    gap: 20px;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
+    max-width: 961px;
 
     img {
         width: 307px;

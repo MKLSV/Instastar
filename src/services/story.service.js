@@ -110,7 +110,7 @@ function _createSrories() {
     {
       _id: "s103",
       txt: "Exhibition  curated by @giulioaprin presents a spectrum of aerial photographers that push themselves into finding unusual and different point of view bringing us extraordinary facets of our reality.",
-      imgUrl: ["https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg", "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"],
+      imgUrl: ["https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg", "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"],
       by: {
         _id: "u101",
         fullname: "Deniska",
@@ -124,7 +124,7 @@ function _createSrories() {
             _id: "u105",
             username: "Amarama_1990",
             fullname: "Bob",
-            imgUrl: "http://some-img"
+            imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
           },
 
           txt: "good one!",
@@ -142,7 +142,7 @@ function _createSrories() {
             _id: "u105",
             username: "miniGun777",
             fullname: "Bob",
-            imgUrl: "http://some-img"
+            imgUrl: "https://st2.depositphotos.com/3143277/8644/i/600/depositphotos_86446164-stock-photo-business-man-in-office.jpg"
           },
 
           txt: "very nice!",
@@ -160,8 +160,9 @@ function _createSrories() {
           id: "c1002",
           by: {
             _id: "u106",
+            username: "redBread",
             fullname: "Dob",
-            imgUrl: "http://some-img"
+            imgUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
           },
           txt: "not good!"
         }

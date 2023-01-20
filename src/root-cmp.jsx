@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router'
 import routes from './routes'
 
 import { SideBar } from './cmps/side-bar'
-import { UserDetails } from './pages/user-details'
+import { StoryDetails } from './cmps/story-details'
 
 export function RootCmp() {
 
@@ -14,7 +14,7 @@ export function RootCmp() {
             <main className='contant-container'>
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
-                    <Route path="user/:id" element={<UserDetails />} />
+                    <Route path="story/:id" element={<StoryDetails />} />
                 </Routes>
             </main>
         </div>

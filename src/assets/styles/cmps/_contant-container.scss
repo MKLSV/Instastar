@@ -173,29 +173,48 @@
 
     .story-header {
         display: flex;
+        justify-content: space-between;
         height: 56px;
         padding: 6px;
-        gap: 10px;
-        align-items: center;
         background-color: #fff;
         border: 1px solid rgb(219, 219, 219);
         ;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
 
-        img {
-            width: 42px;
-            height: 42px;
-            object-fit: cover;
-            border-radius: 50%;
-            cursor: pointer;
+        div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img {
+                width: 42px;
+                height: 42px;
+                object-fit: cover;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            a {
+                font-weight: 600;
+                font-size: 14px;
+            }
         }
 
-        a {
-            font-weight: 600;
-            font-size: 14px;
+        button {
+            color: #838383;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+            cursor: pointer;
+            font-size: 16px;
+
+            &:hover {
+                font-weight: 600;
+            }
         }
     }
+
+
 
     .story-img {
         object-fit: cover;
@@ -234,9 +253,13 @@
             font-size: 24px;
             padding: 5px 0px;
             cursor: pointer;
+            color: black;
         }
     }
+    .link {
+        text-decoration: none;
 
+    }
     .story-likes {
         font-weight: 600;
         cursor: pointer;
@@ -291,5 +314,3 @@
 
 
 }
-
-

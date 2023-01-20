@@ -14,7 +14,7 @@ export function StoryIndex() {
 
     return (
         <div className='contant'>
-            <StoriesList stories={stories} />
+            {!stories.length ? <div className="loading-page"><span className="loading"></span></div> : <StoriesList stories={stories} />}
             <div className='suggestions'>
 
                 <div className='suggestion-header'>

@@ -19,9 +19,9 @@ export function MsgForm({ comment, setComment, addStoryComment }) {
     >
         {({ errors, touched }) => (
             <Form className='msg-form'
-            onSubmit={addStoryComment}
+                onSubmit={addStoryComment}
             >
-                <Field
+                <Field className='msg-input'
                     name="txt"
                     id="txt"
                     value={comment.txt}
@@ -32,6 +32,7 @@ export function MsgForm({ comment, setComment, addStoryComment }) {
                     <span>{errors.txt}</span>
                 ) : null}
 
+                {/* <button onClick={addStoryComment}>Post</button> */}
             </Form>
         )}
     </Formik>

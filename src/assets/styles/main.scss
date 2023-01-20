@@ -3,6 +3,7 @@
 @import "setup/functions";
 @import "setup/mixins";
 @import "setup/typography";
+@import "setup/loading";
 
 // Basics
 @import "basics/helpers";
@@ -22,6 +23,7 @@
 @import "cmps/app-container";
 @import "cmps/profile_page";
 @import "cmps/create-post";
+@import "cmps/story-details";
 
 
 
