@@ -1,6 +1,5 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from '../cmps/img-uploader'
 import { useNavigate } from "react-router-dom";
 import { login, signup, logout } from '../store/user.actions'
 
@@ -8,11 +7,10 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useSelector } from 'react-redux';
 
 export function LoginSignup() {
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
-    const [isSignup, setIsSignup] = useState(false)
+
     const [users, setUsers] = useState([])
-    const logedinuUser = useSelector(storeState => storeState.userModule.user)
-    console.log(logedinuUser)
+    const logedinUser = useSelector(storeState => storeState.userModule.user)
+    // console.log(logedinUser)
     console.log(users)
     const navigate = useNavigate()
 
@@ -20,6 +18,9 @@ export function LoginSignup() {
         loadUsers()
     }, [])
 
+    function onClose() {
+        navigate(-1)
+    }
     async function Login(credentials) {
         try {
             const user = await login(credentials)
@@ -50,115 +51,36 @@ export function LoginSignup() {
         setUsers(users)
     }
 
-    function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
-        setIsSignup(false)
+    function handleChange(user) {
+        if (user._id === logedinUser._id) return
+        console.log(user)
+        Login(user)
+        navigate(-1)
     }
-
-    function handleChange(ev) {
-        const field = ev.target.name
-        const value = ev.target.value
-        setCredentials({ ...credentials, [field]: value })
-    }
-
-    function onLogin(ev = null) {
-        if (ev) ev.preventDefault()
-        if (!credentials.username) return
-        Login(credentials)
-        clearState()
-        navigate('/')
-    }
-
-    function onSignup(ev = null) {
-        if (ev) ev.preventDefault()
-        if (!credentials.username || !credentials.password || !credentials.fullname) return
-        Signup(credentials)
-        clearState()
-    }
-
-    function toggleSignup() {
-        setIsSignup(!isSignup)
-    }
-
-    function onUploaded(imgUrl) {
-        setCredentials({ ...credentials, imgUrl })
-    }
-
+   
+    if (!users.length) return <div className="loading-page"><span className="loading"></span></div>
     return (
         <div className="login-page">
-            {/* <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-            </p> */}
-            {!isSignup && <form className="login" onSubmit={onLogin}>
-                <select
-                    name="username"
-                    value={credentials.username}
-                    onChange={handleChange} >
-                    <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                </select>
 
-                <div className='login-form'>
-                    {users.map(user => <section className='login-user' key={user._id}>
+            <div className='login-form'>
+
+                <div className='login-header'>
+                    <span>Switch accounts</span>
+                    <a onClick={onClose}><i className="fa-solid fa-x"></i></a>
+                </div>
+                <div className='login-users'>
+                    {users.map(user => <section className='login-user' key={user._id} onClick={() => handleChange(user)}>
                         <div>
                             <img src={user.imgUrl} />
                             <span>{user.username}</span>
                         </div>
-                        {user._id === logedinuUser._id ? <span><i class="fa-solid fa-check"></i></span> : <Fragment/>}
+                        {user._id === logedinUser._id ? <span className='check'><i className="fa-solid fa-check"></i></span> : ''}
                     </section>)}
                 </div>
-
-
-
-                {/* <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    /> */}
-                <button>Login!</button>
-            </form>}
-            {/* <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                    <input
-                        type="text"
-                        name="fullname"
-                        value={credentials.fullname}
-                        placeholder="Fullname"
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="text"
-                        name="username"
-                        value={credentials.username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={credentials.password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    />
-                    <ImgUploader onUploaded={onUploaded} />
-                    <button >Signup!</button>
-                </form>}
-            </div> */}
+                <div className='login-footer'>
+                    <a>Log into an Exiting Account</a>
+                </div>
+            </div>
         </div>
     )
 }

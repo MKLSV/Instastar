@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { uploadService } from '../services/upload.service'
 
-export function ImgUploader({ onUploaded = null , onUploadSuccess}) {
+export function ImgUploader({ onUploaded = null, onUploadSuccess }) {
   const [imgData, setImgData] = useState({
     imgUrl: null,
   })
@@ -23,7 +23,7 @@ export function ImgUploader({ onUploaded = null , onUploadSuccess}) {
 
   return (
     <div className="upload-preview">
-      {imgData.imgUrl && <img src={imgData.imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
+      {imgData.imgUrl && <img src={imgData.imgUrl} />}
       <label htmlFor="imgUpload">{getUploadLabel()}</label>
       <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
     </div>

@@ -12,7 +12,6 @@
     nav {
         display: flex;
         flex-direction: column;
-        gap: 20px;
     }
 
     .nav-btn {
@@ -28,6 +27,15 @@
         .nav-icon {
             font-size: 22px;
             width: 30px;
+            position: relative;
+            // margin: auto 0;
+
+            img {
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
         }
 
         span {

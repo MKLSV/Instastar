@@ -1,30 +1,105 @@
-.login-form {
+.login-page {
+    height: 100vh;
+    background-color: #595959;
+    padding-top: 25vh;
+}
 
+.login-form {
+    background-color: #fff;
+    // padding: 20px;
     width: 440px;
-    height: 290px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    .login-header {
+        height: 42px;
+        display: flex;
+        position: relative;
+        // grid-template-columns: 1fr 34px;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        a {
+            width: 34px;
+            padding: 8px;
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+        }
+
+    }
+
+    .login-users {
+        border-top: 1px solid #dbdbdb;
+        border-bottom: 1px solid #dbdbdb;
+    }
 
     .login-user {
 
+        padding: 8px 16px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(246, 246, 246, 0.66);
+        }
+
         img {
             width: 56px;
             height: 56px;
             border-radius: 50%;
             object-fit: cover;
         }
-        div{
+
+        div {
             display: flex;
             gap: 15px;
             align-items: center;
         }
-        span{
+
+        .check {
+            width: 24px;
+            height: 24px;
             font-size: 14px;
             font-weight: 600;
+            color: #fff;
+            background-color: #0095f6;
+            border-radius: 50%;
+            display: flex;
+
+            i {
+                margin: auto;
+            }
+        }
+    }
+
+    .login-footer {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0095f6;
+            cursor: pointer;
+
+            &:hover {
+                color: #00376b;
+            }
         }
     }
 }
