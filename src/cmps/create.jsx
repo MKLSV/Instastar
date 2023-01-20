@@ -9,7 +9,7 @@ export function CreateStory(story) {
     const [createdStory, setCreatedStory] = useState(storyService.getEmptyStory())
 
     function onUploadSuccess(imgUrl) {
-        setCreatedStory(prevState => ({ ...prevState, imgUrl }))
+        setCreatedStory(prevState => ({ ...prevState, imgUrl:[imgUrl] }))
     }
 
     function handleChange({ target }) {
@@ -20,6 +20,7 @@ export function CreateStory(story) {
 
     function onSaveStory(ev) {
         ev.preventDefault()
+        console.log(createdStory)
         storyService.save(createdStory).then((story) => {
             console.log('story saved', story);
             navigate('/')

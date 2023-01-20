@@ -9,7 +9,6 @@ import { MsgForm } from "./msg-form";
 export function StoryPreview({ story, onRemoveStory }) {
     const [comment, setComment] = useState({ txt: '' })
     const { by, imgUrl, txt, likedBy, comments } = story
-
     async function onRemoveStory(storyId) {
         try {
             console.log('storyId:', storyId);

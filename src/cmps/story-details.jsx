@@ -19,6 +19,10 @@ export function StoryDetails() {
         loadStory()
     }, [])
 
+    function onClose() {
+        navigate(-1)
+    }
+
     function loadStory() {
         storyService.getById(params.id)
             .then((story) => {
@@ -37,7 +41,7 @@ export function StoryDetails() {
         const msgFromBack = await storyService.onAddStoryComment(story._id, comment.txt, user)
     }
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
-    
+
     return <section className="story-details">
         <div className="image">
             <img src={story.imgUrl[0]} />
@@ -48,6 +52,7 @@ export function StoryDetails() {
                     <img className="prew-user-img" src={story.by.imgUrl} />
                     <a className="details-username">{story.by.username}</a>
                 </div>
+                <button onClick={onClose}>X</button>
             </section>
             <section className="comments-container">
                 <div className="comments-list">

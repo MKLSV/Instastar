@@ -1,15 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
 import { useNavigate } from "react-router-dom";
 import { login, signup, logout } from '../store/user.actions'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { useSelector } from 'react-redux';
 
 export function LoginSignup() {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
+    const logedinuUser = useSelector(storeState => storeState.userModule.user)
+    console.log(logedinuUser)
     console.log(users)
     const navigate = useNavigate()
 
@@ -21,7 +24,7 @@ export function LoginSignup() {
         try {
             const user = await login(credentials)
             showSuccessMsg(`Welcome: ${user.fullname}`)
-        } catch(err) {
+        } catch (err) {
             showErrorMsg('Cannot login')
         }
     }
@@ -29,7 +32,7 @@ export function LoginSignup() {
         try {
             const user = await signup(credentials)
             showSuccessMsg(`Welcome new user: ${user.fullname}`)
-        } catch(err) {
+        } catch (err) {
             showErrorMsg('Cannot signup')
         }
     }
@@ -37,7 +40,7 @@ export function LoginSignup() {
         try {
             await logout()
             showSuccessMsg(`Bye now`)
-        } catch(err) {
+        } catch (err) {
             showErrorMsg('Cannot logout')
         }
     }
@@ -83,18 +86,30 @@ export function LoginSignup() {
 
     return (
         <div className="login-page">
-            <p>
+            {/* <p>
                 <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-            </p>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
+            </p> */}
+            {!isSignup && <form className="login" onSubmit={onLogin}>
                 <select
                     name="username"
                     value={credentials.username}
-                    onChange={handleChange}
-                >
+                    onChange={handleChange} >
                     <option value="">Select User</option>
                     {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
                 </select>
+
+                <div className='login-form'>
+                    {users.map(user => <section className='login-user' key={user._id}>
+                        <div>
+                            <img src={user.imgUrl} />
+                            <span>{user.username}</span>
+                        </div>
+                        {user._id === logedinuUser._id ? <span><i class="fa-solid fa-check"></i></span> : <Fragment/>}
+                    </section>)}
+                </div>
+
+
+
                 {/* <input
                         type="text"
                         name="username"
@@ -114,7 +129,7 @@ export function LoginSignup() {
                     /> */}
                 <button>Login!</button>
             </form>}
-            <div className="signup-section">
+            {/* <div className="signup-section">
                 {isSignup && <form className="signup-form" onSubmit={onSignup}>
                     <input
                         type="text"
@@ -143,7 +158,7 @@ export function LoginSignup() {
                     <ImgUploader onUploaded={onUploaded} />
                     <button >Signup!</button>
                 </form>}
-            </div>
+            </div> */}
         </div>
     )
 }

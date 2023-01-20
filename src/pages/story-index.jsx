@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link, useNavigate } from "react-router-dom";
 import { loadStories } from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
+import { loadUsers } from '../store/user.actions';
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
@@ -15,14 +16,14 @@ export function StoryIndex() {
         loadStories()
     }, [])
 
-    function profileSwitch(){
+    function profileSwitch() {
         navigate('/login')
     }
 
-
+    if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
     return (
         <div className='contant'>
-            {!stories.length ? <div className="loading-page"><span className="loading"></span></div> : <StoriesList stories={stories} />}
+            <StoriesList stories={stories} />
             <div className='suggestions'>
 
 

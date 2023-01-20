@@ -99,7 +99,7 @@ function getEmptyStory() {
   return {
     _id:  "",
     txt: "",
-    imgUrl: "",
+    imgUrl: [],
     comments: [],
     likedBy: [],
     by: {
@@ -108,7 +108,6 @@ function getEmptyStory() {
       fullname: "",
       imgUrl: ""
     },
-
   }
 }
 
@@ -301,7 +300,6 @@ function _createSrories() {
         }
       ]
     },
-
     {
       _id: "s104",
       txt: "Your reaction? 😍",
@@ -357,7 +355,7 @@ function _createSrories() {
           imgUrl: "http://some-img"
         }
       ]
-    }
+    },
   ]
   storageService._save(STORAGE_KEY, story)
 }

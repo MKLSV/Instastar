@@ -1,0 +1,30 @@
+.login-form {
+
+    width: 440px;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .login-user {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        div{
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        span{
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+}
