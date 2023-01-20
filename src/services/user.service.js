@@ -92,12 +92,9 @@ function getLoggedinUser() {
 function _createUser() {
     userService.signup(user)
 
-    ;(async ()=>{
-        await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-       
-    })()
-
 }
+
+
 
 const user = {
     _id: "u101",

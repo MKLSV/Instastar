@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
+import { login, signup } from '../store/user.actions'
+
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
@@ -10,6 +13,24 @@ export function LoginSignup(props) {
     useEffect(() => {
         loadUsers()
     }, [])
+
+    
+    async function onLogin(credentials) {
+        try {
+            const user = await login(credentials)
+            showSuccessMsg(`Welcome: ${user.fullname}`)
+        } catch(err) {
+            showErrorMsg('Cannot login')
+        }
+    }
+    async function onSignup(credentials) {
+        try {
+            const user = await signup(credentials)
+            showSuccessMsg(`Welcome new user: ${user.fullname}`)
+        } catch(err) {
+            showErrorMsg('Cannot signup')
+        }
+    }
 
     async function loadUsers() {
         const users = await userService.getUsers()

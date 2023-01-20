@@ -1,44 +1,30 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { Link, useNavigate } from "react-router-dom";
 import { loadStories } from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
-import { LoginSignup } from '../cmps/login-signup'
-import { login, signup } from '../store/user.actions'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
     const user = useSelector(storeState => storeState.userModule.user)
 
-    async function onLogin(credentials) {
-        try {
-            const user = await login(credentials)
-            showSuccessMsg(`Welcome: ${user.fullname}`)
-        } catch(err) {
-            showErrorMsg('Cannot login')
-        }
-    }
-    async function onSignup(credentials) {
-        try {
-            const user = await signup(credentials)
-            showSuccessMsg(`Welcome new user: ${user.fullname}`)
-        } catch(err) {
-            showErrorMsg('Cannot signup')
-        }
-    }
+    const navigate = useNavigate()
+
 
     useEffect(() => {
         loadStories()
     }, [])
+
+    function profileSwitch(){
+        navigate('/login')
+    }
+
 
     return (
         <div className='contant'>
             {!stories.length ? <div className="loading-page"><span className="loading"></span></div> : <StoriesList stories={stories} />}
             <div className='suggestions'>
 
-            <section className="user-info">
-                        <LoginSignup onLogin={onLogin} onSignup={onSignup} />
-                    </section>
 
                 <div className='suggestion-header'>
                     <div className='suggestion-user-info'>
@@ -48,7 +34,7 @@ export function StoryIndex() {
                             <span>{user.fullname}</span>
                         </div>
                     </div>
-                    <a className='suggestion-switch'>Switch</a>
+                    <a className='suggestion-switch' onClick={profileSwitch}>Switch</a>
                 </div>
                 <div className='suggestion-options'>
                     <span>Suggestions For You</span>
