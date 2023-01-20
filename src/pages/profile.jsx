@@ -1,10 +1,19 @@
 import { userService } from "../services/user.service"
 import { useSelector } from 'react-redux'
+import { useEffect } from "react"
+import { loadStories } from "../store/story.actions"
 
 export function ProfilePage() {
     const user = useSelector(storeState => storeState.userModule.user)
-    const {imgUrl, savedStoryIds ,followers, following,fullname , username} = user
-    console.log(user)
+    const stories = useSelector(storeState => storeState.storyModule.stories)
+
+    useEffect(() => {
+        loadStories()
+    }, [])
+
+    const {imgUrl, savedStoryIds ,followers, following,fullname , username , by} = user
+
+    const profileStories = story
     
     return <div className="profile-container">
         <section className="profile-header">
@@ -31,6 +40,11 @@ export function ProfilePage() {
             <a className="profile-pics-link">TAGGED</a>
         </section>
         <section className="profile-stories">
+
+            {/* {by.imgUrl.map(img => <section className="comment" key={comment.id}>
+                                <img className="prew-user-img" src={comment.by.imgUrl} /> */}
+
+          
             <img src="https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmVlbCUyMGdvb2R8ZW58MHx8MHx8&w=1000&q=80" />
             <img src="https://www.befunky.com/images/prismic/5ddfea42-7377-4bef-9ac4-f3bd407d52ab_landing-photo-to-cartoon-img5.jpeg?auto=avif,webp&format=jpg&width=863" />
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_C83dAtu27sZWagcVeEQhFKBVWCKiXrZ4jsXk4P9i65fVsiHegUV69xqAcvB4GgU4c1I&usqp=CAU" />
