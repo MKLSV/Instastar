@@ -90,13 +90,13 @@ function _makeId(length = 4) {
 function getEmptyStory() {
 
   return {
-    _id: "",
+    _id:  "",
     txt: "",
     imgUrl: "",
     comments: [],
     likedBy: [],
     by: {
-      _id: "u101",
+      _id: "u111",
       username: "MukoPuko99",
       fullname: "Muki Muka",
       imgUrl: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
