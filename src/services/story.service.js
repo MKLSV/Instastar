@@ -51,6 +51,13 @@ async function remove(storyId) {
   // return httpService.delete(`story/${storyId}`)
 }
 async function save(story) {
+  const user = userService.getLoggedinUser()
+  story.by = {
+      _id: user._id,
+      username: user.username,
+      fullname: user.fullname,
+      imgUrl: user.imgUrl
+  }
   var savedStory
   if (story._id) {
     savedStory = await storageService.put(STORAGE_KEY, story)
@@ -96,10 +103,10 @@ function getEmptyStory() {
     comments: [],
     likedBy: [],
     by: {
-      _id: "u111",
-      username: "MukoPuko99",
-      fullname: "Muki Muka",
-      imgUrl: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      _id: "",
+      username: "",
+      fullname: "",
+      imgUrl: ""
     },
 
   }

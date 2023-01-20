@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
-import { login, signup } from '../store/user.actions'
+import { useNavigate } from "react-router-dom";
+import { login, signup, logout } from '../store/user.actions'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
-export function LoginSignup(props) {
+export function LoginSignup() {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
+    console.log(users)
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadUsers()
     }, [])
 
-    
-    async function onLogin(credentials) {
+    async function Login(credentials) {
         try {
             const user = await login(credentials)
             showSuccessMsg(`Welcome: ${user.fullname}`)
@@ -23,7 +25,7 @@ export function LoginSignup(props) {
             showErrorMsg('Cannot login')
         }
     }
-    async function onSignup(credentials) {
+    async function Signup(credentials) {
         try {
             const user = await signup(credentials)
             showSuccessMsg(`Welcome new user: ${user.fullname}`)
@@ -31,9 +33,17 @@ export function LoginSignup(props) {
             showErrorMsg('Cannot signup')
         }
     }
-
+    async function Logout() {
+        try {
+            await logout()
+            showSuccessMsg(`Bye now`)
+        } catch(err) {
+            showErrorMsg('Cannot logout')
+        }
+    }
     async function loadUsers() {
         const users = await userService.getUsers()
+        console.log(users)
         setUsers(users)
     }
 
@@ -51,14 +61,15 @@ export function LoginSignup(props) {
     function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        props.onLogin(credentials)
+        Login(credentials)
         clearState()
+        navigate('/')
     }
 
     function onSignup(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username || !credentials.password || !credentials.fullname) return
-        props.onSignup(credentials)
+        Signup(credentials)
         clearState()
     }
 

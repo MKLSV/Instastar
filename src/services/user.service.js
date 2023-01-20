@@ -89,12 +89,10 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-function _createUser() {
-    userService.signup(user)
-
+async function _createUser() {
+    await userService.signup(user)
+    await userService.signup(user2)
 }
-
-
 
 const user = {
     _id: "u101",
@@ -182,9 +180,8 @@ const user2 =  {
     ]
 }
 // ; (async () => {
-//     await userService.signup({ fullname: 'Puki Norma', username: 'puki', password: '123', imgUrl: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', isAdmin: false })
-//     // await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     // await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
+//     await userService.signup(user)
+//     await userService.signup(user2)
 // })()
 
 
