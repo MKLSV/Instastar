@@ -1,4 +1,3 @@
-import { userService } from "../services/user.service"
 import { useSelector } from 'react-redux'
 import { useEffect } from "react"
 import { loadStories } from "../store/story.actions"
@@ -6,17 +5,12 @@ import { loadStories } from "../store/story.actions"
 export function ProfilePage() {
     const user = useSelector(storeState => storeState.userModule.user)
     const stories = useSelector(storeState => storeState.storyModule.stories)
+    const { imgUrl, savedStoryIds, followers, following, fullname, username } = user
+    const profileStories = stories.filter(story => story.by._id === user._id)
 
     useEffect(() => {
         loadStories()
     }, [])
-
-    console.log(stories)
-    console.log(user)
-    const { imgUrl, savedStoryIds, followers, following, fullname, username } = user
-
-    const profileStories = stories.filter(story => story.by._id === user._id)
-    console.log('profileStories', profileStories)
 
     return <div className="profile-container">
         <section className="profile-header">
@@ -33,7 +27,6 @@ export function ProfilePage() {
                 </div>
                 <div className="user-bio">
                     <a className="user-name">{fullname}</a>
-                    <a className="bio">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi, earum. Iste, architecto. Architecto magnam distinctio repellat, iste aliquid nesciunt laboriosam ipsam, nihil voluptates tempore quisquam ipsa ab earum fugiat iure!</a>
                 </div>
             </section>
         </section>

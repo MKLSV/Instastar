@@ -10,8 +10,6 @@ export function LoginSignup() {
 
     const [users, setUsers] = useState([])
     const logedinUser = useSelector(storeState => storeState.userModule.user)
-    // console.log(logedinUser)
-    console.log(users)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -21,6 +19,7 @@ export function LoginSignup() {
     function onClose() {
         navigate(-1)
     }
+
     async function Login(credentials) {
         try {
             const user = await login(credentials)
@@ -29,6 +28,7 @@ export function LoginSignup() {
             showErrorMsg('Cannot login')
         }
     }
+
     async function Signup(credentials) {
         try {
             const user = await signup(credentials)
@@ -37,6 +37,7 @@ export function LoginSignup() {
             showErrorMsg('Cannot signup')
         }
     }
+
     async function Logout() {
         try {
             await logout()
@@ -45,19 +46,18 @@ export function LoginSignup() {
             showErrorMsg('Cannot logout')
         }
     }
+
     async function loadUsers() {
         const users = await userService.getUsers()
-        console.log(users)
         setUsers(users)
     }
 
     function handleChange(user) {
         if (user._id === logedinUser._id) return
-        console.log(user)
         Login(user)
         navigate(-1)
     }
-   
+
     if (!users.length) return <div className="loading-page"><span className="loading"></span></div>
     return (
         <div className="login-page">

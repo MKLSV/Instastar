@@ -1,13 +1,12 @@
 
 import { StoryPreview } from "./story-preview"
 
-export function StoriesList({ stories, onRemoveStory, onEditStory }) {
+export function StoriesList({ stories }) {
     return <section className="story-list">
         {stories.map(story => <div
             className="story"
             key={story._id}>
-            <StoryPreview story={story} 
-                onRemoveStory={onRemoveStory} onEditStory={onEditStory}
+            <StoryPreview story={story}
             />
         </div>)}
     </section>

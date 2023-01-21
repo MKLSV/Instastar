@@ -1,16 +1,13 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { loadStories } from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
-import { loadUsers } from '../store/user.actions';
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
     const user = useSelector(storeState => storeState.userModule.user)
-
     const navigate = useNavigate()
-
 
     useEffect(() => {
         loadStories()
@@ -25,8 +22,6 @@ export function StoryIndex() {
         <div className='contant'>
             <StoriesList stories={stories} />
             <div className='suggestions'>
-
-
                 <div className='suggestion-header'>
                     <div className='suggestion-user-info'>
                         <img className='suggestion-photo' src={user.imgUrl} />
@@ -41,7 +36,7 @@ export function StoryIndex() {
                     <span>Suggestions For You</span>
                     <a>See All</a>
                 </div>
-
+                
                 <ul>
                     <li>
                         <div className='suggestion-profile'>

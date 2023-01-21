@@ -1,11 +1,8 @@
 
 import { storageService } from './async-storage.service.js'
-import { httpService } from './http.service.js'
-import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'story'
-
 export const storyService = {
   query,
   getById,
@@ -25,7 +22,6 @@ window.ss = storyService
 async function onAddStoryComment(storyId, txt, user) {
   const updatedStory = await storageService.get(STORAGE_KEY, storyId)
   updatedStory.comments.push(_createComment(txt, user))
-  console.log(updatedStory)
   save(updatedStory)
   // return storageService.post(STORAGE_KEY)
 }
@@ -50,13 +46,14 @@ async function remove(storyId) {
   await storageService.remove(STORAGE_KEY, storyId)
   // return httpService.delete(`story/${storyId}`)
 }
+
 async function save(story) {
   const user = userService.getLoggedinUser()
   story.by = {
-      _id: user._id,
-      username: user.username,
-      fullname: user.fullname,
-      imgUrl: user.imgUrl
+    _id: user._id,
+    username: user.username,
+    fullname: user.fullname,
+    imgUrl: user.imgUrl
   }
   var savedStory
   if (story._id) {
@@ -95,9 +92,8 @@ function _makeId(length = 4) {
 }
 
 function getEmptyStory() {
-
   return {
-    _id:  "",
+    _id: "",
     txt: "",
     imgUrl: [],
     comments: [],
@@ -191,7 +187,7 @@ function _createSrories() {
     {
       _id: "s101",
       txt: "Let Me See Your Likes!",
-      imgUrl: ["https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"],
+      imgUrl: ["https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"],
       by: {
         _id: "u101",
         fullname: "Ulash Ulashi",

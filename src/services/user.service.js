@@ -23,8 +23,6 @@ function getUsers() {
     // return httpService.get(`user`)
 }
 
-
-
 async function getById(userId) {
     const user = await storageService.get('user', userId)
     // const user = await httpService.get(`user/${userId}`)
@@ -136,7 +134,6 @@ const user = {
     ]
 }
 
-
 const user2 =  {
     _id: "u102",
     username: "ShukiD12",
@@ -179,6 +176,7 @@ const user2 =  {
         "s124"
     ]
 }
+
 // ; (async () => {
 //     await userService.signup(user)
 //     await userService.signup(user2)

@@ -1,19 +1,14 @@
 import { useState, useEffect, Fragment } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-
-
+import { useParams, useNavigate } from "react-router-dom";
 import { storyService } from "../services/story.service.js"
 import { userService } from "../services/user.service.js";
 import { MsgForm } from "./msg-form.jsx";
 
 export function StoryDetails() {
-
     const [story, setStory] = useState(null)
     const [comment, setComment] = useState({ txt: '' })
     const params = useParams()
     const navigate = useNavigate()
-    console.log('params:', params);
-
 
     useEffect(() => {
         loadStory()
@@ -36,12 +31,11 @@ export function StoryDetails() {
 
     async function addStoryComment(ev) {
         ev.preventDefault()
-        console.log(comment)
         const user = userService.getLoggedinUser()
         const msgFromBack = await storyService.onAddStoryComment(story._id, comment.txt, user)
     }
-    if (!story) return <div className="loading-page"><span className="loading"></span></div>
 
+    if (!story) return <div className="loading-page"><span className="loading"></span></div>
     return <section className="story-details">
         <div className="image">
             <img src={story.imgUrl[0]} />

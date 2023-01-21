@@ -9,9 +9,9 @@ import { MsgForm } from "./msg-form";
 export function StoryPreview({ story, onRemoveStory }) {
     const [comment, setComment] = useState({ txt: '' })
     const { by, imgUrl, txt, likedBy, comments } = story
+
     async function onRemoveStory(storyId) {
         try {
-            console.log('storyId:', storyId);
             await removeStory(storyId)
         } catch (err) {
             console.log(err)
@@ -42,9 +42,7 @@ export function StoryPreview({ story, onRemoveStory }) {
         <section className="story-footer">
             <div className="btn-container">
                 <a><i className="fa-regular fa-heart"></i></a>
-
                 <Link to={`/story/${story._id}`}><span><i className="fa-regular fa-comment"></i></span></Link>
-
                 <a><i className="fa-regular fa-paper-plane"></i></a>
             </div>
             <a className="story-likes">{likedBy.length} likes</a>

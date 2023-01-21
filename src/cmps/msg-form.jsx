@@ -1,9 +1,7 @@
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react"
+
 import { Formik, Form, Field } from 'formik';
 
 export function MsgForm({ comment, setComment, addStoryComment }) {
-
     function handleChange({ target }) {
         let { value, name: field, type } = target
         value = (type === 'number') ? +value : value
@@ -31,8 +29,6 @@ export function MsgForm({ comment, setComment, addStoryComment }) {
                 {errors.txt && touched.txt ? (
                     <span>{errors.txt}</span>
                 ) : null}
-
-                {/* <button onClick={addStoryComment}>Post</button> */}
             </Form>
         )}
     </Formik>
