@@ -181,6 +181,12 @@ function _createSrories() {
           _id: "u106",
           fullname: "Dob",
           imgUrl: "http://some-img"
+        },
+
+        {
+          _id: "7zLay",
+          fullname: "Muki Muka",
+          imgUrl: "http://some-img"
         }
       ]
     },
