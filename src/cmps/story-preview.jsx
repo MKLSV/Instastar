@@ -42,7 +42,7 @@ export function StoryPreview({ story, onRemoveStory }) {
             fullname: user.fullname,
             imgUrl: user.imgUrl
         })
-        storyService.save(story)
+        storyService.saveLike(story)
         setLike(checkLike())
         console.log(story)
     }

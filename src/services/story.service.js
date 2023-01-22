@@ -10,7 +10,8 @@ export const storyService = {
   remove,
   getEmptyStory,
   onAddStoryComment,
-  onRemoveStoryComment
+  onRemoveStoryComment,
+  saveLike
 }
 window.ss = storyService
 
@@ -66,6 +67,11 @@ async function save(story) {
     savedStory = await storageService.post(STORAGE_KEY, story)
     // savedStory = await httpService.post('story', story)
   }
+  return savedStory
+}
+
+async function saveLike(story) {
+  var savedStory = await storageService.put(STORAGE_KEY, story)
   return savedStory
 }
 
