@@ -37,10 +37,10 @@ export function ProfilePage() {
            
 
             <a className="profile-pics-link">SAVED</a>
-            <svg aria-label="Saved" className="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"></svg>
+            {/* <svg aria-label="Saved" className="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"></svg> */}
 
             <a className="profile-pics-link">TAGGED</a>
-            <svg aria-label="Tagged" className="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"></svg>
+            {/* <svg aria-label="Tagged" className="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"></svg> */}
 
         </section>
         <section className="profile-stories">

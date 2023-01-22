@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
 
-
     .story-header {
         display: flex;
         justify-content: space-between;
@@ -54,8 +53,6 @@
             padding-right: 5px;
         }
     }
-
-
 
     .story-img {
         object-fit: cover;
@@ -139,11 +136,14 @@
         .slick-prev {
             z-index: 10;
             left: 10px;
+            opacity: 0.4;
         }
 
         .slick-next {
             z-index: 10;
             right: 10px;
+            opacity: 0.4;
+
         }
 
         .slick-dots {
