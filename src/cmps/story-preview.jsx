@@ -13,6 +13,7 @@ export function StoryPreview({ story, onRemoveStory }) {
     const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
 
+
     async function onRemoveStory(storyId) {
         try {
             await removeStory(storyId)
@@ -23,10 +24,15 @@ export function StoryPreview({ story, onRemoveStory }) {
 
     async function addStoryComment(ev) {
         ev.preventDefault()
-        console.log(comment)
+        const newComment = storyService.createComment(comment.txt, user)
+        story.comments.push(newComment)
         // const user = userService.getLoggedinUser()
-        const msgFromBack = await storyService.onAddStoryComment(story._id, comment.txt, user)
+        await storyService.onAddStoryComment(story._id, newComment)
+        //  await storyService.onAddStoryComment(story._id, comment.txt, user)
+        setComment({ txt: '' })
     }
+
+
 
     function checkLike() {
         return likedBy.some(likedUser => likedUser._id === user._id)
@@ -42,9 +48,12 @@ export function StoryPreview({ story, onRemoveStory }) {
             fullname: user.fullname,
             imgUrl: user.imgUrl
         })
-        storyService.saveLike(story)
+        storyService.save(story)
         setLike(checkLike())
-        console.log(story)
+    }
+
+    function onLikes() {
+        console.log('SHOW LIKES MODAL')
     }
 
     return <article className="story-preview">
@@ -57,26 +66,27 @@ export function StoryPreview({ story, onRemoveStory }) {
                     <time>1h</time>
                 </div>
             </div>
-            {/* <button onClick={() => onRemoveStory(story._id)}>...</button> */}
-            <svg onClick={() => onRemoveStory(story._id)} aria-label="More options" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+            <svg onClick={() => onRemoveStory(story._id)} aria-label="More options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
         </section>
         {imgUrl.length > 1 ?
             <Slider dots={true}>
-                <img className="story-img" src={imgUrl[0]} />
-                <img className="story-img" src={imgUrl[1]} />
+                {imgUrl.map(img => <img key={imgUrl} className="story-img" src={img} />)}
             </Slider>
             : <img className="story-img" src={imgUrl[0]} />}
         <section className="story-footer">
             <div className="btn-container">
                 <a onClick={toggleLike}><i className={checkLike() ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i></a>
-                <Link to={`/story/${story._id}`}><span><i className="fa-regular fa-comment"></i></span></Link>
+                <Link to={`story/${story._id}`}><span><i className="fa-regular fa-comment"></i></span></Link>
                 <a><i className="fa-regular fa-paper-plane"></i></a>
+                <a className="saved-btn"><i className="fa-regular fa-bookmark"></i></a>
             </div>
-            <a className="story-likes">{likedBy.length} likes</a>
+            {likedBy.length && <section> <img src={likedBy[0].imgUrl} /><span>Liked by</span> <a className="story-likes">{likedBy[0].fullname}</a> {likedBy.length > 1 && <div><span>and </span><a onClick={onLikes} className="story-likes">{likedBy.length} others</a></div>}</section>}
+
             <a><span className="story-user-name">{story.by.username}</span> <span className="story-text">{txt}</span></a>
             {comments.length > 2 && <Link className="link" to={`/story/${story._id}`}><span className="story-comments-view"> View all {comments.length} comments </span></Link>}
 
-            {comments.length ? <a className="story-comment"><span className="story-user-name">{comments[0].by.username}</span> <span className="story-text">{comments[0].txt}</span></a> : null}
+            {comments.length > 1 ? <a className="story-comment"><span className="story-user-name">{comments[comments.length - 2].by.username}</span> <span className="story-text">{comments[comments.length - 2].txt}</span></a> : null}
+            {comments.length ? <a className="story-comment"><span className="story-user-name">{comments[comments.length - 1].by.username}</span> <span className="story-text">{comments[comments.length - 1].txt}</span></a> : null}
             <MsgForm comment={comment} setComment={setComment} addStoryComment={addStoryComment} />
         </section>
     </article >

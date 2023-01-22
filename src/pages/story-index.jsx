@@ -17,6 +17,8 @@ export function StoryIndex() {
         navigate('/login')
     }
 
+    console.log(stories)
+    console.log(user)
     if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
     return (
         <div className='contant'>
