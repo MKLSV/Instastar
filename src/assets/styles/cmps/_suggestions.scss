@@ -1,0 +1,138 @@
+.suggestions {
+    display: flex;
+    width: 315px;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 14px;
+    margin: 16px;
+    // padding-right: 100px;
+
+    .suggestion-header {
+        width: 315px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px;
+        align-items: center;
+
+    }
+
+
+    .suggestion-user-info {
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        gap: 15px;
+
+        .suggestion-photo {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    .suggestion-user-name {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            font-weight: 600;
+        }
+
+        span {
+            color: #b2b2b2;
+        }
+    }
+
+    .suggestion-switch {
+
+        // margin-left: 130px;
+        font-size: 12px;
+        color: #0099ff;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            color: #00436f;
+        }
+    }
+
+    .suggestion-options {
+        display: flex;
+        // justify-content: space-between;
+        // align-content: space-between;
+        width: 351px;
+        padding: 4px 16px;
+
+        span {
+            color: #b2b2b2;
+            font-weight: 600;
+        }
+
+        a {
+            font-size: 12px;
+            color: black;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 116px;
+
+            &:hover {
+                color: #838383;
+            }
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        display: flex;
+        width: 315px;
+        padding: 8px 16px;
+        list-style-type: none;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+    }
+
+    .suggestion-profile {
+        display: flex;
+        gap: 10px;
+
+        img {
+            height: 32px;
+            width: 32px;
+            object-fit: cover;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .suggestion-profile-info {
+            display: flex;
+            flex-direction: column;
+
+            .suggestion-profile-name {
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+            .suggestion-profile-followers {
+                font-size: 12px;
+                color: #838383;
+            }
+        }
+
+    }
+
+    .suggestion-profile-folow {
+        color: #0099ff;
+        cursor: pointer;
+
+        &:hover {
+            color: #00436f;
+        }
+    }
+}

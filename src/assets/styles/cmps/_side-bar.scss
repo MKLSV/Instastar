@@ -1,12 +1,12 @@
 .side-bar {
-    // padding: 8px 12px 20px;
+    padding: 0.615rem 0.92rem 1.54rem;
     display: grid;
     position: fixed;
     font-size: 16px;
     grid-template-rows: 80px 1fr 10px;
     background-color: rgb(255, 255, 255);
     height: 100vh;
-    width: 220px;
+    width: 245px;
     border-right: 1px solid rgb(219, 219, 219);
 
     .icon {
@@ -14,7 +14,7 @@
         width: 220px;
     }
 
-    img{
+    img {
         width: 103px;
     }
 
