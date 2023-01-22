@@ -40,9 +40,17 @@ export function StoryPreview({ story, onRemoveStory }) {
 
     function toggleLike() {
         if (checkLike()) {
-            const idx = likedBy.findIndex(likedUser => likedUser._id === user._id)
+            const idx = likedBy.findIndex(likedUser => likedUser._id === user._id)            
             likedBy.splice(idx, 1)
         }
+
+        // likedBy: [
+        //     {
+        //       _id: "u105",
+        //       fullname: "Bob",
+        //       imgUrl: "http://some-img"
+        //     }
+
         else likedBy.push({
             _id: user._id,
             fullname: user.fullname,
