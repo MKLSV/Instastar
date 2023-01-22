@@ -7,7 +7,7 @@
 
 .contant {
     display: grid;
-    margin: 51px 130px;
+    margin: 130px;
     grid-template-columns: 54% 46%;
     height: 100%;
     // padding: 30px 0;
@@ -36,16 +36,21 @@
 // SUGGESTIONS
 .suggestions {
     display: flex;
+    width: 319px;
     flex-direction: column;
     gap: 15px;
     font-size: 14px;
-    padding-right: 100px;
+    margin: 16px;
+    // padding-right: 100px;
 
     .suggestion-header {
+        width: 319px;
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         align-items: center;
+
     }
+
 
     .suggestion-user-info {
         display: flex;
@@ -76,6 +81,7 @@
 
     .suggestion-switch {
 
+        margin-left: 130px;
         font-size: 12px;
         color: #0099ff;
         font-weight: 600;
@@ -88,8 +94,10 @@
 
     .suggestion-options {
         display: flex;
-        justify-content: space-between;
-        align-content: space-between;
+        // justify-content: space-between;
+        // align-content: space-between;
+        width: 351px;
+        padding: 4px 16px;
 
         span {
             color: #b2b2b2;
@@ -101,6 +109,7 @@
             color: black;
             font-weight: 600;
             cursor: pointer;
+            margin-left: 116px;
 
             &:hover {
                 color: #838383;
@@ -115,7 +124,8 @@
 
     li {
         display: flex;
-        padding: 10px 0;
+        width: 315px;
+        padding: 8px 16px;
         list-style-type: none;
         justify-content: space-between;
         align-items: center;
