@@ -31,9 +31,17 @@ export function ProfilePage() {
             </section>
         </section>
         <section className="profile-links">
+            
             <a className="profile-pics-link active">POSTS</a>
+             <svg aria-label="Posts" className="_ab6-" color="#0095f6" fill="#0095f6" height="24" role="img" viewBox="0 0 24 24" width="24"></svg>
+           
+
             <a className="profile-pics-link">SAVED</a>
+            <svg aria-label="Saved" className="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"></svg>
+
             <a className="profile-pics-link">TAGGED</a>
+            <svg aria-label="Tagged" className="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="24" role="img" viewBox="0 0 24 24" width="24"></svg>
+
         </section>
         <section className="profile-stories">
             {profileStories.map(story => <img key={story.imgUrl} src={story.imgUrl} />)}

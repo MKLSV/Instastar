@@ -34,9 +34,17 @@ export function StoryPreview({ story, onRemoveStory }) {
 
     function toggleLike() {
         if (checkLike()) {
-            const idx = likedBy.findIndex(likedUser => likedUser._id === user._id)
+            const idx = likedBy.findIndex(likedUser => likedUser._id === user._id)            
             likedBy.splice(idx, 1)
         }
+
+        // likedBy: [
+        //     {
+        //       _id: "u105",
+        //       fullname: "Bob",
+        //       imgUrl: "http://some-img"
+        //     }
+
         else likedBy.push({
             _id: user._id,
             fullname: user.fullname,
@@ -44,7 +52,6 @@ export function StoryPreview({ story, onRemoveStory }) {
         })
         storyService.saveLike(story)
         setLike(checkLike())
-        console.log(story)
     }
 
     return <article className="story-preview">
@@ -57,7 +64,6 @@ export function StoryPreview({ story, onRemoveStory }) {
                     <time>1h</time>
                 </div>
             </div>
-            {/* <button onClick={() => onRemoveStory(story._id)}>...</button> */}
             <svg onClick={() => onRemoveStory(story._id)} aria-label="More options" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
         </section>
         {imgUrl.length > 1 ?
