@@ -10,7 +10,7 @@ import { MsgForm } from "./msg-form";
 export function StoryPreview({ story, onRemoveStory }) {
     const [comment, setComment] = useState({ txt: '' })
     const [like, setLike] = useState('')
-    const {  imgUrl, txt, likedBy, comments } = story
+    const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
 
     async function onRemoveStory(storyId) {
@@ -49,11 +49,16 @@ export function StoryPreview({ story, onRemoveStory }) {
 
     return <article className="story-preview">
         <section className="story-header">
-            <div>
+            <div className="header-info">
                 <img className="prew-user-img" src={story.by.imgUrl} />
                 <a>{story.by.username}</a>
+                <div className="time">
+                    <span>•</span>
+                    <time>1h</time>
+                </div>
             </div>
-            <button onClick={() => onRemoveStory(story._id)}>X</button>
+            {/* <button onClick={() => onRemoveStory(story._id)}>...</button> */}
+            <svg onClick={() => onRemoveStory(story._id)} aria-label="More options" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
         </section>
         {imgUrl.length > 1 ?
             <Slider dots={true}>
