@@ -23,6 +23,7 @@ export function LoginSignup() {
             console.log(err)
         }
     }
+    
     async function Signup(credentials) {
         try {
             const user = await  signup(credentials)
