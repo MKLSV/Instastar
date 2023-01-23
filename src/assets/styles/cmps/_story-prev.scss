@@ -84,12 +84,24 @@
 
             }
         }
+        section{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        img{
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
     }
 
     .btn-container {
         display: flex;
         gap: 13px;
+        position: relative;
         // padding: 5px 0;
 
         a {
@@ -101,6 +113,10 @@
             .fa-solid.fa-heart {
                 color: #ed4956;
             }
+        }
+        .saved-btn{
+            position: absolute;
+            right: 0;
         }
     }
 

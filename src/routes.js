@@ -6,7 +6,7 @@ import { StoryDetails } from './cmps/story-details.jsx'
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
-        path: '/',
+        path: 'feed',
         component: <StoryIndex />,
         label: 'Home',
         icon: <i className="fa-solid fa-house"></i>

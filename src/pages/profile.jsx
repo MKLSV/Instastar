@@ -5,8 +5,8 @@ import { loadStories } from "../store/story.actions"
 export function ProfilePage() {
     const user = useSelector(storeState => storeState.userModule.user)
     const stories = useSelector(storeState => storeState.storyModule.stories)
-    const { imgUrl, savedStoryIds, followers, following, fullname, username } = user
     const profileStories = stories.filter(story => story.by._id === user._id)
+    console.log(user)
 
     useEffect(() => {
         loadStories()
@@ -14,19 +14,20 @@ export function ProfilePage() {
 
     return <div className="profile-container">
         <section className="profile-header">
-            <section className="profile-photo"><img src={imgUrl} /></section>
+            <section className="profile-photo"><img src={user.imgUrl} /></section>
             <section className="profile-info">
                 <div className="profile-info-header">
-                    <a>{username}</a>
+                    <a>{user.username}</a>
                     <button>Edit Profile</button>
                 </div>
                 <div className="user-info">
-                    <section><a className="user-number">{savedStoryIds.length}</a><a> posts</a></section>
-                    <section><a className="user-number">{followers.length}</a><a> followers</a></section>
-                    <section><a className="user-number">{following.length}</a><a> following</a></section>
+                    <section><a className="user-number">{profileStories.length}</a><a> posts</a></section>
+                    <section><a className="user-number">{user.followers.length}</a><a> followers</a></section>
+                    <section><a className="user-number">{user.following.length}</a><a> following</a></section>
                 </div>
                 <div className="user-bio">
-                    <a className="user-name">{fullname}</a>
+                    <a className="user-name">{user.fullname}</a>
+                    <a>{user.bio}</a>
                 </div>
             </section>
         </section>

@@ -11,7 +11,8 @@ export const storyService = {
   getEmptyStory,
   onAddStoryComment,
   onRemoveStoryComment,
-  saveLike
+  saveLike,
+  createComment
 }
 window.ss = storyService
 
@@ -20,9 +21,9 @@ window.ss = storyService
 //     return savedMsg
 // }
 
-async function onAddStoryComment(storyId, txt, user) {
+async function onAddStoryComment(storyId, comment) {
   const updatedStory = await storageService.get(STORAGE_KEY, storyId)
-  updatedStory.comments.push(_createComment(txt, user))
+  updatedStory.comments.push(comment)
   save(updatedStory)
   // return storageService.post(STORAGE_KEY)
 }
@@ -49,13 +50,6 @@ async function remove(storyId) {
 }
 
 async function save(story) {
-  const user = userService.getLoggedinUser()
-  story.by = {
-    _id: user._id,
-    username: user.username,
-    fullname: user.fullname,
-    imgUrl: user.imgUrl
-  }
   var savedStory
   if (story._id) {
     savedStory = await storageService.put(STORAGE_KEY, story)
@@ -64,6 +58,13 @@ async function save(story) {
   } else {
     // Later, owner is set by the backend
     // story.owner = userService.getLoggedinUser()
+    const user = userService.getLoggedinUser()
+    story.by = {
+      _id: user._id,
+      username: user.username,
+      fullname: user.fullname,
+      imgUrl: user.imgUrl
+    }
     savedStory = await storageService.post(STORAGE_KEY, story)
     // savedStory = await httpService.post('story', story)
   }
@@ -75,7 +76,7 @@ async function saveLike(story) {
   return savedStory
 }
 
-function _createComment(txt, user) {
+function createComment(txt, user) {
   return {
     id: _makeId(),
     by: {
@@ -118,7 +119,7 @@ function _createSrories() {
     {
       _id: "s103",
       txt: "Exhibition  curated by @giulioaprin presents a spectrum of aerial photographers that push themselves into finding unusual and different point of view bringing us extraordinary facets of our reality.",
-      imgUrl: ["https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg", "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"],
+      imgUrl: ["https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg", "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"],
       by: {
         _id: "u101",
         fullname: "Deniska",
@@ -180,7 +181,7 @@ function _createSrories() {
         {
           _id: "u105",
           fullname: "Bob",
-          imgUrl: "http://some-img"
+          imgUrl: "https://i.pinimg.com/280x280_RS/52/97/74/52977407847a9767757d40bb93644b58.jpg"
         },
 
         {

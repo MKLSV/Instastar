@@ -76,7 +76,7 @@ async function changeScore(by) {
 
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, savedStoryIds: user.savedStoryIds, following: user.following, followers: user.followers }
+    // user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, savedStoryIds: user.savedStoryIds, following: user.following, followers: user.followers }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
@@ -98,6 +98,7 @@ const user = {
     password: "mukmuk",
     fullname: "Muki Muka",
     imgUrl: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    bio: 'Traveling and sharing my life! Folow me to see more!',
     following: [
         {
             _id: "u106",
@@ -138,6 +139,7 @@ const user2 =  {
     _id: "u102",
     username: "ShukiD12",
     password: "shuki",
+    bio: 'Hello my friends! GhatGPT dosent work so i dont know what to write here!',
     fullname: "Mr.Shuki",
     
     imgUrl: 'https://st.depositphotos.com/1005844/1403/i/600/depositphotos_14039169-stock-photo-young-man-outdoor.jpg',
