@@ -5,6 +5,8 @@ import { userService } from "../services/user.service.js";
 import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
 
+// const {Outlet} = ReactRouterDom 
+
 export function StoryDetails() {
     const [story, setStory] = useState(null)
     const [comment, setComment] = useState({ txt: '' })
@@ -47,6 +49,7 @@ export function StoryDetails() {
 
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
     return <section className="story-details">
+        {/* </Outlet> */}
         <div className="image">
             <img src={story.imgUrl[0]} />
         </div>

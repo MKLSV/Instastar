@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Routes, Route } from 'react-router'
 
+// const Router = ReactRouterDOM.HashRouter
+
 import routes from './routes'
 
 import { SideBar } from './cmps/side-bar'
@@ -15,6 +17,7 @@ export function RootCmp() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
+        // <Router>
         <div className='app-container'>
             {isOpen && <CreateStoryModal setIsOpen={setIsOpen} />}
             <SideBar setIsOpen={setIsOpen} />
@@ -23,14 +26,16 @@ export function RootCmp() {
                     {/* {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)} */}
                     <Route path="/" element={<StoryIndex/>} >
                     </Route>
-                    <Route path="create" element={<CreateStory />} />
                     <Route path="story/:id" element={<StoryDetails />} />
+                    <Route path="create" element={<CreateStory />} />
                     <Route path="profile" element={<ProfilePage />} />
                     <Route path="login" element={<LoginSignup />} />
                 </Routes>
             </main>
         </div>
     )
+
+    // </Router>
 }
 
 
