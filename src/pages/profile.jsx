@@ -33,7 +33,8 @@ export function ProfilePage() {
         <section className="profile-links">
             
             <a className="profile-pics-link active">POSTS</a>
-             <svg aria-label="Posts" className="_ab6-" color="#0095f6" fill="#0095f6" height="24" role="img" viewBox="0 0 24 24" width="24"></svg>
+            {/* <a href="https://www.flaticon.com/free-icons/instagram" title="instagram icons"></a> */}
+             {/* <svg aria-label="Posts" className="_ab6-" color="#0095f6" fill="#0095f6" height="24" role="img" viewBox="0 0 24 24" width="24"></svg> */}
            
 
             <a className="profile-pics-link">SAVED</a>

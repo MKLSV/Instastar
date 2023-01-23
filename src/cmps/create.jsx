@@ -37,7 +37,7 @@ export function CreateStory(story) {
                 <header>
                     <a onClick={onClose}><i className="fa-solid fa-arrow-left"></i></a>
                     <span>Create new post</span>
-                    <a className='share-btn' onClick={onSaveStory}>Share</a>
+                    <a className='share-btn' onClick={onSaveStory}>Next</a>
                 </header>
                 <div className='create-post-container'>
                     <section className='img-section'>
