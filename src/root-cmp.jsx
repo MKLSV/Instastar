@@ -23,10 +23,13 @@ export function RootCmp() {
             <SideBar setIsOpen={setIsOpen} />
             <main className='contant-container'>
                 <Routes>
+                    
                     {/* {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)} */}
                     <Route path="/" element={<StoryIndex/>} >
+                    {/* <Route path="/:id" element={<StoryDetails />} /> */}
+
                     </Route>
-                    <Route path="story/:id" element={<StoryDetails />} />
+                    <Route path="/:id" element={<StoryDetails />} />
                     <Route path="create" element={<CreateStory />} />
                     <Route path="profile" element={<ProfilePage />} />
                     <Route path="login" element={<LoginSignup />} />
