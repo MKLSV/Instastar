@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from '../cmps/img-uploader'
-import { login,signup } from '../store/user.actions.js'
+import { login, signup } from '../store/user.actions.js'
 import { useNavigate } from "react-router-dom";
 
 export function LoginSignup() {
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+    const [credentials, setCredentials] = useState(userService.getEmptyUser())
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
     const navigate = useNavigate()
@@ -14,22 +13,23 @@ export function LoginSignup() {
         loadUsers()
     }, [])
 
+
     async function Login(credentials) {
         try {
             const user = await login(credentials)
-            console.log('USER FROM LOGIN',user)
-        
-        } catch(err) {
+            console.log('USER FROM LOGIN', user)
+
+        } catch (err) {
             console.log(err)
         }
     }
-    
+
     async function Signup(credentials) {
         try {
-            const user = await  signup(credentials)
+            const user = await signup(credentials)
             navigate('/')
-            console.log('USER FROM SIGN UP',user)
-        } catch(err) {
+            console.log('USER FROM SIGN UP', user)
+        } catch (err) {
             console.log(err)
         }
     }
@@ -40,7 +40,7 @@ export function LoginSignup() {
     }
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+        setCredentials(userService.getEmptyUser())
         setIsSignup(false)
     }
 
@@ -68,9 +68,6 @@ export function LoginSignup() {
         setIsSignup(!isSignup)
     }
 
-    function onUploaded(imgUrl) {
-        setCredentials({ ...credentials, imgUrl })
-    }
 
     return (
         <div className="login-page">
@@ -86,23 +83,7 @@ export function LoginSignup() {
                     <option value="">Select User</option>
                     {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
                 </select>
-                {/* <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    /> */}
+
                 <button>Login!</button>
             </form>}
             <div className="signup-section">
@@ -131,7 +112,6 @@ export function LoginSignup() {
                         onChange={handleChange}
                         required
                     />
-                    <ImgUploader onUploaded={onUploaded} />
                     <button >Signup!</button>
                 </form>}
             </div>

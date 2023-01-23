@@ -6,20 +6,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-top: 10px;
         height: 56px;
-        padding: 6px;
+        padding: 0 6px;
         background-color: #fff;
-        // border: 1px solid rgb(219, 219, 219);
-        // border-top-left-radius: 10px;
-        // border-top-right-radius: 10px;
-        border-top: 0.01px solid;
-        border-top-color:#c2c2c2;
-
 
         .header-info {
             display: flex;
             align-items: center;
-            // gap: 10px;
 
             img {
                 width: 42px;
@@ -33,6 +27,7 @@
                 font-weight: 600;
                 font-size: 14px;
                 padding: 0 5px;
+                cursor: pointer;
             }
         }
 
@@ -66,14 +61,10 @@
         display: flex;
         flex-direction: column;
         background-color: #fff;
-        // border: 1px solid rgb(219, 219, 219);
-        // border-bottom-left-radius: 10px;
-        // border-bottom-right-radius: 10px;
-        // border-bottom: 0.1px solid;
-        padding: 0 10px;
         padding-bottom: 20px;
         font-size: 15px;
         gap: 7px;
+        border-bottom: 0.01px solid #c2c2c2;
 
         input {
             border: none;
@@ -81,15 +72,16 @@
 
             &:focus {
                 outline: none;
-
             }
         }
-        section{
+
+        section {
             display: flex;
             align-items: center;
             gap: 5px;
         }
-        img{
+
+        img {
             width: 14px;
             height: 14px;
             border-radius: 50%;
@@ -102,7 +94,6 @@
         display: flex;
         gap: 13px;
         position: relative;
-        // padding: 5px 0;
 
         a {
             font-size: 24px;
@@ -114,7 +105,8 @@
                 color: #ed4956;
             }
         }
-        .saved-btn{
+
+        .saved-btn {
             position: absolute;
             right: 0;
         }
@@ -128,7 +120,6 @@
     .story-likes {
         font-weight: 600;
         cursor: pointer;
-        // padding-bottom: 10px;
     }
 
     .story-user-name {
@@ -179,6 +170,4 @@
             margin-bottom: -5px;
         }
     }
-
-
 }

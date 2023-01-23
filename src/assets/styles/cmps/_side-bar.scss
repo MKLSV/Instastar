@@ -29,18 +29,18 @@
         width: 220px;
         margin-top: 4px;
         margin-bottom: 4px;
-        // border-radius: 25px;
+        border-radius: 25px;
         font-family: 'Segoe UI', sans-serif;
         text-decoration: none;
         display: flex;
         gap: 10px;
         align-items: center;
+        cursor: pointer;
 
         .nav-icon {
             font-size: 22px;
             width: 30px;
             position: relative;
-            // margin: auto 0;
 
             img {
                 width: 28px;
@@ -89,11 +89,24 @@
 
 .nav-more {
 
-
+    display: none;
     position: absolute;
-    bottom: 45px;
-    left: 50px;
-
-
-    & .open {}
+    bottom: 75px;
+    left: 15px;
+    width: 238px;
+    box-shadow: 1px 0px 8px -5px black;
+    
+    &.open {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .nav-more-btn {
+        height: 44px;
+        text-decoration: none;
+        color: #262626;
+        padding: 8px 16px;
+        border-top: 0.1px solid rgb(219, 219, 219);
+        background-color: #fff;
+    }
 }

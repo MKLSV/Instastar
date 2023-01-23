@@ -13,18 +13,27 @@ export function StoryDetails() {
     const user = useSelector(storeState => storeState.userModule.user)
     const params = useParams()
     const navigate = useNavigate()
-    
+    console.log('COMMENT', comment)
+
     useEffect(() => {
         loadStory()
     }, [])
 
-    const [inputStr, setInputStr] = useState('');
+    const [inputStr, setInputStr] = useState([]);
     const [showPicker, setShowPicker] = useState(false);
 
-    const onEmojiClick = (event, emojiObject) => {
-        setInputStr(prevInput => prevInput + emojiObject.emoji);
-        setShowPicker(false);
-      }
+    console.log(inputStr)
+
+    const onEmojiClick = (emojiObject, event) => {
+        // console.log(emojiObject.emoji)
+        // // setInputStr(prevInput => prevInput + emojiObject.emoji);
+        // setInputStr(prevMsg => {
+        //     return { ...prevMsg, [txt]: emojiObject.emoji }
+        // })
+        // setShowPicker(false)
+
+
+    }
 
 
     function onClose() {
@@ -61,27 +70,27 @@ export function StoryDetails() {
             return { ...prevStory, comments: story.comments }
         })
     }
+
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
-
     return <div className="story-details">
-           <div className="app">
+        {/* <div className="app">
 
-            
-      <h3>Add Emoji Picker</h3>
-      <div className="picker-container">
-        <input
-          className="input-style"
-          value={inputStr}
-          onChange={e => setInputStr(e.target.value)} />
-        <img
-          className="emoji-icon"
-          src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
-          onClick={() => setShowPicker(val => !val)} />
-        {showPicker && <EmojiPicker
-          pickerStyle={{ width: '100%' }}
-          onEmojiClick={onEmojiClick} />}
-      </div>
-    </div>
+
+            <h3>Add Emoji Picker</h3>
+            <div className="picker-container">
+                <input
+                    className="input-style"
+                    value={inputStr}
+                    onChange={e => setInputStr(e.target.value)} />
+                <img
+                    className="emoji-icon"
+                    src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
+                    onClick={() => setShowPicker(val => !val)} />
+                {showPicker && <EmojiPicker
+                    pickerStyle={{ width: '100%' }}
+                    onEmojiClick={onEmojiClick} />}
+            </div>
+        </div> */}
 
 
         <section className="story-container">
@@ -116,16 +125,15 @@ export function StoryDetails() {
                                 {story.comments.map(comment => <section className="comment" key={comment.id}>
                                     <img className="prew-user-img" src={comment.by.imgUrl} />
                                     <div>
-                                        <secction>
+                                        <section>
                                             <span className="details-username">{comment.by.username}</span>
                                             <span className="story-text">&nbsp;{comment.txt}</span>
-                                        </secction>
+                                        </section>
                                         <section className="comment-footer">
                                             <span className="time">1h</span>
                                             <svg onClick={() => removeComment(comment.id)} aria-label="More options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
                                         </section>
                                     </div>
-
                                 </section>)}
                             </Fragment> : null}
                     </div>
@@ -142,7 +150,7 @@ export function StoryDetails() {
                     </div>
                     <div className="input-section">
                         {/* <EmojiPicker  height={200} width={200} /> */}
-                        <span><i className="fa-regular fa-face-smile"></i></span>
+                        <span onClick={() => setShowPicker(val => !val)}><i className="fa-regular fa-face-smile"></i></span>
                         <MsgForm comment={comment} setComment={setComment} addStoryComment={addStoryComment} />
                         <a className={comment.txt ? 'active' : 'none'} onClick={addStoryComment}>Post</a>
                     </div>

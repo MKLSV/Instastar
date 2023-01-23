@@ -1,12 +1,16 @@
-import { Fragment, useEffect } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useNavigate } from "react-router-dom";
 import { loadStories } from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
+import { LikesModal } from '../cmps/likes-modal';
+import { LoginSwitch } from '../cmps/login-switch';
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
     const user = useSelector(storeState => storeState.userModule.user)
+    const [likes, likesIsOpen] = useState([])
+    const [userSwitch, switchIsOpen] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -25,9 +29,11 @@ export function StoryIndex() {
             <div className="nested-route">
                 <Outlet />
             </div>
+            {likes.length ? <LikesModal likesIsOpen={likesIsOpen} likes={likes} /> : null}
+            {userSwitch ? <LoginSwitch switchIsOpen={switchIsOpen} /> : null}
 
             <div className='contant'>
-                <StoriesList stories={stories} />
+                <StoriesList stories={stories} likesIsOpen={likesIsOpen} />
                 <div className='suggestions'>
                     <div className='suggestion-header'>
                         <div className='suggestion-user-info'>
@@ -37,7 +43,7 @@ export function StoryIndex() {
                                 <span>{user.fullname}</span>
                             </div>
                         </div>
-                        <a className='suggestion-switch' onClick={profileSwitch}>Switch</a>
+                        <a className='suggestion-switch' onClick={() => switchIsOpen(true)}>Switch</a>
                     </div>
                     <div className='suggestion-options'>
                         <span>Suggestions For You</span>

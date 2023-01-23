@@ -36,7 +36,7 @@ export function RootCmp() {
                     <Route path="create" element={<CreateStory />} />
                     <Route path="profile" element={<ProfilePage />} />
                     <Route path="login" element={<LoginSignup />} />
-                    <Route path="switch" element={<LoginSwitch />} />
+                    {/* <Route path="switch" element={<LoginSwitch />} /> */}
                 </Routes>
             </main>
         </div>

@@ -5,8 +5,9 @@ import { login, signup, logout } from '../store/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useSelector } from 'react-redux';
 
-export function LoginSwitch() {
+export function LoginSwitch({ switchIsOpen }) {
     const [users, setUsers] = useState([])
+    const [loginModal, onLoginModal] = useState(false)
     const logedinUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
 
@@ -15,7 +16,7 @@ export function LoginSwitch() {
     }, [])
 
     function onClose() {
-        navigate(-1)
+        switchIsOpen(false)
     }
 
     async function Login(credentials) {
@@ -53,32 +54,50 @@ export function LoginSwitch() {
     function handleChange(user) {
         if (user._id === logedinUser._id) return
         Login(user)
-        navigate(-1)
+        switchIsOpen(false)
     }
 
     if (!users.length) return <div className="loading-page"><span className="loading"></span></div>
     return (
-        <div className="login-page">
-
-            <div className='login-form'>
-
-                <div className='login-header'>
-                    <span>Switch accounts</span>
-                    <a onClick={onClose}><i className="fa-solid fa-x"></i></a>
-                </div>
-                <div className='login-users'>
-                    {users.map(user => <section className='login-user' key={user._id} onClick={() => handleChange(user)}>
-                        <div>
-                            <img src={user.imgUrl} />
-                            <span>{user.username}</span>
+        <div className="switch-page">
+            {loginModal ?
+                <div className='login-form'>
+                    <header>
+                        <a onClick={onClose}><i className="fa-solid fa-x"></i></a>
+                    </header>
+                    <div className='login-container'>
+                        <div className='logo'>
+                            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png' />
                         </div>
-                        {user._id === logedinUser._id ? <span className='check'><i className="fa-solid fa-check"></i></span> : ''}
-                    </section>)}
+                        <div className='login-form'>
+                            <input></input>
+                            <input></input>
+                            <button>Log in</button>
+                        </div>
+                    </div>
+
                 </div>
-                <div className='login-footer'>
-                    <a>Log into an Exiting Account</a>
+                :
+                <div className='switch-form'>
+
+                    <div className='switch-header'>
+                        <span>Switch accounts</span>
+                        <a onClick={onClose}><i className="fa-solid fa-x"></i></a>
+                    </div>
+                    <div className='switch-users'>
+                        {users.map(user => <section className='switch-user' key={user._id} onClick={() => handleChange(user)}>
+                            <div>
+                                <img src={user.imgUrl} />
+                                <span>{user.username}</span>
+                            </div>
+                            {user._id === logedinUser._id ? <span className='check'><i className="fa-solid fa-check"></i></span> : ''}
+                        </section>)}
+                    </div>
+                    <div className='switch-footer'>
+                        <a onClick={() => onLoginModal(true)}>Log into an Exiting Account</a>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     )
 }

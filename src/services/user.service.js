@@ -13,7 +13,8 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore
+    changeScore,
+    getEmptyUser
 }
 
 window.userService = userService
@@ -92,6 +93,20 @@ async function _createUser() {
     await userService.signup(user2)
 }
 
+function getEmptyUser() {
+    return {
+        _id: "",
+        username: "",
+        password: "",
+        fullname: "",
+        imgUrl: '',
+        bio: '',
+        following: [],
+        followers: [],
+        savedStoryIds: []
+    }
+}
+
 const user = {
     _id: "u101",
     username: "MukoPuko99",
@@ -135,13 +150,13 @@ const user = {
     ]
 }
 
-const user2 =  {
+const user2 = {
     _id: "u102",
     username: "ShukiD12",
     password: "shuki",
     bio: 'Hello my friends! GhatGPT dosent work so i dont know what to write here!',
     fullname: "Mr.Shuki",
-    
+
     imgUrl: 'https://st.depositphotos.com/1005844/1403/i/600/depositphotos_14039169-stock-photo-young-man-outdoor.jpg',
     following: [
         {

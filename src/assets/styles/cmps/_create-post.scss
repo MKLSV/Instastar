@@ -1,3 +1,12 @@
+.create-modal{
+    position: absolute;
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.645);
+    
+}
 .create-page {
     height: 100vh;
     background-color: #595959;
@@ -20,6 +29,7 @@
         justify-content: space-between;
         align-items: center;
         height: 42px;
+        padding: 0 5px;
         border-bottom: 1px solid #dbdbdb;
 
         a {
@@ -42,7 +52,6 @@
             font-size: 14px;
             font-weight: 600;
             color: #0095f6;
-            margin: 5px;
 
             &:hover {
                 color: #00376b;
@@ -148,14 +157,4 @@
             color: #595959;
         }
     }
-}
-
-.create-modal{
-    position: absolute;
-    padding-top: 50px;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.645);
-    
 }

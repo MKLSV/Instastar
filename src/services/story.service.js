@@ -132,12 +132,13 @@ function _createSrories() {
           },
 
           txt: "good one!",
-
+          
           likedBy: [
             {
               _id: "u105",
+              username: "Amarama_1990",
               fullname: "Bob",
-              imgUrl: "http://some-img"
+              imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
             }
           ]
         }, {
@@ -148,14 +149,15 @@ function _createSrories() {
             fullname: "Bob",
             imgUrl: "https://st2.depositphotos.com/3143277/8644/i/600/depositphotos_86446164-stock-photo-business-man-in-office.jpg"
           },
-
+          
           txt: "very nice!",
-
+          
           likedBy: [
             {
               _id: "u105",
+              username: "Amarama_1990",
               fullname: "Bob",
-              imgUrl: "http://some-img"
+              imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
             }
           ]
         },
@@ -176,19 +178,22 @@ function _createSrories() {
         {
           _id: "u105",
           fullname: "Bob",
+          username: "Amarama_1990",
           imgUrl: "https://i.pinimg.com/280x280_RS/52/97/74/52977407847a9767757d40bb93644b58.jpg"
         },
 
         {
           _id: "u106",
           fullname: "Dob",
-          imgUrl: "http://some-img"
+          username: "Doby_90",
+          imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
         },
 
         {
           _id: "7zLay",
           fullname: "Muki Muka",
-          imgUrl: "http://some-img"
+          username: "Mukomik",
+          imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
         }
       ]
     },
@@ -209,16 +214,17 @@ function _createSrories() {
             _id: "u105",
             fullname: "Bob",
             username: "Amarama_1990",
-            imgUrl: "http://some-img"
+            imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
           },
 
           txt: "good one!",
-
+          
           likedBy: [
             {
               _id: "u105",
               fullname: "Bob",
-              imgUrl: "http://some-img"
+              username: "Amarama_1990",
+              imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
             }
           ]
         },
@@ -228,7 +234,8 @@ function _createSrories() {
           by: {
             _id: "u106",
             fullname: "Dob",
-            imgUrl: "http://some-img"
+            username: "Doby_90",
+            imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
           },
           txt: "not good!"
         }
@@ -238,13 +245,15 @@ function _createSrories() {
         {
           _id: "u105",
           fullname: "Bob",
-          imgUrl: "http://some-img"
+          username: "Amarama_1990",
+          imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
         },
 
         {
           _id: "u106",
           fullname: "Dob",
-          imgUrl: "http://some-img"
+          username: "Doby_90",
+          imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
         }
       ]
     },
@@ -265,26 +274,28 @@ function _createSrories() {
             _id: "u105",
             fullname: "Bob",
             username: "Amarama_1990",
-            imgUrl: "http://some-img"
+            imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
           },
-
+          
           txt: "good one!",
-
+          
           likedBy: [
             {
               _id: "u105",
               fullname: "Bob",
-              imgUrl: "http://some-img"
+              username: "Amarama_1990",
+              imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
             }
           ]
         },
-
+        
         {
           id: "c1002",
           by: {
             _id: "u106",
             fullname: "Dob",
-            imgUrl: "http://some-img"
+            username: "Doby_90",
+            imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
           },
           txt: "not good!"
         }
@@ -294,13 +305,15 @@ function _createSrories() {
         {
           _id: "u105",
           fullname: "Bob",
-          imgUrl: "http://some-img"
+          username: "Amarama_1990",
+          imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
         },
 
         {
           _id: "u106",
           fullname: "Dob",
-          imgUrl: "http://some-img"
+          username: "Doby_90",
+          imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
         }
       ]
     },
@@ -321,42 +334,46 @@ function _createSrories() {
             _id: "u105",
             fullname: "Bob",
             username: "Amarama_1990",
-            imgUrl: "http://some-img"
+            imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
           },
 
           txt: "good one!",
-
+          
           likedBy: [
             {
               _id: "u105",
               fullname: "Bob",
-              imgUrl: "http://some-img"
+              username: "Amarama_1990",
+              imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
             }
           ]
         },
-
+        
         {
           id: "c1002",
           by: {
             _id: "u106",
             fullname: "Dob",
-            imgUrl: "http://some-img"
+            username: "Doby_90",
+            imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
           },
           txt: "not good!"
         }
       ],
-
+      
       likedBy: [
         {
           _id: "u105",
+          username: "Amarama_1990",
           fullname: "Bob",
-          imgUrl: "http://some-img"
+          imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
         },
 
         {
           _id: "u106",
           fullname: "Dob",
-          imgUrl: "http://some-img"
+          username: "Doby_90",
+          imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
         }
       ]
     },
