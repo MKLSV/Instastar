@@ -22,15 +22,11 @@ const CreateStoryModal = ({setIsOpen}) => {
 
     function onSaveStory(ev) {
         ev.preventDefault()
-        storyService.save(createdStory).then((story) => {
+        storyService.save(createdStory).then(() => {
             setIsOpen(false)
             window.location.reload(false)
         })
     }
-
-    // function onClose() {
-    //     navigate(-1)
-    // }
 
     return (
         <div className='create-modal'>

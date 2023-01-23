@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
+import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { storyService } from "../services/story.service.js"
 import { userService } from "../services/user.service.js";
@@ -10,6 +11,7 @@ import { MsgForm } from "./msg-form.jsx";
 export function StoryDetails() {
     const [story, setStory] = useState(null)
     const [comment, setComment] = useState({ txt: '' })
+    const user = useSelector(storeState => storeState.userModule.user)
     const params = useParams()
     const navigate = useNavigate()
 
@@ -34,8 +36,13 @@ export function StoryDetails() {
 
     async function addStoryComment(ev) {
         ev.preventDefault()
-        const user = userService.getLoggedinUser()
-        const msgFromBack = await storyService.onAddStoryComment(story._id, comment.txt, user)
+        if(!comment.txt) return
+        const newComment = storyService.createComment(comment.txt, user)
+        story.comments.push(newComment)
+        // const user = userService.getLoggedinUser()
+        await storyService.onAddStoryComment(story._id, newComment)
+        //  await storyService.onAddStoryComment(story._id, comment.txt, user)
+        setComment({ txt: '' })
     }
 
     function removeComment(commId) {
@@ -66,8 +73,14 @@ export function StoryDetails() {
                     <section className="comment">
                         <img className="prew-user-img" src={story.by.imgUrl} />
                         <div>
-                            <span className="details-username">{story.by.username}</span>
-                            <span className="story-text">&nbsp;{story.txt}</span>
+                            <section>
+                                <span className="details-username">{story.by.username}</span>
+                                <span className="story-text">&nbsp;{story.txt}</span>
+                            </section>
+                            <section className="comment-footer">
+                                <span className="time">1h</span>
+                                <svg onClick={() => removeComment(comment.id)} aria-label="More options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+                            </section>
                         </div>
                     </section>
                     {story.comments && story.comments.length &&
@@ -75,10 +88,16 @@ export function StoryDetails() {
                             {story.comments.map(comment => <section className="comment" key={comment.id}>
                                 <img className="prew-user-img" src={comment.by.imgUrl} />
                                 <div>
-                                    <span className="details-username">{comment.by.username}</span>
-                                    <span className="story-text">&nbsp;{comment.txt}</span>
+                                    <secction>
+                                        <span className="details-username">{comment.by.username}</span>
+                                        <span className="story-text">&nbsp;{comment.txt}</span>
+                                    </secction>
+                                    <section className="comment-footer">
+                                        <span className="time">1h</span>
+                                        <svg onClick={() => removeComment(comment.id)} aria-label="More options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+                                    </section>
                                 </div>
-                                <button onClick={() => removeComment(comment.id)}>x</button>
+
                             </section>)}
                         </Fragment>}
                 </div>
@@ -96,7 +115,7 @@ export function StoryDetails() {
                 <div className="input-section">
                     <span><i className="fa-regular fa-face-smile"></i></span>
                     <MsgForm comment={comment} setComment={setComment} addStoryComment={addStoryComment} />
-                    <a>Post</a>
+                    <a className={comment.txt ? 'active' : 'none'} onClick={addStoryComment}>Post</a>
                 </div>
             </section>
         </div>

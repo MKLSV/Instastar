@@ -47,7 +47,8 @@
             align-items: center;
             gap: 15px;
         }
-        button{
+
+        button {
             border: none;
             cursor: pointer;
             background-color: rgba(255, 255, 255, 0);
@@ -71,6 +72,28 @@
     .comment {
         display: grid;
         grid-template-columns: 50px 1fr;
+
+        .comment-footer {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #a3a3a3;
+        }
+
+        svg {
+            cursor: pointer;
+            color: #a3a3a3;
+            fill: #a3a3a3;
+
+            &:hover {
+                color: #454545;
+                fill: #454545;
+            }
+        }
 
     }
 
@@ -96,7 +119,7 @@
         a {
             font-weight: 600;
             cursor: pointer;
-            font-size:14px;
+            font-size: 14px;
         }
 
         span {
@@ -113,13 +136,14 @@
         grid-template-columns: 40px 1fr 40px;
         align-items: center;
 
-        span{
+        span {
             font-size: 24px;
             cursor: pointer;
             color: black;
             margin: auto;
 
         }
+
         .msg-input {
             border: none;
             width: 95%;
@@ -131,13 +155,18 @@
             }
         }
 
-        a{
+        a {
             font-weight: 600;
             color: #b5dbff;
+
+        }
+
+        .active {
             cursor: pointer;
-            
-            &:hover{
-                color: #0084ff;
+            color: #0084ff;
+
+            &:hover {
+                color: #00488a;
             }
         }
 
