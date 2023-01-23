@@ -83,7 +83,7 @@ export function StoryDetails() {
                             </section>
                         </div>
                     </section>
-                    {story.comments && story.comments.length &&
+                    {story.comments && story.comments.length ?
                         <Fragment>
                             {story.comments.map(comment => <section className="comment" key={comment.id}>
                                 <img className="prew-user-img" src={comment.by.imgUrl} />
@@ -99,7 +99,7 @@ export function StoryDetails() {
                                 </div>
 
                             </section>)}
-                        </Fragment>}
+                        </Fragment> : null}
                 </div>
                 <div>
                     <div className="btn-container">
