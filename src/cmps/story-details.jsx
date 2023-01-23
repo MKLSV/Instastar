@@ -1,9 +1,11 @@
 import { useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
-import { useParams, useNavigate, Outlet } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import { storyService } from "../services/story.service.js"
 import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
+import EmojiPicker from 'emoji-picker-react';
+
 
 export function StoryDetails() {
     const [story, setStory] = useState(null)
@@ -11,7 +13,7 @@ export function StoryDetails() {
     const user = useSelector(storeState => storeState.userModule.user)
     const params = useParams()
     const navigate = useNavigate()
-
+   
     useEffect(() => {
         loadStory()
     }, [])
@@ -53,8 +55,10 @@ export function StoryDetails() {
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
 
     return <div className="story-details">
-
         <section className="story-container">
+        {/* <div>
+            <EmojiPicker />
+          </div> */}
             <div className="image">
                 <img src={story.imgUrl[0]} />
             </div>
@@ -118,6 +122,5 @@ export function StoryDetails() {
                 </section>
             </div>
         </section>
-
     </div>
 }
