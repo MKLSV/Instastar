@@ -16,11 +16,6 @@ export const storyService = {
 }
 window.ss = storyService
 
-// async function addStoryMsg(storyId, txt) {
-//     const savedMsg = await httpService.post(`story/${storyId}/msg`, { txt })
-//     return savedMsg
-// }
-
 async function onAddStoryComment(storyId, comment) {
   const updatedStory = await storageService.get(STORAGE_KEY, storyId)
   updatedStory.comments.push(comment)

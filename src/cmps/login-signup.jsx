@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
-import { login, logout, signup } from '../store/user.actions.js'
+import { login,signup } from '../store/user.actions.js'
 import { useNavigate } from "react-router-dom";
 
 export function LoginSignup() {

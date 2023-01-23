@@ -30,7 +30,6 @@ const CreateStoryModal = ({setIsOpen}) => {
 
     return (
         <div className='create-modal'>
-        {/* // <div className='create-modal' onClick={() => setIsOpen(false)}> */}
             <div className='create-post' >
                 <header>
                     <a onClick={() => setIsOpen(false)}><i className="fa-solid fa-arrow-left"></i></a>

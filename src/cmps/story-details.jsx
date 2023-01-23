@@ -2,11 +2,8 @@ import { useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate, Outlet } from "react-router-dom";
 import { storyService } from "../services/story.service.js"
-import { userService } from "../services/user.service.js";
 import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
-
-// const {Outlet} = ReactRouterDom 
 
 export function StoryDetails() {
     const [story, setStory] = useState(null)

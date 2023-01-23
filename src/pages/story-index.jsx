@@ -1,11 +1,8 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useNavigate } from "react-router-dom";
 import { loadStories } from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
-import CreateStoryModal from '../cmps/create-modal';
-// const {Outlet} = ReactRouterDom 
-
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)

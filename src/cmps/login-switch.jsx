@@ -2,12 +2,10 @@ import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { useNavigate } from "react-router-dom";
 import { login, signup, logout } from '../store/user.actions'
-
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useSelector } from 'react-redux';
 
 export function LoginSwitch() {
-
     const [users, setUsers] = useState([])
     const logedinUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
