@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { storyService } from "../services/story.service.js"
 import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
@@ -13,10 +13,19 @@ export function StoryDetails() {
     const user = useSelector(storeState => storeState.userModule.user)
     const params = useParams()
     const navigate = useNavigate()
-   
+    
     useEffect(() => {
         loadStory()
     }, [])
+
+    const [inputStr, setInputStr] = useState('');
+    const [showPicker, setShowPicker] = useState(false);
+
+    const onEmojiClick = (event, emojiObject) => {
+        setInputStr(prevInput => prevInput + emojiObject.emoji);
+        setShowPicker(false);
+      }
+
 
     function onClose() {
         navigate(-1)
@@ -55,10 +64,27 @@ export function StoryDetails() {
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
 
     return <div className="story-details">
+           <div className="app">
+
+            
+      <h3>Add Emoji Picker</h3>
+      <div className="picker-container">
+        <input
+          className="input-style"
+          value={inputStr}
+          onChange={e => setInputStr(e.target.value)} />
+        <img
+          className="emoji-icon"
+          src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
+          onClick={() => setShowPicker(val => !val)} />
+        {showPicker && <EmojiPicker
+          pickerStyle={{ width: '100%' }}
+          onEmojiClick={onEmojiClick} />}
+      </div>
+    </div>
+
+
         <section className="story-container">
-        {/* <div>
-            <EmojiPicker />
-          </div> */}
             <div className="image">
                 <img src={story.imgUrl[0]} />
             </div>
@@ -115,6 +141,7 @@ export function StoryDetails() {
                         </div>
                     </div>
                     <div className="input-section">
+                        {/* <EmojiPicker  height={200} width={200} /> */}
                         <span><i className="fa-regular fa-face-smile"></i></span>
                         <MsgForm comment={comment} setComment={setComment} addStoryComment={addStoryComment} />
                         <a className={comment.txt ? 'active' : 'none'} onClick={addStoryComment}>Post</a>
