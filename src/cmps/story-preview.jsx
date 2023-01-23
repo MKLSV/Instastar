@@ -44,13 +44,6 @@ export function StoryPreview({ story, onRemoveStory }) {
             likedBy.splice(idx, 1)
         }
 
-        // likedBy: [
-        //     {
-        //       _id: "u105",
-        //       fullname: "Bob",
-        //       imgUrl: "http://some-img"
-        //     }
-
         else likedBy.push({
             _id: user._id,
             fullname: user.fullname,
