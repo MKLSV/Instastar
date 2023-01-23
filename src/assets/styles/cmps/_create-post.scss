@@ -6,6 +6,7 @@
 
 .create-post {
     background-color: #fff;
+    z-index: 10;
     margin: auto;
     width: 918px;
     height: 621px;
@@ -147,4 +148,14 @@
             color: #595959;
         }
     }
+}
+
+.create-modal{
+    position: absolute;
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.645);
+    
 }

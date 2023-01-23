@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { storyService } from "../services/story.service.js"
 import { userService } from "../services/user.service.js";
+import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
 
 export function StoryDetails() {
@@ -35,6 +36,15 @@ export function StoryDetails() {
         const msgFromBack = await storyService.onAddStoryComment(story._id, comment.txt, user)
     }
 
+    function removeComment(commId) {
+        const idx = story.comments.findIndex(comment => comment.id === commId)
+        story.comments.splice(idx, 1)
+        updateStory(story)
+        setStory(prevStory => {
+            return { ...prevStory, comments: story.comments }
+        })
+    }
+
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
     return <section className="story-details">
         <div className="image">
@@ -65,6 +75,7 @@ export function StoryDetails() {
                                     <span className="details-username">{comment.by.username}</span>
                                     <span className="story-text">&nbsp;{comment.txt}</span>
                                 </div>
+                                <button onClick={() => removeComment(comment.id)}>x</button>
                             </section>)}
                         </Fragment>}
                 </div>

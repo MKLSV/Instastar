@@ -64,16 +64,16 @@ export async function addStory(story) {
 }
 
 export function updateStory(story) {
-    // return storyService.save(story)
-    //     .then(savedStory => {
-    //         console.log('Updated Story:', savedStory)
-    //         store.dispatch(getActionUpdateStory(savedStory))
-    //         return savedStory
-    //     })
-    //     .catch(err => {
-    //         console.log('Cannot save story', err)
-    //         throw err
-    //     })
+    return storyService.save(story)
+        .then(savedStory => {
+            console.log('Updated Story:', savedStory)
+            store.dispatch(getActionUpdateStory(savedStory))
+            return savedStory
+        })
+        .catch(err => {
+            console.log('Cannot save story', err)
+            throw err
+        })
 }
 
 export function addToStoryt(story) {
