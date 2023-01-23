@@ -7,6 +7,8 @@ import { userService } from "../services/user.service";
 import { removeStory } from "../store/story.actions";
 import { MsgForm } from "./msg-form";
 
+
+
 export function StoryPreview({ story, onRemoveStory }) {
     const [comment, setComment] = useState({ txt: '' })
     const [like, setLike] = useState('')
@@ -32,15 +34,13 @@ export function StoryPreview({ story, onRemoveStory }) {
         setComment({ txt: '' })
     }
 
-
-
     function checkLike() {
         return likedBy.some(likedUser => likedUser._id === user._id)
     }
 
     function toggleLike() {
         if (checkLike()) {
-            const idx = likedBy.findIndex(likedUser => likedUser._id === user._id)            
+            const idx = likedBy.findIndex(likedUser => likedUser._id === user._id)
             likedBy.splice(idx, 1)
         }
 
@@ -77,14 +77,14 @@ export function StoryPreview({ story, onRemoveStory }) {
         <section className="story-footer">
             <div className="btn-container">
                 <a onClick={toggleLike}><i className={checkLike() ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i></a>
-                <Link to={`story/${story._id}`}><span><i className="fa-regular fa-comment"></i></span></Link>
+                <Link to={`/${story._id}`}><span><i className="fa-regular fa-comment"></i></span></Link>
                 <a><i className="fa-regular fa-paper-plane"></i></a>
                 <a className="saved-btn"><i className="fa-regular fa-bookmark"></i></a>
             </div>
             {likedBy.length && <section> <img src={likedBy[0].imgUrl} /><span>Liked by</span> <a className="story-likes">{likedBy[0].fullname}</a> {likedBy.length > 1 && <div><span>and </span><a onClick={onLikes} className="story-likes">{likedBy.length} others</a></div>}</section>}
 
             <a><span className="story-user-name">{story.by.username}</span> <span className="story-text">{txt}</span></a>
-            {comments.length > 2 && <Link className="link" to={`/story/${story._id}`}><span className="story-comments-view"> View all {comments.length} comments </span></Link>}
+            {comments.length > 2 && <Link className="link" to={`/${story._id}`}><span className="story-comments-view"> View all {comments.length} comments </span></Link>}
 
             {comments.length > 1 ? <a className="story-comment"><span className="story-user-name">{comments[comments.length - 2].by.username}</span> <span className="story-text">{comments[comments.length - 2].txt}</span></a> : null}
             {comments.length ? <a className="story-comment"><span className="story-user-name">{comments[comments.length - 1].by.username}</span> <span className="story-text">{comments[comments.length - 1].txt}</span></a> : null}

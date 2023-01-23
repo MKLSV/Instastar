@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { loadStories } from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
 import CreateStoryModal from '../cmps/create-modal';
+// const {Outlet} = ReactRouterDom 
+
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
@@ -29,8 +31,9 @@ export function StoryIndex() {
     return (
         <Fragment>
 
-            
-
+{/* <div className="nested-route">
+                <Outlet />
+            </div> */}
 
             <div className='contant'>
                 <StoriesList stories={stories} />
