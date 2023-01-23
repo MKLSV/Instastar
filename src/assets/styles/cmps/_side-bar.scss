@@ -86,3 +86,14 @@
     }
 
 }
+
+.nav-more {
+
+
+    position: absolute;
+    bottom: 45px;
+    left: 50px;
+
+
+    & .open {}
+}

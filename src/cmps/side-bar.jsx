@@ -1,10 +1,12 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
 export function SideBar({ setIsOpen }) {
     const user = useSelector(storeState => storeState.userModule.user)
     const [isExpanted, setIsExpanted] = useState(false)
+
+
 
 
     return (
@@ -15,7 +17,15 @@ export function SideBar({ setIsOpen }) {
                 <a onClick={() => setIsOpen(true)} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span><span>Create</span></a>
                 <NavLink className='nav-btn' key='profile' to='profile'><span className='nav-icon'><img src={user.imgUrl} /></span><span>Profile</span></NavLink>
             </nav>
-            <a className="side-bar-more"><i className="fa-solid fa-bars"></i><span>More</span></a>
+
+            <nav className={isExpanted ? 'nav-more open' : 'nav-more'}>
+                <Link key='switch' to='switch'>SWITCH</Link>
+                {/* <button>asdad</button> */}
+                <Link key='login' to='login'>login</Link>
+
+            </nav>
+
+            <a className="side-bar-more" onClick={() => setIsExpanted(!isExpanted)}><i className="fa-solid fa-bars"></i><span>More</span></a>
         </section>
     )
 }

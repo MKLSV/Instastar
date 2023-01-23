@@ -1,8 +1,20 @@
 .story-details {
     display: flex;
-    background-color: #595959;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    padding: 50px;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.645);
+}
+
+.story-container {
+    display: flex;
+    max-width: 1000px;
 
     .image {
 

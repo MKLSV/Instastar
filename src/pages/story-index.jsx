@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { loadStories } from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
 import CreateStoryModal from '../cmps/create-modal';
@@ -12,28 +12,22 @@ export function StoryIndex() {
     const user = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
 
-
-
-
-
     useEffect(() => {
         loadStories()
     }, [])
 
     function profileSwitch() {
-        navigate('/login')
+        navigate('/switch')
     }
 
-    console.log(stories)
-    console.log(user)
     if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
 
     return (
         <Fragment>
 
-{/* <div className="nested-route">
+            <div className="nested-route">
                 <Outlet />
-            </div> */}
+            </div>
 
             <div className='contant'>
                 <StoriesList stories={stories} />

@@ -77,7 +77,7 @@ export function StoryPreview({ story, onRemoveStory }) {
         <section className="story-footer">
             <div className="btn-container">
                 <a onClick={toggleLike}><i className={checkLike() ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i></a>
-                <Link to={`/${story._id}`}><span><i className="fa-regular fa-comment"></i></span></Link>
+                <Link to={`/post/${story._id}`}><span><i className="fa-regular fa-comment"></i></span></Link>
                 <a><i className="fa-regular fa-paper-plane"></i></a>
                 <a className="saved-btn"><i className="fa-regular fa-bookmark"></i></a>
             </div>
