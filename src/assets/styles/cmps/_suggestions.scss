@@ -136,3 +136,13 @@
         }
     }
 }
+
+
+////////// Mobile ///////////////
+
+@include for-mobile-layout {
+
+    .suggestions {
+       display: none;
+    }
+}

@@ -1,12 +1,10 @@
 
-import { useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import { storyService } from "../services/story.service";
 import { ImgUploader } from "./img-uploader";
 import { useSelector } from 'react-redux';
 
-const CreateStoryModal = ({setIsOpen}) => {
-    const navigate = useNavigate()
+const CreateStoryModal = ({ setIsOpen }) => {
     const [createdStory, setCreatedStory] = useState(storyService.getEmptyStory())
     const logedinUser = useSelector(storeState => storeState.userModule.user)
 
@@ -28,9 +26,13 @@ const CreateStoryModal = ({setIsOpen}) => {
         })
     }
 
+    function onModal(ev) {
+        ev.stopPropagation()
+    }
+
     return (
-        <div className='create-modal'>
-            <div className='create-post' >
+        <div className='create-modal' onClick={() => setIsOpen(false)}>
+            <div className='create-post' onClick={onModal}>
                 <header>
                     <a onClick={() => setIsOpen(false)}><i className="fa-solid fa-arrow-left"></i></a>
                     <span>Create new post</span>
@@ -68,6 +70,6 @@ const CreateStoryModal = ({setIsOpen}) => {
         </div>
     )
 
-} 
+}
 
 export default CreateStoryModal

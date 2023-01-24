@@ -30,7 +30,7 @@ export function ProfilePage() {
                 </div>
                 <div className="user-bio">
                     <a className="user-name">{user.fullname}</a>
-                    <a>{user.bio}</a>
+                    <a className="bio">{user.bio}</a>
                 </div>
             </section>
         </section>
