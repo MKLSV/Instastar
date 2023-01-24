@@ -58,7 +58,8 @@
         nav {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: space-around;
+            width: 100vw;
         }
 
         .nav-more {
@@ -156,6 +157,7 @@
             display: flex;
             flex-direction: column;
         }
+        
 
         .nav-btn {
             color: #262626;

@@ -36,7 +36,7 @@ const CreateStoryModal = ({ setIsOpen }) => {
                 <header>
                     <a onClick={() => setIsOpen(false)}><i className="fa-solid fa-arrow-left"></i></a>
                     <span>Create new post</span>
-                    <a className='share-btn' onClick={onSaveStory}>Next</a>
+                    <a className='share-btn' onClick={onSaveStory}>Share</a>
                 </header>
                 <div className='create-post-container'>
                     <section className='img-section'>
