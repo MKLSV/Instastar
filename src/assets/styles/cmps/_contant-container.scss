@@ -1,62 +1,49 @@
-
 ////////// Mobile ///////////////
 
 @include for-mobile-layout {
-    
-        .contant-container {
-            background-color: red;
-        }
-    
+
+    .contant-container {
+        background-color: red;
+        width: 100%;
+        height: 100%
     }
-
-.contant-container {
-    width: 100%;
-    height: 100%;
-    margin-left: 245px;
 }
-
-.contant {
-    display: grid;
-    margin: 2.76rem 29.3vh;
-    grid-template-columns: 57% 43%;
-    height: 100%;
-
-    .story-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-
-        .story-img {
-            width: 470px;
-            height: 470px;
-        }
-
-        .story {
-            width: 470px;
-        }
-    }
-
-
-}
-
-
 
 ///////////////////// normal //////////////
 
- @include for-normal-layout{
+
+@include for-narrow-layout {
 
     .contant-container {
         background-color: rgb(184, 177, 33);
+        margin-left: 60px;
     }
 
- }
+}
 
+//////////////////// Wide ///////////////
 
- //////////////////// Wide ///////////////
+@include for-wide-layout {
 
- @include for-wide-layout{
+    .contant {
+        display: grid;
+        margin: 2.76rem 29.3vh;
+        grid-template-columns: 57% 43%;
+        height: 100%;
 
-    .contant-container {
-        background-color: rgb(27, 179, 70);
+        .story-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+
+            .story-img {
+                width: 470px;
+                height: 470px;
+            }
+
+            .story {
+                width: 470px;
+            }
+        }
+
     }
-
- }
+}

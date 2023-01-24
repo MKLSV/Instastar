@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 export function SideBar({ setIsOpen }) {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -8,6 +8,8 @@ export function SideBar({ setIsOpen }) {
 
 
     return (
+        <Fragment>
+        <div className='test'></div>
         <section className="side-bar">
             <a className='icon' href='/'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png' /></a>
             <nav>
@@ -23,5 +25,6 @@ export function SideBar({ setIsOpen }) {
             </div>
             <a className="side-bar-more" onClick={() => setIsExpanted(!isExpanted)}><i className="fa-solid fa-bars"></i><span>More</span></a>
         </section>
+        </Fragment>
     )
 }

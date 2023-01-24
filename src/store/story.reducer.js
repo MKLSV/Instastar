@@ -6,14 +6,12 @@ export const UNDO_REMOVE_STORY = 'UNDO_REMOVE_STORY'
 
 const initialState = {
     stories: [],
-    storyt: [],
     lastRemovedStory: null
 }
 
 export function storyReducer(state = initialState, action) {
     var newState = state
     var stories
-    var storyt
     switch (action.type) {
         case SET_STORIES:
             newState = { ...state, stories: action.stories }

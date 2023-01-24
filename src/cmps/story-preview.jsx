@@ -58,6 +58,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     // }
 
     return <div>
+        <div className='top-side-bar'></div>
         <article className="story-preview">
             <section className="story-header">
                 <div className="header-info">
