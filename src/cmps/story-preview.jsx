@@ -25,6 +25,9 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         }
     }
 
+    console.log('story:', story);
+    
+
     async function addStoryComment(ev) {
         ev.preventDefault()
         const newComment = storyService.createComment(comment.txt, user)

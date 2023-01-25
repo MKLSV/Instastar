@@ -91,6 +91,7 @@ function getLoggedinUser() {
 async function _createUser() {
     await userService.signup(user)
     await userService.signup(user2)
+    await userService.signup(user3)
 }
 
 function getEmptyUser() {
@@ -158,6 +159,51 @@ const user2 = {
     fullname: "Mr.Shuki",
 
     imgUrl: 'https://st.depositphotos.com/1005844/1403/i/600/depositphotos_14039169-stock-photo-young-man-outdoor.jpg',
+    following: [
+        {
+            _id: "u107",
+            fullname: "Dudu",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u101",
+            fullname: "Roberto",
+            imgUrl: "http://some-img"
+        }
+    ],
+    followers: [
+        {
+            _id: "u116",
+            fullname: "Don",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u126",
+            fullname: "Goblin",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u136",
+            fullname: "Fobim",
+            imgUrl: "http://some-img"
+        }
+    ],
+    savedStoryIds: [
+        "s105",
+        "s112",
+        "s124"
+    ]
+}
+
+
+const user3 = {
+    _id: "seller1",
+    username: "lady_shoes_and_bags",
+    password: "123456",
+    bio: 'Waze:- lady shoes',
+    fullname: "Lady Shoes & Bags 👠",
+
+    imgUrl: 'https://cdn.shopify.com/s/files/1/0074/6320/7027/articles/ultimate-guide-to-womens-bags_2048x.jpg?v=1572446822',
     following: [
         {
             _id: "u107",

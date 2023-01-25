@@ -377,7 +377,112 @@ function _createSrories() {
         }
       ]
     },
+    {
+      _id: "s105",
+      txt: "זמן מוגבל | עד גמר המלאי | ההנחה רק על המלאי הקיים | משלוחים, החזרות והחלפה ראשונה חינם בכל קנייה מעל 400₪ | ללא כפל מבצעים",
+      imgUrl: ["https://media.cntraveler.com/photos/6372794f6b04ae53c818dffc/3:4/w_1476,h_1968,c_limit/Tote%20Bags-2022_00-Lede.jpg" ,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT519pWn4flL9yEPn8BZgqpXos2xiTOpa2sQA&usqp=CAU" ],
+      by: {
+        _id: "seller1",
+        fullname: "Lady Shoes & Bags 👠",
+        username: "lady_shoes_and_bags",
+        imgUrl: "https://cdn.shopify.com/s/files/1/0074/6320/7027/articles/ultimate-guide-to-womens-bags_2048x.jpg?v=1572446822"
+      },
+      comments: [
+        {
+          id: "c1005",
+          by: {
+            _id: "u105",
+            username: "Amarama_1990",
+            fullname: "Bob",
+            imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
+          },
+
+          txt: "אלוהים אדירים , איזה מחיר מציע !",
+          
+          likedBy: [
+            {
+              _id: "u105",
+              username: "Amarama_1990",
+              fullname: "Bob",
+              imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+
+            },
+
+            {
+              _id: "u106",
+              fullname: "Dob",
+              username: "Doby_90",
+              imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
+            },
+
+            {
+              _id: "u101",
+              fullname: "Baron Baton",
+              username: "bar_bat_001",
+              imgUrl: "https://i.pinimg.com/236x/e9/a5/16/e9a516010926848acc79e80d1670b3ee.jpg"
+            },
+
+          ]
+        },
+        
+        {
+          id: "c1001",
+          by: {
+            _id: "u105",
+            username: "miniGun777",
+            fullname: "Bob",
+            imgUrl: "https://st2.depositphotos.com/3143277/8644/i/600/depositphotos_86446164-stock-photo-business-man-in-office.jpg"
+          },
+          
+          txt: "very nice!",
+          
+          likedBy: [
+            {
+              _id: "u105",
+              username: "Amarama_1990",
+              fullname: "Bob",
+              imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
+            }
+          ]
+        },
+
+        {
+          id: "c1002",
+          by: {
+            _id: "u106",
+            username: "redBread",
+            fullname: "Dob",
+            imgUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+          },
+          txt: "This sale is on fire , keep this spirit"
+        }
+      ],
+
+      likedBy: [
+        {
+          _id: "u105",
+          fullname: "Bob",
+          username: "Amarama_1990",
+          imgUrl: "https://i.pinimg.com/280x280_RS/52/97/74/52977407847a9767757d40bb93644b58.jpg"
+        },
+
+        {
+          _id: "u106",
+          fullname: "Dob",
+          username: "Doby_90",
+          imgUrl: "https://i.pinimg.com/736x/90/bb/27/90bb272181024a601488c2e17affc743.jpg"
+        },
+
+        {
+          _id: "7zLay",
+          fullname: "Muki Muka",
+          username: "Mukomik",
+          imgUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
+        }
+      ]
+    },
   ]
+
   storageService._save(STORAGE_KEY, story)
 }
 
