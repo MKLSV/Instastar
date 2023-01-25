@@ -24,7 +24,6 @@ export function RootCmp() {
         <div className='app-container'>
             {isOpen && <CreateStoryModal setIsOpen={setIsOpen} />}
             <SideBar setIsOpen={setIsOpen} />
-            {/* <div className='test'></div> */}
             <main className='contant-container'>
                 <Routes>
 
