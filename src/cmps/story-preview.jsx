@@ -72,7 +72,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
                 <svg onClick={() => onRemoveStory(story._id)} aria-label="More options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
             </section>
             {imgUrl.length > 1 ?
-                <Slider dots={true}>
+                <Slider dots={true} infinite={false}>
                     {imgUrl.map(img => <img key={imgUrl} className="story-img" src={img} />)}
                 </Slider>
                 : <img className="story-img" src={imgUrl[0]} />}
@@ -86,7 +86,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
                 {likedBy.length ? <section> <img src={likedBy[0].imgUrl} /><span>Liked by</span> <a className="story-likes">{likedBy[0].username}</a> {likedBy.length > 1 && <div><span>and </span><a onClick={() => likesIsOpen(likedBy)} className="story-likes">{likedBy.length - 1} others</a></div>}</section> : null}
 
                 <a><span className="story-user-name">{story.by.username}</span> <span className="story-text">{txt}</span></a>
-                {comments.length > 2 && <Link className="link" to={`/${story._id}`}><span className="story-comments-view"> View all {comments.length} comments </span></Link>}
+                {comments.length > 2 && <Link className="link" to={`post/${story._id}`}><span className="story-comments-view"> View all {comments.length} comments </span></Link>}
                 {comments.length > 1 ? <a className="story-comment"><span className="story-user-name">{comments[comments.length - 2].by.username}</span> <span className="story-text">{comments[comments.length - 2].txt}</span></a> : null}
                 {comments.length ? <a className="story-comment"><span className="story-user-name">{comments[comments.length - 1].by.username}</span> <span className="story-text">{comments[comments.length - 1].txt}</span></a> : null}
                 <MsgForm comment={comment} setComment={setComment} addStoryComment={addStoryComment} />

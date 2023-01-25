@@ -17,8 +17,8 @@ export function StoryIndex() {
         loadStories()
     }, [])
 
-    function profileSwitch() {
-        navigate('/switch')
+    function goToProfile(){
+        navigate('/profile')
     }
 
     if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
@@ -37,9 +37,9 @@ export function StoryIndex() {
                 <div className='suggestions'>
                     <div className='suggestion-header'>
                         <div className='suggestion-user-info'>
-                            <img className='suggestion-photo' src={user.imgUrl} />
+                            <img className='suggestion-photo' src={user.imgUrl} onClick={goToProfile} />
                             <div className='suggestion-user-name'>
-                                <a>{user.username}</a>
+                                <a onClick={goToProfile}>{user.username}</a>
                                 <span>{user.fullname}</span>
                             </div>
                         </div>

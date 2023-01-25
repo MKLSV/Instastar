@@ -2,8 +2,9 @@ import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Fragment, useState } from 'react'
 import { LoginSwitch } from './login-switch'
+import { toggleModal } from '../store/system.action'
 
-export function SideBar({ setIsOpen }) {
+export function SideBar() {
     const user = useSelector(storeState => storeState.userModule.user)
     const [isExpanted, setIsExpanted] = useState(false)
 
@@ -12,13 +13,13 @@ export function SideBar({ setIsOpen }) {
             
             <div className='test'>
                 <a className='icon' href='/'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png' /></a>
-                <a onClick={() => setIsOpen(true)} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span></a>
+                <a onClick={toggleModal} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span></a>
             </div>
             <section className="side-bar">
                 <a className='icon' href='/'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png' /></a>
                 <nav>
                     <NavLink className='nav-btn' key='feed' to='/'><span className='nav-icon'><i className="fa-solid fa-house"></i></span><span className='nav-name'>Home</span></NavLink>
-                    <a onClick={() => setIsOpen(true)} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span><span className='nav-name' >Create</span></a>
+                    <a onClick={toggleModal} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span><span className='nav-name' >Create</span></a>
                     <NavLink className='nav-btn' key='profile' to='profile'><span className='nav-icon'><img src={user.imgUrl} /></span><span className='nav-name' >Profile</span></NavLink>
                 </nav>
                 <div>
