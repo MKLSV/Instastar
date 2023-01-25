@@ -3,8 +3,9 @@ import { useState } from "react";
 import { storyService } from "../services/story.service";
 import { ImgUploader } from "./img-uploader";
 import { useSelector } from 'react-redux';
+import { toggleModal } from "../store/system.action";
 
-const CreateStoryModal = ({ setIsOpen }) => {
+const CreateStoryModal = () => {
     const [createdStory, setCreatedStory] = useState(storyService.getEmptyStory())
     const logedinUser = useSelector(storeState => storeState.userModule.user)
 
@@ -21,7 +22,7 @@ const CreateStoryModal = ({ setIsOpen }) => {
     function onSaveStory(ev) {
         ev.preventDefault()
         storyService.save(createdStory).then(() => {
-            setIsOpen(false)
+            toggleModal()
             window.location.reload(false)
         })
     }
@@ -31,10 +32,10 @@ const CreateStoryModal = ({ setIsOpen }) => {
     }
 
     return (
-        <div className='create-modal' onClick={() => setIsOpen(false)}>
+        <div className='create-modal' onClick={toggleModal}>
             <div className='create-post' onClick={onModal}>
                 <header>
-                    <a onClick={() => setIsOpen(false)}><i className="fa-solid fa-arrow-left"></i></a>
+                    <a onClick={toggleModal}><i className="fa-solid fa-arrow-left"></i></a>
                     <span>Create new post</span>
                     <a className='share-btn' onClick={onSaveStory}>Share</a>
                 </header>

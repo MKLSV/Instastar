@@ -25,12 +25,9 @@ export function StoryDetails() {
     console.log(inputStr)
 
     const onEmojiClick = (emojiObject, event) => {
-        // console.log(emojiObject.emoji)
-        // // setInputStr(prevInput => prevInput + emojiObject.emoji);
-        // setInputStr(prevMsg => {
-        //     return { ...prevMsg, [txt]: emojiObject.emoji }
-        // })
-        // setShowPicker(false)
+        // setInputStr(prevInput => prevInput + emojiObject.emoji);
+        setComment( { txt: comment.txt + emojiObject.emoji })
+        setShowPicker(false)
 
 
     }
@@ -77,7 +74,7 @@ export function StoryDetails() {
 
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
     return <div className="story-details">
-        {/* <div className="app">
+        <div className="app">
 
 
             <h3>Add Emoji Picker</h3>
@@ -94,7 +91,7 @@ export function StoryDetails() {
                     pickerStyle={{ width: '100%' }}
                     onEmojiClick={onEmojiClick} />}
             </div>
-        </div> */}
+        </div>
 
 
         <section className="story-container">

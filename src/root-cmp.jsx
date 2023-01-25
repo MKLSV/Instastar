@@ -13,36 +13,31 @@ import { CreateStory } from './cmps/create'
 import { ProfilePage } from './pages/profile'
 import CreateStoryModal from './cmps/create-modal'
 import { LoginSignup } from './cmps/login-signup'
+import { useSelector } from 'react-redux'
 
 
 
 export function RootCmp() {
-    const [isOpen, setIsOpen] = useState(false);
+    const isModalOpen = useSelector(storeState => storeState.systemModule.isModalOpen)
 
     return (
-        // <Router>
         <div className='app-container'>
-            {isOpen && <CreateStoryModal setIsOpen={setIsOpen} />}
-            <SideBar setIsOpen={setIsOpen} />
+            {isModalOpen && <CreateStoryModal />}
+            <SideBar />
             <main className='contant-container'>
                 <Routes>
-
                     <Route path="/post" element={<StoryIndex />} >
                         <Route path="/post/:id" element={<StoryDetails />} />
                     </Route>
-
                     <Route path="/" element={<StoryIndex />} />
-                    <Route path="/post/:id" element={<StoryDetails />} />
+                    {/* <Route path="/post/:id" element={<StoryDetails />} /> */}
                     <Route path="create" element={<CreateStory />} />
                     <Route path="profile" element={<ProfilePage />} />
                     <Route path="login" element={<LoginSignup />} />
-                    {/* <Route path="switch" element={<LoginSwitch />} /> */}
                 </Routes>
             </main>
         </div>
     )
-
-    // </Router>
 }
 
 
