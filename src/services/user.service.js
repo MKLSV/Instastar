@@ -92,6 +92,8 @@ async function _createUser() {
     await userService.signup(user)
     await userService.signup(user2)
     await userService.signup(user3)
+    await userService.signup(user4)
+    await userService.signup(user5)
 }
 
 function getEmptyUser() {
@@ -204,6 +206,97 @@ const user3 = {
     fullname: "Lady Shoes & Bags 👠",
 
     imgUrl: 'https://cdn.shopify.com/s/files/1/0074/6320/7027/articles/ultimate-guide-to-womens-bags_2048x.jpg?v=1572446822',
+    following: [
+        {
+            _id: "u107",
+            fullname: "Dudu",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u101",
+            fullname: "Roberto",
+            imgUrl: "http://some-img"
+        }
+    ],
+    followers: [
+        {
+            _id: "u116",
+            fullname: "Don",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u126",
+            fullname: "Goblin",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u136",
+            fullname: "Fobim",
+            imgUrl: "http://some-img"
+        }
+    ],
+    savedStoryIds: [
+        "s105",
+        "s112",
+        "s124"
+    ]
+}
+
+
+const user4 = {
+    _id: "seller2",
+    username: "myibags",
+    password: "123456",
+    bio: 'worldwide shipping',
+    fullname: "myibags",
+
+    imgUrl: 'https://assets.vogue.com/photos/615347cdd43372473562f36d/4:3/w_939,h_704,c_limit/1216-VO-WELL27-02.jpg',
+    following: [
+        {
+            _id: "u107",
+            fullname: "Dudu",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u101",
+            fullname: "Roberto",
+            imgUrl: "http://some-img"
+        }
+    ],
+    followers: [
+        {
+            _id: "u116",
+            fullname: "Don",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u126",
+            fullname: "Goblin",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u136",
+            fullname: "Fobim",
+            imgUrl: "http://some-img"
+        }
+    ],
+    savedStoryIds: [
+        "s105",
+        "s112",
+        "s124"
+    ]
+}
+
+
+
+const user5 = {
+    _id: "seller3",
+    username: "chanelofficial",
+    password: "123456",
+    bio: '',
+    fullname: "chanelofficial",
+
+    imgUrl: 'http://cdn.shopify.com/s/files/1/0434/3103/5031/products/Sticker-autocollant-Logo-chanel-metallique-Deco-Sticker-Store-412.png?v=1672147188',
     following: [
         {
             _id: "u107",
