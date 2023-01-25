@@ -13,6 +13,8 @@ export function StoryIndex() {
     const [userSwitch, switchIsOpen] = useState(false)
     const navigate = useNavigate()
 
+    console.log('likes:', likes);
+    
     useEffect(() => {
         loadStories()
     }, [])

@@ -12,6 +12,7 @@ import { MsgForm } from "./msg-form";
 export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     const [comment, setComment] = useState({ txt: '' })
     const [like, setLike] = useState('')
+    
     const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
 
@@ -83,7 +84,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
                     <a><i className="fa-regular fa-paper-plane"></i></a>
                     <a className="saved-btn"><i className="fa-regular fa-bookmark"></i></a>
                 </div>
-                {likedBy.length && <section> <img src={likedBy[0].imgUrl} /><span>Liked by</span> <a className="story-likes">{likedBy[0].username}</a> {likedBy.length > 1 && <div><span>and </span><a onClick={() => likesIsOpen(likedBy)} className="story-likes">{likedBy.length - 1} others</a></div>}</section>}
+                {likedBy.length && <section className='checking'> <img src={likedBy[0].imgUrl} /><span>Liked by</span> <a className="story-likes">{likedBy[0].username}</a> {likedBy.length > 1 && <div><span>and </span><a onClick={() => likesIsOpen(likedBy)} className="story-likes">{likedBy.length - 1} others</a></div>}</section>}
 
                 <a><span className="story-user-name">{story.by.username}</span> <span className="story-text">{txt}</span></a>
                 {comments.length > 2 && <Link className="link" to={`/${story._id}`}><span className="story-comments-view"> View all {comments.length} comments </span></Link>}
