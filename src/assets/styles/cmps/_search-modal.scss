@@ -35,8 +35,9 @@
 
     div {
         border-top: 1px solid #dbdbdb;
+
         // overflow: auto;
-        .empty-search{
+        .empty-search {
             display: flex;
             width: 100%;
             height: 80vh;
@@ -45,7 +46,7 @@
             align-items: center;
         }
     }
-    
+
     .user-container {
         display: flex;
         gap: 10px;
@@ -53,7 +54,7 @@
         height: 100%;
         cursor: pointer;
 
-        &:hover{
+        &:hover {
             background-color: rgb(244, 244, 244);
         }
 
@@ -69,15 +70,28 @@
             flex-direction: column;
             justify-content: center;
             font-size: 14px;
-            .username{
+
+            .username {
                 color: black;
             }
-            .fullname{
+
+            .fullname {
                 color: #878787;
             }
         }
     }
-    a{
+
+    a {
         text-decoration: none;
+    }
+}
+
+
+////MOBILE
+@include for-mobile-layout {
+    .search-modal {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
     }
 }
