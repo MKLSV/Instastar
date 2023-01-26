@@ -15,11 +15,6 @@ export function UserDetails() {
   let loggedInUser
   let userProfile
   params.username === user.username ? loggedInUser = true : loggedInUser = false
-  // console.log(users)
-  // console.log(user.username)
-  // console.log(loggedInUser)
-  // console.log(params)
-
   const [toggle, setToggle] = useState('posts')
 
   useEffect(() => {
@@ -32,13 +27,8 @@ export function UserDetails() {
     userProfile = users.find(user => user.username === params.username)
   }
 
-
-
   const profileStories = stories.filter(story => story.by._id === userProfile._id)
   const savedStories = stories.filter(story => user.savedStoryIds.includes(story._id))
-  console.log(user)
-  console.log(stories)
-  console.log(savedStories)
 
   return <div className="profile-container">
     <section className="profile-header">
