@@ -9,7 +9,6 @@ export function ProfilePage() {
     const user = useSelector(storeState => storeState.userModule.user)
     const stories = useSelector(storeState => storeState.storyModule.stories)
     const profileStories = stories.filter(story => story.by._id === user._id)
-    console.log(user)
 
     useEffect(() => {
         loadStories()

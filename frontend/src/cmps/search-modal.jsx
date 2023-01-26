@@ -6,28 +6,11 @@ import { loadUsers } from "../store/user.actions"
 
 
 export function SearchModal({ setSearchModal }) {
-
-    // const [filterByToEdit, setFilterByToEdit] = useState('')
-    // const [filteredUsers, setFilteredUsers] = useState([])
     const [filterBy, setFilterBy] = useState({ txt: '' })
     const elInputRef = useRef(null)
-
     const users = useSelector(storeState => storeState.userModule.users)
-    console.log('USERS', users)
-
     const filteredUsers = userService.filterUsers(filterBy, users)
-    console.log(filteredUsers)
     const navigate = useNavigate()
-
-    // userService.getUsers(filterBy).then(users => {
-    //     // setFilteredUsers(users)
-    //     console.log(users)
-    //     return
-    // })
-
-
-    console.log('filteredUsers', filteredUsers)
-    // console.log('USERS',users)
 
     useEffect(() => {
         elInputRef.current.focus()
@@ -58,9 +41,7 @@ export function SearchModal({ setSearchModal }) {
         navigate(username)
     }
 
-
     return <div className="search-modal">
-
         <section className="car-filter full main-layout">
             <form onSubmit={onSubmitFilter}>
                 <label htmlFor="vendor">Search</label>
@@ -73,9 +54,7 @@ export function SearchModal({ setSearchModal }) {
                     ref={elInputRef}
                 />
             </form>
-
         </section>
-
         <div>
             {filteredUsers.map(user =>
                 // <Link to={user.username} className="user-container">

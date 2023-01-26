@@ -16,3 +16,4 @@ router.delete('/:id',  deleteUser)
 // router.delete('/:id',  requireAuth, requireAdmin, deleteUser)
 
 module.exports = router
+module.exports = router

@@ -1,5 +1,4 @@
 
-
 export function LikesModal({ likesIsOpen, likes }) {
     console.log(likes)
     return <div className="likes-modal">

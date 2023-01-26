@@ -59,9 +59,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     }
 
     function toggleSave() {
-        console.log(user.savedStoryIds)
-        console.log(story._id)
-        console.log(checkSave())
         if (checkSave()) {
             const idx = user.savedStoryIds.findIndex(id => id === story._id)
             user.savedStoryIds.splice(idx, 1)
@@ -71,8 +68,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         storyService.save(story)
         setSave(checkSave())
     }
-
-
     return <div>
         <div className='top-side-bar'></div>
         <article className="story-preview">

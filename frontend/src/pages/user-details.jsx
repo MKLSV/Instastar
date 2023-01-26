@@ -15,11 +15,6 @@ export function UserDetails() {
   let loggedInUser
   let userProfile
   params.username === user.username ? loggedInUser = true : loggedInUser = false
-  // console.log(users)
-  // console.log(user.username)
-  // console.log(loggedInUser)
-  // console.log(params)
-
   const [toggle, setToggle] = useState('posts')
 
   useEffect(() => {

@@ -6,7 +6,6 @@ import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
 import EmojiPicker from 'emoji-picker-react';
 
-
 export function StoryDetails() {
     const [story, setStory] = useState(null)
     const [comment, setComment] = useState({ txt: '' })
@@ -22,8 +21,6 @@ export function StoryDetails() {
 
     const [inputStr, setInputStr] = useState([]);
     const [showPicker, setShowPicker] = useState(false);
-
-    console.log(inputStr)
 
     const onEmojiClick = (emojiObject, event) => {
         // setInputStr(prevInput => prevInput + emojiObject.emoji);
@@ -65,9 +62,6 @@ export function StoryDetails() {
         })
     }
 
-    // function modal(ev){
-    //     ev.stopPropagation()
-    // }
 
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
     return <div className="story-details">

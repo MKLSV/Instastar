@@ -1,7 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Fragment, useEffect, useState } from 'react'
-import { LoginSwitch } from './login-switch'
+import { Fragment,useState } from 'react'
 import { toggleModal } from '../store/system.action'
 import { SearchModal } from './search-modal'
 
@@ -36,7 +35,6 @@ export function SideBar() {
                 <div>
                     <div className={isExpanted ? 'nav-more open' : 'nav-more'}>
                         <Link className='nav-more-btn' key='switch' to='switch'>Switch accounts</Link>
-                        {/* <a  onClick={onSwitch} className='nav-more-btn' key='switch' to='switch'>Switch accounts</a> */}
                         <Link className='nav-more-btn' key='login' to='login'>Login</Link>
                     </div>
                 </div>
