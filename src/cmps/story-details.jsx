@@ -75,16 +75,17 @@ export function StoryDetails() {
         <div className="app">
 
 
-            <h3>Add Emoji Picker</h3>
             <div className="picker-container">
-                <input
+                {/* <input
                     className="input-style"
                     value={inputStr}
-                    onChange={e => setInputStr(e.target.value)} />
-                <img
+                    onChange={e => setInputStr(e.target.value)} /> */}
+                {/* <img
                     className="emoji-icon"
                     src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
-                    onClick={() => setShowPicker(val => !val)} />
+                    onClick={() => setShowPicker(val => !val)} /> */}
+
+                    
                 {showPicker && <EmojiPicker
                     pickerStyle={{ width: '100%' }}
                     onEmojiClick={onEmojiClick} />}

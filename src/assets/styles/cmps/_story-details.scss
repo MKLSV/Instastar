@@ -10,12 +10,21 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.645);
+
+    .picker-container {
+        position: absolute;
+        top: 200px;
+        right: 100px;
+    }
+    
+    .EmojiPickerReact {
+        
+        width: 300px;
+        // margin-left: 30vw;
+    }
 }
 
-.picker-container {
-    position: relative;
-    width: 300px;
-}
+
 
 .emoji-icon {
     cursor: pointer;
@@ -214,6 +223,8 @@
     }
 
 }
+
+
 
 ////MOBILE
 @include for-mobile-layout {

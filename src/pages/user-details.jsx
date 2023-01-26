@@ -36,18 +36,28 @@ export function UserDetails() {
 
   const profileStories = stories.filter(story => story.by._id === userProfile._id)
   const savedStories = stories.filter(story => user.savedStoryIds.includes(story._id))
-  console.log(user)
-  console.log(stories)
-  console.log(savedStories)
+
+
+  function onToggle(str) {
+    if (!loggedInUser) return
+    setToggle(str)
+  }
+
 
   return <div className="profile-container">
     <section className="profile-header">
       <section className="profile-photo"><img src={userProfile.imgUrl} /></section>
       <section className="profile-info">
-        <div className="profile-info-header">
+        {loggedInUser ? <div className="profile-info-header">
           <a>{userProfile.username}</a>
           <button>Edit Profile</button>
         </div>
+          :
+          <div className="profile-info-header">
+            <a>{userProfile.username}</a>
+            <button>Follow</button>
+            <button>Message</button>
+          </div>}
         <div className="user-info">
           <section><a className="user-number">{profileStories.length}</a><a> posts</a></section>
           <section><a className="user-number">{userProfile.followers.length}</a><a> followers</a></section>
@@ -61,7 +71,8 @@ export function UserDetails() {
     </section>
     <section className="profile-links">
       <a onClick={() => setToggle('posts')} className={toggle === "posts" ? "profile-pics-link active" : "profile-pics-link"}><a className='posts-icon'><IoMdApps /></a>POSTS</a>
-      <a onClick={() => setToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a>
+      <a onClick={() => onToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a>
+      {/* <a onClick={() => setToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a> */}
       <a className="profile-pics-link"> <a className='tagged-icon'><BsPersonSquare /></a>TAGGED</a>
 
     </section>
