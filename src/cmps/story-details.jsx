@@ -28,8 +28,6 @@ export function StoryDetails() {
         // setInputStr(prevInput => prevInput + emojiObject.emoji);
         setComment( { txt: comment.txt + emojiObject.emoji })
         setShowPicker(false)
-
-
     }
 
 

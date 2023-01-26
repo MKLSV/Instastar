@@ -1,47 +1,81 @@
-import { useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useEffect } from "react"
+import { loadStories } from "../store/story.actions"
+import { IoMdApps } from 'react-icons/io'
+import { BsBookmark, BsPersonSquare } from 'react-icons/bs'
 import { useParams } from 'react-router-dom'
-import { loadUser } from '../store/user.actions'
-import { store } from '../store/store'
-import { showSuccessMsg } from '../services/event-bus.service'
-import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
+import { loadUsers } from '../store/user.actions'
 
 export function UserDetails() {
-
+  const user = useSelector(storeState => storeState.userModule.user)
+  const users = useSelector(storeState => storeState.userModule.users)
+  const stories = useSelector(storeState => storeState.storyModule.stories)
   const params = useParams()
-  const user = useSelector(storeState => storeState.userModule.watchedUser)
+  let loggedInUser
+  let userProfile
+  params.username === user.username ? loggedInUser = true : loggedInUser = false
+  // console.log(users)
+  // console.log(user.username)
+  // console.log(loggedInUser)
+  // console.log(params)
+
+  const [toggle, setToggle] = useState('posts')
 
   useEffect(() => {
-    loadUser(params.id)
-
-    socketService.emit(SOCKET_EMIT_USER_WATCH, params.id)
-    socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
-
-    return () => {
-      socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
-    }
-
+    loadStories()
+    loadUsers()
   }, [])
 
-  function onUserUpdate(user) {
-    showSuccessMsg(`This user ${user.fullname} just got updated from socket, new score: ${user.score}`)
-    store.dispatch({ type: 'SET_WATCHED_USER', user })
+  if (loggedInUser) userProfile = user
+  else {
+    userProfile = users.find(user => user.username === params.username)
   }
 
-  return (
-    <section className="user-details">
-      <h1>User Details</h1>
-      {user && <div>
-        <h3>
-          {user.fullname}
-        </h3>
-        {/* Demo for dynamic images: */}
-        <div className="user-img" style={{ backgroundImage: `url('/img/u${0}.png')` }}>
+
+
+  const profileStories = stories.filter(story => story.by._id === userProfile._id)
+  const savedStories = stories.filter(story => user.savedStoryIds.includes(story._id))
+  console.log(user)
+  console.log(stories)
+  console.log(savedStories)
+
+  return <div className="profile-container">
+    <section className="profile-header">
+      <section className="profile-photo"><img src={userProfile.imgUrl} /></section>
+      <section className="profile-info">
+        <div className="profile-info-header">
+          <a>{userProfile.username}</a>
+          <button>Edit Profile</button>
         </div>
-        <pre>
-          {JSON.stringify(user, null, 2)}
-        </pre>
-      </div>}
+        <div className="user-info">
+          <section><a className="user-number">{profileStories.length}</a><a> posts</a></section>
+          <section><a className="user-number">{userProfile.followers.length}</a><a> followers</a></section>
+          <section><a className="user-number">{userProfile.following.length}</a><a> following</a></section>
+        </div>
+        <div className="user-bio">
+          <a className="user-name">{userProfile.fullname}</a>
+          <a className="bio">{userProfile.bio}</a>
+        </div>
+      </section>
     </section>
-  )
+    <section className="profile-links">
+      <a onClick={() => setToggle('posts')} className={toggle === "posts" ? "profile-pics-link active" : "profile-pics-link"}><a className='posts-icon'><IoMdApps /></a>POSTS</a>
+      <a onClick={() => setToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a>
+      <a className="profile-pics-link"> <a className='tagged-icon'><BsPersonSquare /></a>TAGGED</a>
+
+    </section>
+    {toggle === "posts" ?
+      <section className="profile-stories">
+        {profileStories.map(story => <img key={story.imgUrl} src={story.imgUrl} />)}
+      </section>
+      :
+      <section className="profile-stories">
+        {savedStories.map(story => <img key={story.imgUrl} src={story.imgUrl} />)}
+      </section>
+    }
+  </div>
+
 }
+
+

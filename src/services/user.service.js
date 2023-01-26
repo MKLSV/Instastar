@@ -14,13 +14,31 @@ export const userService = {
     remove,
     update,
     changeScore,
-    getEmptyUser
+    getEmptyUser,
+    filterUsers
 }
 
 window.userService = userService
 
-function getUsers() {
-    return storageService.query('user')
+function filterUsers(filterBy, users) {
+    if(!users.length) return
+    const regex = new RegExp(filterBy.txt, 'i')
+    users = users.filter(user => {
+        return regex.test(user.username)
+    })
+    return users
+}
+
+async function getUsers(filterBy = { txt: '' }) {
+    var users = await storageService.query('user').then(users => users)
+    if (filterBy.txt) {
+        const regex = new RegExp(filterBy.txt, 'i')
+        users = users.filter(user => {
+            return regex.test(user.username)
+        })
+        // users = users.filter(user => regex.test(user.unername) || regex.test(car.description))
+    }
+    return users
     // return httpService.get(`user`)
 }
 
@@ -54,6 +72,7 @@ async function login(userCred) {
         return saveLocalUser(user)
     }
 }
+
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     const user = await storageService.post('user', userCred)
@@ -83,18 +102,17 @@ function saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
-    const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-    if (!user) _createUser()
+    // const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-async function _createUser() {
-    await userService.signup(user)
-    await userService.signup(user2)
-    await userService.signup(user3)
-    await userService.signup(user4)
-    await userService.signup(user5)
-}
+// async function _createUser() {
+//     await userService.signup(user)
+//     await userService.signup(user2)
+//     await userService.signup(user3)
+//     await userService.signup(user4)
+//     await userService.signup(user5)
+// }
 
 function getEmptyUser() {
     return {
@@ -332,11 +350,19 @@ const user5 = {
         "s124"
     ]
 }
+async function _firstGetUsers() {
+    await userService.signup(user)
+    await userService.signup(user2)
+    await userService.signup(user3)
+    await userService.signup(user4)
+    await userService.signup(user5)
 
-// ; (async () => {
-//     await userService.signup(user)
-//     await userService.signup(user2)
-// })()
+}
+
+
+; (async () => {
+    _firstGetUsers()
+})()
 
 
 

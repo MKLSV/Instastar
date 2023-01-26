@@ -5,6 +5,8 @@ import { loadStories } from '../store/story.actions'
 import { StoriesList } from '../cmps/stories-list.jsx'
 import { LikesModal } from '../cmps/likes-modal';
 import { LoginSwitch } from '../cmps/login-switch';
+import { loadUsers } from '../store/user.actions';
+import { userService } from '../services/user.service';
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
@@ -12,9 +14,14 @@ export function StoryIndex() {
     const [likes, likesIsOpen] = useState([])
     const [userSwitch, switchIsOpen] = useState(false)
     const navigate = useNavigate()
-    
+    // console.log(stories)
+    // console.log(user)
+    // console.log(userService.getLoggedinUser())
+    // if(!user) user = userService.getLoggedinUser()
+
     useEffect(() => {
         loadStories()
+        loadUsers()
     }, [])
 
     function goToProfile(){
