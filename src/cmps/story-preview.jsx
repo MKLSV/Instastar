@@ -12,7 +12,8 @@ import { MsgForm } from "./msg-form";
 export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     const [comment, setComment] = useState({ txt: '' })
     const [like, setLike] = useState('')
-    
+    const [save, setSave] = useState('')
+
     const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
 
@@ -24,9 +25,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
             console.log(err)
         }
     }
-
-    console.log('story:', story);
-    
 
     async function addStoryComment(ev) {
         ev.preventDefault()
@@ -56,10 +54,24 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         setLike(checkLike())
     }
 
-    // function onLikes() {
-    //     likesIsOpen(true)
-    //     console.log('SHOW LIKES MODAL')
-    // }
+    function checkSave() {
+        return user.savedStoryIds.some(id => id === story._id)
+    }
+
+    function toggleSave() {
+        console.log(user.savedStoryIds)
+        console.log(story._id)
+        console.log(checkSave())
+        if (checkSave()) {
+            const idx = user.savedStoryIds.findIndex(id => id === story._id)
+            user.savedStoryIds.splice(idx, 1)
+        }
+
+        else user.savedStoryIds.push(story._id)
+        storyService.save(story)
+        setSave(checkSave())
+    }
+
 
     return <div>
         <div className='top-side-bar'></div>
@@ -67,7 +79,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
             <section className="story-header">
                 <div className="header-info">
                     <img className="prew-user-img" src={story.by.imgUrl} />
-                    <a>{story.by.username}</a>
+                    <Link to={story.by.username} className="story-user-name link">{story.by.username}</Link>
                     <div className="time">
                         <span>•</span>
                         <time>1h</time>
@@ -85,11 +97,11 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
                     <a onClick={toggleLike}><i className={checkLike() ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i></a>
                     <Link to={`/post/${story._id}`}><span><i className="fa-regular fa-comment"></i></span></Link>
                     <a><i className="fa-regular fa-paper-plane"></i></a>
-                    <a className="saved-btn"><i className="fa-regular fa-bookmark"></i></a>
+                    <a onClick={toggleSave} className="saved-btn"><i className={checkSave() ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark"}></i></a>
                 </div>
-                {likedBy.length ? <section> <img src={likedBy[0].imgUrl} /><span>Liked by</span> <a className="story-likes">{likedBy[0].username}</a> {likedBy.length > 1 && <div><span>and </span><a onClick={() => likesIsOpen(likedBy)} className="story-likes">{likedBy.length - 1} others</a></div>}</section> : null}
+                {likedBy.length ? <section> <img src={likedBy[0].imgUrl} /><span>Liked by</span> <Link to={likedBy[0].username} className="story-user-name link">{likedBy[0].username}</Link> {likedBy.length > 1 && <div><span>and </span><a onClick={() => likesIsOpen(likedBy)} className="story-likes">{likedBy.length - 1} others</a></div>}</section> : null}
 
-                <a><span className="story-user-name">{story.by.username}</span> <span className="story-text">{txt}</span></a>
+                <div><Link to={story.by.username} className="story-user-name link">{story.by.username}</Link> <span className="story-text">{txt}</span></div>
                 {comments.length > 2 && <Link className="link" to={`post/${story._id}`}><span className="story-comments-view"> View all {comments.length} comments </span></Link>}
                 {comments.length > 1 ? <a className="story-comment"><span className="story-user-name">{comments[comments.length - 2].by.username}</span> <span className="story-text">{comments[comments.length - 2].txt}</span></a> : null}
                 {comments.length ? <a className="story-comment"><span className="story-user-name">{comments[comments.length - 1].by.username}</span> <span className="story-text">{comments[comments.length - 1].txt}</span></a> : null}
