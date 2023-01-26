@@ -25,7 +25,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         }
     }
 
-    console.log('story:', story);
     
 
     async function addStoryComment(ev) {

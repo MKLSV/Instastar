@@ -12,8 +12,6 @@ export function StoryIndex() {
     const [likes, likesIsOpen] = useState([])
     const [userSwitch, switchIsOpen] = useState(false)
     const navigate = useNavigate()
-
-    console.log('likes:', likes);
     
     useEffect(() => {
         loadStories()
