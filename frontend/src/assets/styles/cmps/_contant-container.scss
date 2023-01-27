@@ -9,6 +9,12 @@
         margin: 50px 0;
 
     }
+
+
+    .profile-contant {
+        background-color: aqua;
+
+    }
 }
 
 ///////////////////// normal //////////////
@@ -38,6 +44,7 @@
             .story-img {
                 width: 470px;
                 height: 470px;
+                object-fit: cover;
             }
 
             .story {
@@ -51,7 +58,4 @@
 
 //////////////////// Wide ///////////////
 
-@include for-wide-layout {
-
-   
-}
+@include for-wide-layout {}
