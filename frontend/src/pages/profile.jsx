@@ -33,15 +33,18 @@ export function ProfilePage() {
                 </div>
             </section>
         </section>
+        {/* // new but dosent wrap */}
+        <div className='profile-contant'> 
+        <h1>hiiiiiiiii</h1>
         <section className="profile-links">
             <a className="profile-pics-link active"> <a  className='posts-icon'><IoMdApps/></a>POSTS</a>
             <a className="profile-pics-link"> <a className='saved-icon'><BsBookmark /></a>SAVED</a>
             <a className="profile-pics-link"> <a className='tagged-icon'><BsPersonSquare /></a>TAGGED</a>
-
         </section>
         <section className="profile-stories">
             {profileStories.map(story => <img key={story.imgUrl} src={story.imgUrl} />)}
         </section>
+        </div>
     </div>
 
 }
