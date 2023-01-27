@@ -10,7 +10,6 @@ export const storyService = {
   save,
   remove,
   getEmptyStory,
-  // onAddStoryComment,
   onRemoveStoryComment,
   saveLike,
   createComment

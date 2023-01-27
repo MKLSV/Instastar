@@ -64,7 +64,7 @@ export function UserDetails() {
     <section className="profile-links">
       <a onClick={() => setToggle('posts')} className={toggle === "posts" ? "profile-pics-link active" : "profile-pics-link"}><a className='posts-icon'><IoMdApps /></a>POSTS</a>
       <a onClick={() => onToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a>
-      {/* <a onClick={() => setToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a> */}
+      {/* <a onClick={() => onToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a> */}
       <a className="profile-pics-link"> <a className='tagged-icon'><BsPersonSquare /></a>TAGGED</a>
 
     </section>

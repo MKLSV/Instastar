@@ -13,7 +13,6 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore,
     getEmptyUser,
     filterUsers
 }
@@ -76,25 +75,16 @@ async function login(userCred) {
 
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-    const user = await storageService.post('user', userCred)
-    // const user = await httpService.post('auth/signup', userCred)
+    // const user = await storageService.post('user', userCred)
+    const user = await httpService.post('auth/signup', userCred)
     // socketService.login(user._id)
     return saveLocalUser(user)
 }
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.logout()
-    // return await httpService.post('auth/logout')
+    return await httpService.post('auth/logout')
 }
-
-async function changeScore(by) {
-    const user = getLoggedinUser()
-    if (!user) throw new Error('Not loggedin')
-    user.score = user.score + by || by
-    await update(user)
-    return user.score
-}
-
 
 function saveLocalUser(user) {
     // user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, savedStoryIds: user.savedStoryIds, following: user.following, followers: user.followers }
@@ -111,7 +101,6 @@ function getLoggedinUser() {
 
 function getEmptyUser() {
     return {
-        _id: "",
         username: "",
         password: "",
         fullname: "",
@@ -165,181 +154,170 @@ const user = {
         "s123"
     ]
 }
-
 const user2 = {
-    _id: "u102",
-    username: "ShukiD12",
-    password: "shuki",
-    bio: 'Hello my friends! GhatGPT dosent work so i dont know what to write here!',
-    fullname: "Mr.Shuki",
 
-    imgUrl: 'https://st.depositphotos.com/1005844/1403/i/600/depositphotos_14039169-stock-photo-young-man-outdoor.jpg',
-    following: [
+    "username": "ShukiD12",
+    "password": "shuki",
+    "bio": "Hello my friends! GhatGPT dosent work so i dont know what to write here!",
+    "fullname": "Mr.Shuki",
+
+    "imgUrl": "https://st.depositphotos.com/1005844/1403/i/600/depositphotos_14039169-stock-photo-young-man-outdoor.jpg",
+    "following": [
         {
-            _id: "u107",
-            fullname: "Dudu",
-            imgUrl: "http://some-img"
+            "_id": "u107",
+            "fullname": "Dudu",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u101",
-            fullname: "Roberto",
-            imgUrl: "http://some-img"
+            "_id": "u101",
+            "fullname": "Roberto",
+            "imgUrl": "http://some-img"
         }
     ],
-    followers: [
+    "followers": [
         {
-            _id: "u116",
-            fullname: "Don",
-            imgUrl: "http://some-img"
+            "_id": "u116",
+            "fullname": "Don",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u126",
-            fullname: "Goblin",
-            imgUrl: "http://some-img"
+            "_id": "u126",
+            "fullname": "Goblin",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u136",
-            fullname: "Fobim",
-            imgUrl: "http://some-img"
+            "_id": "u136",
+            "fullname": "Fobim",
+            "imgUrl": "http://some-img"
         }
     ],
-    savedStoryIds: [
+    "savedStoryIds": [
         "s105",
         "s112",
         "s124"
     ]
 }
-
-
 const user3 = {
-    _id: "seller1",
-    username: "lady_shoes_and_bags",
-    password: "123456",
-    bio: 'Waze:- lady shoes',
-    fullname: "Lady Shoes & Bags 👠",
+    "username": "lady_shoes_and_bags",
+    "password": "123456",
+    "bio": "Waze:- lady shoes",
+    "fullname": "Lady Shoes & Bags 👠",
 
-    imgUrl: 'https://cdn.shopify.com/s/files/1/0074/6320/7027/articles/ultimate-guide-to-womens-bags_2048x.jpg?v=1572446822',
-    following: [
+    "imgUrl": "https://cdn.shopify.com/s/files/1/0074/6320/7027/articles/ultimate-guide-to-womens-bags_2048x.jpg?v=1572446822",
+    "following": [
         {
-            _id: "u107",
-            fullname: "Dudu",
-            imgUrl: "http://some-img"
+            "_id": "u107",
+            "fullname": "Dudu",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u101",
-            fullname: "Roberto",
-            imgUrl: "http://some-img"
+            "_id": "u101",
+            "fullname": "Roberto",
+            "imgUrl": "http://some-img"
         }
     ],
-    followers: [
+    "followers": [
         {
-            _id: "u116",
-            fullname: "Don",
-            imgUrl: "http://some-img"
+            "_id": "u116",
+            "fullname": "Don",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u126",
-            fullname: "Goblin",
-            imgUrl: "http://some-img"
+            "_id": "u126",
+            "fullname": "Goblin",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u136",
-            fullname: "Fobim",
-            imgUrl: "http://some-img"
+            "_id": "u136",
+            "fullname": "Fobim",
+            "imgUrl": "http://some-img"
         }
     ],
-    savedStoryIds: [
+    "savedStoryIds": [
         "s105",
         "s112",
         "s124"
     ]
 }
-
-
 const user4 = {
-    _id: "seller2",
-    username: "myibags",
-    password: "123456",
-    bio: 'worldwide shipping',
-    fullname: "myibags",
+    "username": "myibags",
+    "password": "123456",
+    "bio": "worldwide shipping",
+    "fullname": "myibags",
 
-    imgUrl: 'https://assets.vogue.com/photos/615347cdd43372473562f36d/4:3/w_939,h_704,c_limit/1216-VO-WELL27-02.jpg',
-    following: [
+    "imgUrl": "https://assets.vogue.com/photos/615347cdd43372473562f36d/4:3/w_939,h_704,c_limit/1216-VO-WELL27-02.jpg",
+    "following": [
         {
-            _id: "u107",
-            fullname: "Dudu",
-            imgUrl: "http://some-img"
+            "_id": "u107",
+            "fullname": "Dudu",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u101",
-            fullname: "Roberto",
-            imgUrl: "http://some-img"
+            "_id": "u101",
+            "fullname": "Roberto",
+            "imgUrl": "http://some-img"
         }
     ],
-    followers: [
+    "followers": [
         {
-            _id: "u116",
-            fullname: "Don",
-            imgUrl: "http://some-img"
+            "_id": "u116",
+            "fullname": "Don",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u126",
-            fullname: "Goblin",
-            imgUrl: "http://some-img"
+            "_id": "u126",
+            "fullname": "Goblin",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u136",
-            fullname: "Fobim",
-            imgUrl: "http://some-img"
+            "_id": "u136",
+            "fullname": "Fobim",
+            "imgUrl": "http://some-img"
         }
     ],
-    savedStoryIds: [
+    "savedStoryIds": [
         "s105",
         "s112",
         "s124"
     ]
 }
-
-
-
 const user5 = {
-    _id: "seller3",
-    username: "chanelofficial",
-    password: "123456",
-    bio: '',
-    fullname: "chanelofficial",
+    "username": "chanelofficial",
+    "password": "123456",
+    "bio": "Welcome to chanel!",
+    "fullname": "chanelofficial",
 
-    imgUrl: 'http://cdn.shopify.com/s/files/1/0434/3103/5031/products/Sticker-autocollant-Logo-chanel-metallique-Deco-Sticker-Store-412.png?v=1672147188',
-    following: [
+    "imgUrl": "http://cdn.shopify.com/s/files/1/0434/3103/5031/products/Sticker-autocollant-Logo-chanel-metallique-Deco-Sticker-Store-412.png?v=1672147188",
+    "following": [
         {
-            _id: "u107",
-            fullname: "Dudu",
-            imgUrl: "http://some-img"
+            "_id": "u107",
+            "fullname": "Dudu",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u101",
-            fullname: "Roberto",
-            imgUrl: "http://some-img"
+            "_id": "u101",
+            "fullname": "Roberto",
+            "imgUrl": "http://some-img"
         }
     ],
-    followers: [
+    "followers": [
         {
-            _id: "u116",
-            fullname: "Don",
-            imgUrl: "http://some-img"
+            "_id": "u116",
+            "fullname": "Don",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u126",
-            fullname: "Goblin",
-            imgUrl: "http://some-img"
+            "_id": "u126",
+            "fullname": "Goblin",
+            "imgUrl": "http://some-img"
         },
         {
-            _id: "u136",
-            fullname: "Fobim",
-            imgUrl: "http://some-img"
+            "_id": "u136",
+            "fullname": "Fobim",
+            "imgUrl": "http://some-img"
         }
     ],
-    savedStoryIds: [
+    "savedStoryIds": [
         "s105",
         "s112",
         "s124"

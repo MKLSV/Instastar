@@ -16,6 +16,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
 
     const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
+    console.log(user)
 
  
     async function onRemoveStory(storyId) {
@@ -56,9 +57,13 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
 
     function checkSave() {
         return user.savedStoryIds.some(id => id === story._id)
+        return
     }
 
     function toggleSave() {
+        console.log(user.savedStoryIds)
+        console.log(story._id)
+        console.log(checkSave())
         if (checkSave()) {
             const idx = user.savedStoryIds.findIndex(id => id === story._id)
             user.savedStoryIds.splice(idx, 1)
@@ -68,6 +73,8 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         storyService.save(story)
         setSave(checkSave())
     }
+
+
     return <div>
         <div className='top-side-bar'></div>
         <article className="story-preview">

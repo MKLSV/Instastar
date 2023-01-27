@@ -54,11 +54,8 @@ async function getById(userId) {
 }
 async function getByUsername(username) {
     try {
-        console.log('username', username)
         const collection = await dbService.getCollection(DB_NAME)
-        console.log('collection', collection)
         const user = await collection.findOne({ username })
-        console.log('user from getByUsername', user)
         return user
     } catch (err) {
         logger.error(`while finding user by username: ${username}`, err)
