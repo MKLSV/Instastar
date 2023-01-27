@@ -61,10 +61,10 @@ export function UserDetails() {
         </div>
       </section>
     </section>
+    <div className='content-container'>
     <section className="profile-links">
       <a onClick={() => setToggle('posts')} className={toggle === "posts" ? "profile-pics-link active" : "profile-pics-link"}><a className='posts-icon'><IoMdApps /></a>POSTS</a>
       <a onClick={() => onToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a>
-      {/* <a onClick={() => onToggle('saved')} className={toggle === "saved" ? "profile-pics-link active" : "profile-pics-link"}><a className='saved-icon'><BsBookmark /></a>SAVED</a> */}
       <a className="profile-pics-link"> <a className='tagged-icon'><BsPersonSquare /></a>TAGGED</a>
 
     </section>
@@ -77,6 +77,7 @@ export function UserDetails() {
         {savedStories.map(story => <img key={story.imgUrl} src={story.imgUrl} />)}
       </section>
     }
+</div>
   </div>
 
 }
