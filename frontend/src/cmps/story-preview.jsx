@@ -56,7 +56,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
 
     function checkSave() {
         return user.savedStoryIds.some(id => id === story._id)
-        return
     }
 
     function toggleSave() {

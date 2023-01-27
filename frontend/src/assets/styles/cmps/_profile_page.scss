@@ -2,6 +2,47 @@
     height: 100vh;
     padding: 30px 20px;
     margin: 0 50px;
+
+    .story {
+        position: relative;
+        cursor: pointer;
+
+
+        .post-info {
+
+            position: absolute;
+            width: 307px;
+            height: 307px;
+
+            .likes-comm {
+                display: none;
+            }
+
+            &:hover {
+
+                .likes-comm {
+                    position: absolute;
+                    width: 307px;
+                    height: 307px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: row;
+                    gap: 30px;
+                    color: #ffffff;
+                    font-size: 20px;
+                    background-color: rgba(43, 43, 43, 0.259);
+                }
+            }
+
+            div {
+                display: flex;
+                gap: 5px;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
 }
 
 .profile-header {
@@ -128,7 +169,7 @@
 ////MOBILE
 @include for-mobile-layout {
     .profile-header {
-        
+
         margin-bottom: 16px;
         padding: 16px 0;
         margin-left: 0;

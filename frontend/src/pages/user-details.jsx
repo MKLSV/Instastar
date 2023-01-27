@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { loadStories } from "../store/story.actions"
 import { IoMdApps } from 'react-icons/io'
 import { BsBookmark, BsPersonSquare } from 'react-icons/bs'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { loadUsers } from '../store/user.actions'
 
 export function UserDetails() {
@@ -12,10 +12,13 @@ export function UserDetails() {
   const users = useSelector(storeState => storeState.userModule.users)
   const stories = useSelector(storeState => storeState.storyModule.stories)
   const params = useParams()
+  const [toggle, setToggle] = useState('posts')
+
+  const navigate = useNavigate()
+
   let loggedInUser
   let userProfile
   params.username === user.username ? loggedInUser = true : loggedInUser = false
-  const [toggle, setToggle] = useState('posts')
 
   useEffect(() => {
     loadStories()
@@ -33,6 +36,10 @@ export function UserDetails() {
   function onToggle(str) {
     if (!loggedInUser) return
     setToggle(str)
+  }
+
+  function storyModal(story) {
+    navigate(`/post/${story._id}`)
   }
 
 
@@ -70,7 +77,20 @@ export function UserDetails() {
     </section>
     {toggle === "posts" ?
       <section className="profile-stories">
-        {profileStories.map(story => <img key={story.imgUrl} src={story.imgUrl} />)}
+        {profileStories.map(story => <div onClick={() => storyModal(story)} className='story'>
+          <section className='post-info'>
+            <div className='likes-comm'>
+              <div>
+                <i className="fa-solid fa-heart"></i>
+                <span>{story.likedBy.length}</span>
+              </div>
+              <div>
+                <i className="fa-solid fa-comment"></i>
+                <span>{story.comments.length}</span>
+              </div>
+            </div>
+          </section>
+          <img key={story.imgUrl} src={story.imgUrl} /></div>)}
       </section>
       :
       <section className="profile-stories">

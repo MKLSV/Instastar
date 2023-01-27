@@ -48,8 +48,8 @@ function getById(storyId) {
 }
 
 async function remove(storyId) {
-  await storageService.remove(STORAGE_KEY, storyId)
-  // return httpService.delete(`story/${storyId}`)
+  // await storageService.remove(STORAGE_KEY, storyId)
+  return httpService.delete(`story/${storyId}`)
 }
 
 async function save(story) {

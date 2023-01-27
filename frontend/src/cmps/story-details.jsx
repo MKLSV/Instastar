@@ -5,6 +5,7 @@ import { storyService } from "../services/story.service.js"
 import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
 import EmojiPicker from 'emoji-picker-react';
+import Slider from "react-slick";
 
 export function StoryDetails() {
     const [story, setStory] = useState(null)
@@ -88,7 +89,11 @@ export function StoryDetails() {
 
         <section className="story-container">
             <div className="image">
-                <img src={story.imgUrl[0]} />
+            {story.imgUrl.length > 1 ?
+                <Slider dots={true} infinite={false}>
+                    {story.imgUrl.map(img => <img key={story.imgUrl} className="story-img" src={img} />)}
+                </Slider>
+                : <img className="story-img" src={story.imgUrl[0]} />}
             </div>
             <div className="details-comment">
                 <div>
@@ -99,7 +104,7 @@ export function StoryDetails() {
                             <img className="prew-user-img" src={story.by.imgUrl} />
                             <a className="details-username">{story.by.username}</a>
                         </div>
-                        <button onClick={onClose}>X</button>
+                        <button onClick={onClose}><i className="fa-solid fa-x"></i></button>
                     </section>
                     <section className="comments-container">
                         <div className="comments-list">

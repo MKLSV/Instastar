@@ -16,9 +16,9 @@
         top: 200px;
         right: 100px;
     }
-    
+
     .EmojiPickerReact {
-        
+
         width: 300px;
         // margin-left: 30vw;
     }
@@ -47,11 +47,50 @@
 
     .image {
 
+        width: 500px;
+        height: 650px;
+        // object-fit: cover;
+
         img {
             width: 500px;
             height: 650px;
+            object-fit: cover;
         }
     }
+
+    .slick-slider {
+
+
+        .slick-prev {
+            z-index: 10;
+            left: 10px;
+            opacity: 0.4;
+            
+        }
+
+        .slick-next {
+            z-index: 10;
+            right: 10px;
+            opacity: 0.4;
+
+        }
+
+        .slick-dots {
+            bottom: 10px;
+        }
+
+        .slick-dots li button:before {
+            color: white;
+        }
+
+        .slick-list {
+            margin-bottom: -5px;
+        }
+        .slick-dots li {
+            margin: 0;
+        }
+    }
+
 }
 
 .details-comment {
