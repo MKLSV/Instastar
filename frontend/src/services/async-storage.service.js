@@ -22,8 +22,8 @@ function get(entityType, entityId) {
 
 function post(entityType, newEntity) {
     newEntity = JSON.parse(JSON.stringify(newEntity))
-    if (!newEntity._id) newEntity._id = _makeId()
-    // newEntity._id = _makeId()  להחזיר בבקאנד
+    // if (!newEntity._id) newEntity._id = _makeId()
+    newEntity._id = _makeId() 
     return query(entityType).then(entities => {
         entities.push(newEntity)
         _save(entityType, entities)

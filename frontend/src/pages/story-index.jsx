@@ -28,11 +28,10 @@ export function StoryIndex() {
         navigate('/profile')
     }
 
-    if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
+    // if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
 
     return (
         <Fragment>
-
             <div className="nested-route">
                 <Outlet />
             </div>

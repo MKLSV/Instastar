@@ -9,7 +9,12 @@ export function SideBar() {
     const [isExpanted, setIsExpanted] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
 
-    if (!user) return <div className="loading-page"></div>
+    // useEffect(() => {
+    //     loadUsers()
+    //   }, [])
+
+
+    // if (!user) return <div className="loading-page"></div>
 
     return (
         <Fragment>

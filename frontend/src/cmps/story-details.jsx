@@ -12,6 +12,8 @@ export function StoryDetails() {
     const user = useSelector(storeState => storeState.userModule.user)
     const params = useParams()
     const navigate = useNavigate()
+    console.log('COMMENT', comment)
+    console.log(story)
 
     useEffect(() => {
         loadStory()
@@ -47,9 +49,7 @@ export function StoryDetails() {
         if (!comment.txt) return
         const newComment = storyService.createComment(comment.txt, user)
         story.comments.push(newComment)
-        // const user = userService.getLoggedinUser()
-        await storyService.onAddStoryComment(story._id, newComment)
-        //  await storyService.onAddStoryComment(story._id, comment.txt, user)
+        await storyService.save(story)
         setComment({ txt: '' })
     }
 

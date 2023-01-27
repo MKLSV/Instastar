@@ -1,5 +1,6 @@
 
 import { storageService } from './async-storage.service.js'
+import { httpService } from './http.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'story'
@@ -9,34 +10,42 @@ export const storyService = {
   save,
   remove,
   getEmptyStory,
-  onAddStoryComment,
+  // onAddStoryComment,
   onRemoveStoryComment,
   saveLike,
   createComment
 }
 window.ss = storyService
 
-async function onAddStoryComment(storyId, comment) {
-  const updatedStory = await storageService.get(STORAGE_KEY, storyId)
-  updatedStory.comments.push(comment)
-  save(updatedStory)
-  // return storageService.post(STORAGE_KEY)
-}
+// async function onAddStoryComment(storyId, comment) {
+//   // const updatedStory = await storageService.get(STORAGE_KEY, storyId)
+//   const updatedStory = await getById(storyId)
+//   updatedStory.comments.push(comment)
+//   save(updatedStory)
+//   // return storageService.post(STORAGE_KEY)
+// }
 
 function onRemoveStoryComment(storyId) {
   return storageService.remove(STORAGE_KEY, storyId)
 }
 
 async function query() {
-  const stories = await storageService.query(STORAGE_KEY)
-  if (!stories || !stories.length) _createSrories()
-  return storageService.query(STORAGE_KEY)
+  try {
+    return await httpService.get(STORAGE_KEY) // TODO: ADD FILTER BY!
+  } catch (err) {
+    console.log(err)
+    throw err
+  }
+
+  // const stories = await storageService.query(STORAGE_KEY)
+  // if (!stories || !stories.length) _createSrories()
+  // return storageService.query(STORAGE_KEY)
   // return httpService.get(STORAGE_KEY, filterBy)
 }
 
 function getById(storyId) {
-  return storageService.get(STORAGE_KEY, storyId)
-  // return httpService.get(`story/${storyId}`)
+  // return storageService.get(STORAGE_KEY, storyId)
+  return httpService.get(`story/${storyId}`)
 }
 
 async function remove(storyId) {
@@ -47,22 +56,24 @@ async function remove(storyId) {
 async function save(story) {
   var savedStory
   if (story._id) {
-    savedStory = await storageService.put(STORAGE_KEY, story)
-    // savedStory = await httpService.put(`story/${story._id}`, story)
+    // savedStory = await storageService.put(STORAGE_KEY, story)
+    savedStory = await httpService.put(`story/${story._id}`, story)
 
   } else {
     // Later, owner is set by the backend
     // story.owner = userService.getLoggedinUser()
     const user = userService.getLoggedinUser()
+    console.log(story)
     story.by = {
       _id: user._id,
       username: user.username,
       fullname: user.fullname,
       imgUrl: user.imgUrl
     }
-    savedStory = await storageService.post(STORAGE_KEY, story)
-    // savedStory = await httpService.post('story', story)
+    // savedStory = await storageService.post(STORAGE_KEY, story)
+    savedStory = await httpService.post('story', story)
   }
+  console.log(savedStory)
   return savedStory
 }
 
@@ -95,7 +106,7 @@ function _makeId(length = 4) {
 
 function getEmptyStory() {
   return {
-    _id: "",
+    // _id: "",
     txt: "",
     imgUrl: [],
     comments: [],
@@ -486,8 +497,8 @@ function _createSrories() {
       _id: "s106",
       txt: "worldwide shipping",
       imgUrl: ["https://www.dior.com/couture/var/dior/storage/images/pushs-editos/folder-cruise-23-femme2/folder-prelaunch/m9334utzqm928/38188347-1-eng-GB/m9334utzqm928_1440_1200.png",
-       "https://cdn.cliqueinc.com/posts/295126/best-dior-bags-295126-1658183714371-main.700x0c.jpg",
-       "https://www.dior.com/couture/var/dior/storage/images/pushs-editos/folder-cruise-23-femme2/m1286zmdwm884/38149056-1-eng-GB/m1286zmdwm884_1440_1200.jpg"],
+        "https://cdn.cliqueinc.com/posts/295126/best-dior-bags-295126-1658183714371-main.700x0c.jpg",
+        "https://www.dior.com/couture/var/dior/storage/images/pushs-editos/folder-cruise-23-femme2/m1286zmdwm884/38149056-1-eng-GB/m1286zmdwm884_1440_1200.jpg"],
       by: {
         _id: "seller2",
         fullname: "myibags",
@@ -505,7 +516,7 @@ function _createSrories() {
           },
 
           txt: "good one!",
-          
+
           likedBy: [
             {
               _id: "u105",
@@ -522,9 +533,9 @@ function _createSrories() {
             fullname: "Bob",
             imgUrl: "https://st2.depositphotos.com/3143277/8644/i/600/depositphotos_86446164-stock-photo-business-man-in-office.jpg"
           },
-          
+
           txt: "very nice!",
-          
+
           likedBy: [
             {
               _id: "u105",
@@ -575,7 +586,7 @@ function _createSrories() {
       _id: "s107",
       txt: "",
       imgUrl: ["https://cdn.cliqueinc.com/posts/281381/most-popular-chanel-bags-281381-1563835000997-main.700x0c.jpg",
-       "https://kdvr.com/wp-content/uploads/sites/11/2022/06/000_x-best-chanel-handbag-lookalikes-a5fb98.jpg?w=1280",
+        "https://kdvr.com/wp-content/uploads/sites/11/2022/06/000_x-best-chanel-handbag-lookalikes-a5fb98.jpg?w=1280",
         "https://www.telegraph.co.uk/content/dam/luxury/2021/10/21/GettyImages-1044474606_trans_NvBQzQNjv4BqLzLrDmuUc_Tf9Lumyc958K7Dp_leXmjl6IfADRfEYQs.jpg"],
       by: {
         _id: "seller3",

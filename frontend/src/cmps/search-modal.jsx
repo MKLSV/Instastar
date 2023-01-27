@@ -56,17 +56,16 @@ export function SearchModal({ setSearchModal }) {
             </form>
         </section>
         <div>
-            {filteredUsers.length && filterBy.txt ? filteredUsers.map(user =>
-                <div onClick={() => goTo(user.username)} className="user-container">
+            {filteredUsers.map(user =>
+                // <Link to={user.username} className="user-container">
+                <div key={user._id} onClick={() => goTo(user.username)} className="user-container">
                     <img src={user.imgUrl} />
                     <section>
                         <span className="username">{user.username}</span>
                         <span className="fullname">{user.fullname}</span>
                     </section>
-                </div>)
-                : <div className="empty-search">
-                    <span>No recent searches.</span>
-                </div>}
+                </div>)}
+
         </div>
     </div>
 }

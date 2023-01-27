@@ -21,7 +21,7 @@ export const userService = {
 window.userService = userService
 
 function filterUsers(filterBy, users) {
-    if(!users.length) return
+    if (!users.length) return
     const regex = new RegExp(filterBy.txt, 'i')
     users = users.filter(user => {
         return regex.test(user.username)
@@ -30,16 +30,16 @@ function filterUsers(filterBy, users) {
 }
 
 async function getUsers(filterBy = { txt: '' }) {
-    var users = await storageService.query('user').then(users => users)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        users = users.filter(user => {
-            return regex.test(user.username)
-        })
-        // users = users.filter(user => regex.test(user.unername) || regex.test(car.description))
-    }
-    return users
-    // return httpService.get(`user`)
+    // var users = await storageService.query('user').then(users => users)
+    // if (filterBy.txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i')
+    //     users = users.filter(user => {
+    //         return regex.test(user.username)
+    //     })
+    //     // users = users.filter(user => regex.test(user.unername) || regex.test(car.description))
+    // }
+    // return users
+    return httpService.get(`user`)
 }
 
 async function getById(userId) {
@@ -64,9 +64,10 @@ async function update({ _id }) {
 }
 
 async function login(userCred) {
-    const users = await storageService.query('user')
-    const user = users.find(user => user.username === userCred.username)
-    // const user = await httpService.post('auth/login', userCred)
+    // const users = await storageService.query('user')
+    // const user = users.find(user => user.username === userCred.username)
+    const user = await httpService.post('auth/login', userCred)
+    console.log(user)
     if (user) {
         // socketService.login(user._id)
         return saveLocalUser(user)
@@ -106,13 +107,7 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-// async function _createUser() {
-//     await userService.signup(user)
-//     await userService.signup(user2)
-//     await userService.signup(user3)
-//     await userService.signup(user4)
-//     await userService.signup(user5)
-// }
+
 
 function getEmptyUser() {
     return {
@@ -350,19 +345,21 @@ const user5 = {
         "s124"
     ]
 }
-async function _firstGetUsers() {
-    await userService.signup(user)
-    await userService.signup(user2)
-    await userService.signup(user3)
-    await userService.signup(user4)
-    await userService.signup(user5)
-
-}
 
 
-; (async () => {
-    _firstGetUsers()
-})()
+    // async function _firstGetUsers() {
+    //     await userService.signup(user)
+    //     await userService.signup(user2)
+    //     await userService.signup(user3)
+    //     await userService.signup(user4)
+    //     await userService.signup(user5)
+
+    // }
+
+
+    ; (async () => {
+        await userService.signup(user)
+    })()
 
 
 

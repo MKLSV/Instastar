@@ -11,6 +11,8 @@ export function LoginSwitch({ switchIsOpen }) {
     const logedinUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
 
+    console.log(users)
+
     useEffect(() => {
         loadUsers()
     }, [])

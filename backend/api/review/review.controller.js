@@ -30,17 +30,17 @@ async function deleteReview(req, res) {
 
 
 async function addReview(req, res) {
-    
-    var {loggedinUser} = req
- 
+
+    var { loggedinUser } = req
+
     try {
         var review = req.body
         review.byUserId = loggedinUser._id
         review = await reviewService.add(review)
-        
+
         // prepare the updated review for sending out
         review.aboutUser = await userService.getById(review.aboutUserId)
-        
+
         // Give the user credit for adding a review
         // var user = await userService.getById(review.byUserId)
         // user.score += 10
@@ -56,11 +56,11 @@ async function addReview(req, res) {
         delete review.aboutUserId
         delete review.byUserId
 
-        socketService.broadcast({type: 'review-added', data: review, userId: loggedinUser._id})
-        socketService.emitToUser({type: 'review-about-you', data: review, userId: review.aboutUser._id})
-        
+        socketService.broadcast({ type: 'review-added', data: review, userId: loggedinUser._id })
+        socketService.emitToUser({ type: 'review-about-you', data: review, userId: review.aboutUser._id })
+
         const fullUser = await userService.getById(loggedinUser._id)
-        socketService.emitTo({type: 'user-updated', data: fullUser, label: fullUser._id})
+        socketService.emitTo({ type: 'user-updated', data: fullUser, label: fullUser._id })
 
         res.send(review)
 

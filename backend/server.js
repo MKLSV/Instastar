@@ -24,18 +24,20 @@ if (process.env.NODE_ENV === 'production') {
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const reviewRoutes = require('./api/review/review.routes')
-const carRoutes = require('./api/car/car.routes')
-const {setupSocketAPI} = require('./services/socket.service')
+const storyRoutes = require('./api/story/story.routes')
+// const carRoutes = require('./api/car/car.routes')
+// const {setupSocketAPI} = require('./services/socket.service')
 
 // routes
-const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
-app.all('*', setupAsyncLocalStorage)
+// const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
+// app.all('*', setupAsyncLocalStorage)
 
 app.use('/api/auth', authRoutes)
-app.use('/api/user', userRoutes)
 app.use('/api/review', reviewRoutes)
-app.use('/api/car', carRoutes)
-setupSocketAPI(http)
+app.use('/api/story', storyRoutes)
+app.use('/api/user', userRoutes)
+// app.use('/api/car', carRoutes)
+// setupSocketAPI(http)
 
 // Make every server-side-route to match the index.html
 // so when requesting http://localhost:3030/index.html/car/123 it will still respond with

@@ -30,7 +30,6 @@ export function UserDetails() {
   const profileStories = stories.filter(story => story.by._id === userProfile._id)
   const savedStories = stories.filter(story => user.savedStoryIds.includes(story._id))
 
-
   function onToggle(str) {
     if (!loggedInUser) return
     setToggle(str)

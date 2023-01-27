@@ -17,6 +17,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
 
+ 
     async function onRemoveStory(storyId) {
         try {
             await removeStory(storyId)
@@ -29,7 +30,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         ev.preventDefault()
         const newComment = storyService.createComment(comment.txt, user)
         story.comments.push(newComment)
-        await storyService.onAddStoryComment(story._id, newComment)
+        await storyService.save(story)
         setComment({ txt: '' })
     }
 
