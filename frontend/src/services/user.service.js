@@ -66,7 +66,6 @@ async function login(userCred) {
     // const users = await storageService.query('user')
     // const user = users.find(user => user.username === userCred.username)
     const user = await httpService.post('auth/login', userCred)
-    console.log(user)
     if (user) {
         // socketService.login(user._id)
         return saveLocalUser(user)
@@ -113,10 +112,9 @@ function getEmptyUser() {
 }
 
 const user = {
-    _id: "u101",
-    username: "MukoPuko99",
-    password: "mukmuk",
-    fullname: "Muki Muka",
+    username: "Vasya",
+    password: "12345",
+    fullname: "Vasya Vasilivich",
     imgUrl: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
     bio: 'Traveling and sharing my life! Folow me to see more!',
     following: [
@@ -336,7 +334,7 @@ const user5 = {
 
 
     ; (async () => {
-        await userService.signup(user)
+        await userService.login(user)
     })()
 
 

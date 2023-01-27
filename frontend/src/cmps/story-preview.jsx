@@ -16,7 +16,6 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
 
     const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
-    console.log(user)
 
  
     async function onRemoveStory(storyId) {

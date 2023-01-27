@@ -14,8 +14,7 @@ export function SideBar() {
     //   }, [])
 
 
-    // if (!user) return <div className="loading-page"></div>
-
+    if (!user) return <div className="loading-page"></div>
     return (
         <Fragment>
 

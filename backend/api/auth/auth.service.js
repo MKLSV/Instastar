@@ -31,14 +31,15 @@ async function signup(credentials) {
     console.log('CREEEEEDD',credentials)
     const saltRounds = 10
 
-    logger.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}`)
-    if (!username || !password || !fullname) return Promise.reject('Missing required signup information')
+    logger.debug(`auth.service - signup with username: ${credentials.username}, fullname: ${credentials.fullname}`)
+    if (!credentials.username || !credentials.password || !credentials.fullname) return Promise.reject('Missing required signup information')
 
-    const userExist = await userService.getByUsername(username)
+    const userExist = await userService.getByUsername(credentials.username)
     if (userExist) return Promise.reject('Username already taken')
 
-    const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({ username, password: hash, fullname, imgUrl })
+    const hash = await bcrypt.hash(credentials.password, saltRounds)
+    credentials.password = hash
+    return userService.add(credentials)
 }
 
 
