@@ -6,7 +6,6 @@ import { StoriesList } from '../cmps/stories-list.jsx'
 import { LikesModal } from '../cmps/likes-modal';
 import { LoginSwitch } from '../cmps/login-switch';
 import { loadUsers } from '../store/user.actions';
-import { userService } from '../services/user.service';
 import { Suggestions } from '../cmps/sugesstion';
 
 export function StoryIndex() {
@@ -15,11 +14,6 @@ export function StoryIndex() {
     const [likes, likesIsOpen] = useState([])
     const [userSwitch, switchIsOpen] = useState(false)
     const navigate = useNavigate()
-
-    // console.log(stories)
-    // console.log(user)
-    // console.log(userService.getLoggedinUser())
-    // if(!user) user = userService.getLoggedinUser()
 
     useEffect(() => {
         loadStories()
@@ -30,8 +24,8 @@ export function StoryIndex() {
         navigate('/profile')
     }
 
-    // if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
 
+    if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
     return (
         <Fragment>
             <div className="nested-route">
@@ -42,6 +36,7 @@ export function StoryIndex() {
 
             <div className='contant'>
                 <StoriesList stories={stories} likesIsOpen={likesIsOpen} />
+                {/* <StoriesList stories={stories.reverse()} likesIsOpen={likesIsOpen} /> */}
                 <Suggestions user={user} goToProfile={goToProfile} switchIsOpen={switchIsOpen} />
             </div>
         </Fragment>

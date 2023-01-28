@@ -10,6 +10,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.645);
+
 }
 
 // SWITCH
@@ -50,6 +51,8 @@
     .switch-users {
         border-top: 1px solid #dbdbdb;
         border-bottom: 1px solid #dbdbdb;
+        overflow-y: auto;
+        max-height: 400px;
     }
 
     .switch-user {
@@ -139,30 +142,31 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        
-        
+
+
         .logo {
             margin: 36px 0 12px 0;
-            
+
             img {
                 width: 175px;
                 height: 61px;
             }
         }
-        
-        .login-form{
+
+        .login-form {
             display: flex;
             flex-direction: column;
             margin-top: 24px;
             padding: 0 50px;
             gap: 5px;
 
-            input{
+            input {
                 height: 38px;
                 border: 1px solid #dbdbdb;
                 background-color: #fafafa;
             }
-            button{
+
+            button {
                 background-color: #0095f6;
                 color: white;
                 border-radius: 5px;

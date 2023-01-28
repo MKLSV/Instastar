@@ -11,7 +11,7 @@ import CreateStoryModal from './cmps/create-modal'
 import { LoginSignup } from './cmps/login-signup'
 import { useSelector } from 'react-redux'
 import { UserDetails } from './pages/user-details'
-import { MessagesPage } from './cmps/messages-page'
+import { MessagesPage } from './pages/messages'
 
 
 
@@ -25,7 +25,7 @@ export function RootCmp() {
             <main className='contant-container'>
                 <Routes>
                     <Route path="/post" element={<StoryIndex />} >
-                    <Route path="/post/:id" element={<StoryDetails />} />
+                        <Route path="/post/:id" element={<StoryDetails />} />
                     </Route>
                     <Route path="/" element={<StoryIndex />} />
                     <Route path="/inbox" element={<MessagesPage />} />

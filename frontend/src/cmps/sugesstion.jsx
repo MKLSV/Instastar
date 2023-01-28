@@ -55,7 +55,7 @@ export function Suggestions({ user, goToProfile, switchIsOpen }) {
         </ul>
         <div className='suggestion-more'>
             <span className="more">About • Help • PressAPI • Jobs • Privacy • Terms • Locations • Language</span>
-            <span>© 2023 INSTAMAN</span>
+            <span>© 2023 INSTASTAR</span>
 
         </div>
     </div>

@@ -9,11 +9,11 @@ import { MsgForm } from "./msg-form";
 
 
 
+// export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
 export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     const [comment, setComment] = useState({ txt: '' })
     const [like, setLike] = useState('')
     const [save, setSave] = useState('')
-
     const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
 

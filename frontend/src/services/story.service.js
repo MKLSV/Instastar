@@ -30,7 +30,8 @@ function onRemoveStoryComment(storyId) {
 
 async function query() {
   try {
-    return await httpService.get(STORAGE_KEY) // TODO: ADD FILTER BY!
+    let stories = await httpService.get(STORAGE_KEY)
+    return stories.reverse() // TODO: ADD FILTER BY!
   } catch (err) {
     console.log(err)
     throw err
