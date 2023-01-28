@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux'
 import { Fragment, useState } from 'react'
 import { toggleModal } from '../store/system.action'
 import { SearchModal } from './search-modal'
+import { Notifications } from './notifications'
 
 export function SideBar() {
     const user = useSelector(storeState => storeState.userModule.user)
     const [isExpanted, setIsExpanted] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
+    const [notifications, notificationsModal] = useState(false)
     const [full, setFull] = useState(true)
 
 
@@ -21,14 +23,20 @@ export function SideBar() {
         setSearchModal(!searchModal)
         setFull(!full)
     }
+    function onNotifications() {
+        // setSearchModal(!searchModal)
+        notificationsModal(!notifications)
+        setFull(!full)
+    }
 
 
     if (!user) return <div className="loading-page"></div>
     return (
         <Fragment>
 
-            {searchModal && <SearchModal setSearchModal={setSearchModal} />}
-            {/* <SearchModal setSearchModal={setSearchModal} /> */}
+            {/* {searchModal && <SearchModal setSearchModal={setSearchModal} />} */}
+            <SearchModal setSearchModal={setSearchModal} searchModal={searchModal} full={full} setFull={setFull} />
+            <Notifications setSearchModal={setSearchModal} searchModal={searchModal} full={full} setFull={setFull} notificationsModal={notificationsModal} notifications={notifications}/>
             <div className='test'>
                 <a className='icon' href='/'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png' /></a>
                 <a onClick={toggleModal} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span></a>
@@ -41,6 +49,7 @@ export function SideBar() {
                     <NavLink className='nav-btn' to='/'><span className='nav-icon'><i className="fa-solid fa-house"></i></span><span className='nav-name'>Home</span></NavLink>
                     <a onClick={onSearch} className='nav-btn'><span className='nav-icon'><i className="fa-solid fa-magnifying-glass"></i></span><span className='nav-name' >Search</span></a>
                     <NavLink className='nav-btn' to='/inbox'><span className='nav-icon'>{messagebtn}</span><span className='nav-name'>Messages</span></NavLink>
+                    <a onClick={onNotifications} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-heart"></i></span><span className='nav-name'>Notifications</span></a>
                     <a onClick={toggleModal} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span><span className='nav-name' >Create</span></a>
                     <NavLink className='nav-btn' to={user.username}><span className='nav-icon'><img src={user.imgUrl} /></span><span className='nav-name' >Profile</span></NavLink>
                 </nav>

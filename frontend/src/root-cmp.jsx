@@ -25,7 +25,7 @@ export function RootCmp() {
             <main className='contant-container'>
                 <Routes>
                     <Route path="/post" element={<StoryIndex />} >
-                        <Route path="/post/:id" element={<StoryDetails />} />
+                    <Route path="/post/:id" element={<StoryDetails />} />
                     </Route>
                     <Route path="/" element={<StoryIndex />} />
                     <Route path="/inbox" element={<MessagesPage />} />
