@@ -41,7 +41,7 @@ export function SearchModal({ setSearchModal }) {
         navigate(username)
     }
 
-    return <div className="search-modal">
+    return <div className={setSearchModal ? "search-modal" : "search-modal hide"}>
         <section className="car-filter full main-layout">
             <form onSubmit={onSubmitFilter}>
                 <label htmlFor="vendor">Search</label>

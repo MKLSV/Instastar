@@ -1,13 +1,16 @@
 .search-modal {
-    margin-left: 245px;
+    margin-left: 74px;
     width: 396px;
     height: 100vh;
-    z-index: 100;
+    z-index: 10;
     border-right: 1px solid #dbdbdb;
     position: fixed;
     background-color: #fff;
     box-shadow: 9px 0px 16px 0px #00000021;
     overflow-y: auto;
+    &.hide{
+        margin-right: 400px;
+    }
 
     form {
         padding: 15px;

@@ -92,7 +92,8 @@ function saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
-    // const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+    const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+    if(!user) userService.login(user1)
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
@@ -111,7 +112,7 @@ function getEmptyUser() {
     }
 }
 
-const user = {
+const user1 = {
     username: "Vasya",
     password: "12345",
     fullname: "Vasya Vasilivich",
@@ -333,9 +334,9 @@ const user5 = {
     // }
 
 
-    ; (async () => {
-        await userService.login(user)
-    })()
+    // ; (async () => {
+    //     await userService.login(user)
+    // })()
 
 
 

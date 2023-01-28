@@ -14,6 +14,7 @@ export function StoryIndex() {
     const [likes, likesIsOpen] = useState([])
     const [userSwitch, switchIsOpen] = useState(false)
     const navigate = useNavigate()
+
     // console.log(stories)
     // console.log(user)
     // console.log(userService.getLoggedinUser())

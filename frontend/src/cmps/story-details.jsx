@@ -20,7 +20,6 @@ export function StoryDetails() {
         loadStory()
     }, [])
 
-    const [inputStr, setInputStr] = useState([]);
     const [showPicker, setShowPicker] = useState(false);
 
     const onEmojiClick = (emojiObject, event) => {
@@ -69,17 +68,7 @@ export function StoryDetails() {
         <div className="app">
 
 
-            <div className="picker-container">
-                {/* <input
-                    className="input-style"
-                    value={inputStr}
-                    onChange={e => setInputStr(e.target.value)} /> */}
-                {/* <img
-                    className="emoji-icon"
-                    src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
-                    onClick={() => setShowPicker(val => !val)} /> */}
-
-                    
+            <div className="picker-container">            
                 {showPicker && <EmojiPicker
                     pickerStyle={{ width: '100%' }}
                     onEmojiClick={onEmojiClick} />}

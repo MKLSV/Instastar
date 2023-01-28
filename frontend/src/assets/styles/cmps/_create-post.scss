@@ -9,6 +9,13 @@
     height: 100%;
     z-index: 15;
     background-color: rgba(0, 0, 0, 0.645);
+
+    .picker-container{
+        position: absolute;
+        left: 35%;
+        top: 35%;
+        z-index: 20;
+    }
 }
 
 .create-page {
@@ -75,10 +82,9 @@
     height: calc(100% - 42px);
 
     .img-section {
-        margin: auto;
-        
-        // width: 100%;
-        // height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         img {
             // width: 100%;
