@@ -7,6 +7,7 @@ import { LikesModal } from '../cmps/likes-modal';
 import { LoginSwitch } from '../cmps/login-switch';
 import { loadUsers } from '../store/user.actions';
 import { userService } from '../services/user.service';
+import { Suggestions } from '../cmps/sugesstion';
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
@@ -25,7 +26,7 @@ export function StoryIndex() {
         loadUsers()
     }, [])
 
-    function goToProfile(){
+    function goToProfile() {
         navigate('/profile')
     }
 
@@ -41,7 +42,8 @@ export function StoryIndex() {
 
             <div className='contant'>
                 <StoriesList stories={stories} likesIsOpen={likesIsOpen} />
-                <div className='suggestions'>
+                <Suggestions user={user} goToProfile={goToProfile} switchIsOpen={switchIsOpen} />
+                {/* <div className='suggestions'>
                     <div className='suggestion-header'>
                         <div className='suggestion-user-info'>
                             <img className='suggestion-photo' src={user.imgUrl} onClick={goToProfile} />
@@ -52,6 +54,8 @@ export function StoryIndex() {
                         </div>
                         <a className='suggestion-switch' onClick={() => switchIsOpen(true)}>Switch</a>
                     </div>
+
+                    
                     <div className='suggestion-options'>
                         <span>Suggestions For You</span>
                         <a>See All</a>
@@ -90,7 +94,7 @@ export function StoryIndex() {
                         </li>
 
                     </ul>
-                </div>
+                </div> */}
             </div>
         </Fragment>
     )
