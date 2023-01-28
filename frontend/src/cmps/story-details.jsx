@@ -6,15 +6,18 @@ import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
 import EmojiPicker from 'emoji-picker-react';
 import Slider from "react-slick";
+import { userService } from "../services/user.service.js";
 
 export function StoryDetails() {
     const [story, setStory] = useState(null)
     const [comment, setComment] = useState({ txt: '' })
+    const [like, setLike] = useState('')
+    const [save, setSave] = useState('')
+
     const user = useSelector(storeState => storeState.userModule.user)
     const params = useParams()
     const navigate = useNavigate()
-    console.log('COMMENT', comment)
-    console.log(story)
+
 
     useEffect(() => {
         loadStory()
@@ -24,7 +27,7 @@ export function StoryDetails() {
 
     const onEmojiClick = (emojiObject, event) => {
         // setInputStr(prevInput => prevInput + emojiObject.emoji);
-        setComment( { txt: comment.txt + emojiObject.emoji })
+        setComment({ txt: comment.txt + emojiObject.emoji })
         setShowPicker(false)
     }
 
@@ -62,13 +65,50 @@ export function StoryDetails() {
         })
     }
 
+    function checkLike() {
+        return story.likedBy.some(likedUser => likedUser._id === user._id)
+    }
+
+    function toggleLike() {
+        if (checkLike()) {
+            const idx = story.likedBy.findIndex(likedUser => likedUser._id === user._id)
+            story.likedBy.splice(idx, 1)
+        }
+
+        else story.likedBy.push({
+            _id: user._id,
+            fullname: user.fullname,
+            username: user.username,
+            imgUrl: user.imgUrl
+        })
+        storyService.save(story)
+        setLike(checkLike())
+    }
+
+    function checkSave() {
+        return user.savedStoryIds.some(id => id === story._id)
+    }
+
+    function toggleSave() {
+
+        if (checkSave()) {
+            const idx = user.savedStoryIds.findIndex(id => id === story._id)
+            user.savedStoryIds.splice(idx, 1)
+        }
+
+        else user.savedStoryIds.push(story._id)
+        userService.update(user)
+        setSave(checkSave())
+    }
+
+
 
     if (!story) return <div className="loading-page"><span className="loading"></span></div>
     return <div className="story-details">
         <div className="app">
 
 
-            <div className="picker-container">            
+            <div className="picker-container">
                 {showPicker && <EmojiPicker
                     pickerStyle={{ width: '100%' }}
                     onEmojiClick={onEmojiClick} />}
@@ -78,11 +118,11 @@ export function StoryDetails() {
 
         <section className="story-container">
             <div className="image">
-            {story.imgUrl.length > 1 ?
-                <Slider dots={true} infinite={false}>
-                    {story.imgUrl.map(img => <img key={story.imgUrl} className="story-img" src={img} />)}
-                </Slider>
-                : <img className="story-img" src={story.imgUrl[0]} />}
+                {story.imgUrl.length > 1 ?
+                    <Slider dots={true} infinite={false}>
+                        {story.imgUrl.map(img => <img key={story.imgUrl} className="story-img" src={img} />)}
+                    </Slider>
+                    : <img className="story-img" src={story.imgUrl[0]} />}
             </div>
             <div className="details-comment">
                 <div>
@@ -129,9 +169,11 @@ export function StoryDetails() {
                         </div>
                         <div className="footer-container">
                             <div className="btn-container">
-                                <a><i className="fa-regular fa-heart"></i></a>
+                                {/* <a><i className="fa-regular fa-heart"></i></a> */}
+                                <a onClick={toggleLike}><i className={checkLike() ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i></a>
                                 <a><i className="fa-regular fa-comment"></i></a>
                                 <a><i className="fa-regular fa-paper-plane"></i></a>
+                                <a onClick={toggleSave} className="saved-btn"><i className={checkSave() ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark"}></i></a>
                             </div>
                             <div className="likes-time">
                                 <a>{story.likedBy.length} likes</a>

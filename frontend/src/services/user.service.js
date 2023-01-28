@@ -52,11 +52,11 @@ function remove(userId) {
     // return httpService.delete(`user/${userId}`)
 }
 
-async function update({ _id }) {
-    const user = await storageService.get('user', _id)
-    await storageService.put('user', user)
+async function update(userToUpdate) {
+    // const user = await storageService.get('user', _id)
+    // await storageService.put('user', user)
 
-    // const user = await httpService.put(`user/${_id}`, {_id, score})
+    const user = await httpService.put(`user/${userToUpdate._id}`, userToUpdate)
     // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
     return user
@@ -93,7 +93,7 @@ function saveLocalUser(user) {
 
 function getLoggedinUser() {
     const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-    if(!user) userService.login(user1)
+    if (!user) userService.login(user1)
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
@@ -153,191 +153,3 @@ const user1 = {
         "s123"
     ]
 }
-const user2 = {
-
-    "username": "ShukiD12",
-    "password": "shuki",
-    "bio": "Hello my friends! GhatGPT dosent work so i dont know what to write here!",
-    "fullname": "Mr.Shuki",
-
-    "imgUrl": "https://st.depositphotos.com/1005844/1403/i/600/depositphotos_14039169-stock-photo-young-man-outdoor.jpg",
-    "following": [
-        {
-            "_id": "u107",
-            "fullname": "Dudu",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u101",
-            "fullname": "Roberto",
-            "imgUrl": "http://some-img"
-        }
-    ],
-    "followers": [
-        {
-            "_id": "u116",
-            "fullname": "Don",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u126",
-            "fullname": "Goblin",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u136",
-            "fullname": "Fobim",
-            "imgUrl": "http://some-img"
-        }
-    ],
-    "savedStoryIds": [
-        "s105",
-        "s112",
-        "s124"
-    ]
-}
-const user3 = {
-    "username": "lady_shoes_and_bags",
-    "password": "123456",
-    "bio": "Waze:- lady shoes",
-    "fullname": "Lady Shoes & Bags 👠",
-
-    "imgUrl": "https://cdn.shopify.com/s/files/1/0074/6320/7027/articles/ultimate-guide-to-womens-bags_2048x.jpg?v=1572446822",
-    "following": [
-        {
-            "_id": "u107",
-            "fullname": "Dudu",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u101",
-            "fullname": "Roberto",
-            "imgUrl": "http://some-img"
-        }
-    ],
-    "followers": [
-        {
-            "_id": "u116",
-            "fullname": "Don",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u126",
-            "fullname": "Goblin",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u136",
-            "fullname": "Fobim",
-            "imgUrl": "http://some-img"
-        }
-    ],
-    "savedStoryIds": [
-        "s105",
-        "s112",
-        "s124"
-    ]
-}
-const user4 = {
-    "username": "myibags",
-    "password": "123456",
-    "bio": "worldwide shipping",
-    "fullname": "myibags",
-
-    "imgUrl": "https://assets.vogue.com/photos/615347cdd43372473562f36d/4:3/w_939,h_704,c_limit/1216-VO-WELL27-02.jpg",
-    "following": [
-        {
-            "_id": "u107",
-            "fullname": "Dudu",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u101",
-            "fullname": "Roberto",
-            "imgUrl": "http://some-img"
-        }
-    ],
-    "followers": [
-        {
-            "_id": "u116",
-            "fullname": "Don",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u126",
-            "fullname": "Goblin",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u136",
-            "fullname": "Fobim",
-            "imgUrl": "http://some-img"
-        }
-    ],
-    "savedStoryIds": [
-        "s105",
-        "s112",
-        "s124"
-    ]
-}
-const user5 = {
-    "username": "chanelofficial",
-    "password": "123456",
-    "bio": "Welcome to chanel!",
-    "fullname": "chanelofficial",
-
-    "imgUrl": "http://cdn.shopify.com/s/files/1/0434/3103/5031/products/Sticker-autocollant-Logo-chanel-metallique-Deco-Sticker-Store-412.png?v=1672147188",
-    "following": [
-        {
-            "_id": "u107",
-            "fullname": "Dudu",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u101",
-            "fullname": "Roberto",
-            "imgUrl": "http://some-img"
-        }
-    ],
-    "followers": [
-        {
-            "_id": "u116",
-            "fullname": "Don",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u126",
-            "fullname": "Goblin",
-            "imgUrl": "http://some-img"
-        },
-        {
-            "_id": "u136",
-            "fullname": "Fobim",
-            "imgUrl": "http://some-img"
-        }
-    ],
-    "savedStoryIds": [
-        "s105",
-        "s112",
-        "s124"
-    ]
-}
-
-
-    // async function _firstGetUsers() {
-    //     await userService.signup(user)
-    //     await userService.signup(user2)
-    //     await userService.signup(user3)
-    //     await userService.signup(user4)
-    //     await userService.signup(user5)
-
-    // }
-
-
-    // ; (async () => {
-    //     await userService.login(user)
-    // })()
-
-
-
-

@@ -17,7 +17,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     const { imgUrl, txt, likedBy, comments } = story
     const user = useSelector(storeState => storeState.userModule.user)
 
- 
+
     async function onRemoveStory(storyId) {
         try {
             await removeStory(storyId)
@@ -59,19 +59,15 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     }
 
     function toggleSave() {
-        console.log(user.savedStoryIds)
-        console.log(story._id)
-        console.log(checkSave())
         if (checkSave()) {
             const idx = user.savedStoryIds.findIndex(id => id === story._id)
             user.savedStoryIds.splice(idx, 1)
         }
 
         else user.savedStoryIds.push(story._id)
-        storyService.save(story)
+        userService.update(user)
         setSave(checkSave())
     }
-
 
     return <div>
         <div className='top-side-bar'></div>

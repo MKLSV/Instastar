@@ -9,7 +9,7 @@ module.exports = {
     getById,
     getByUsername,
     remove,
-    // update,
+    update,
     add
 }
 
@@ -73,21 +73,21 @@ async function remove(userId) {
     }
 }
 
-// async function update(user) {
-//     try {
-//         // peek only updatable properties
-//         const userToSave = {
-//             ...user,
-//             _id: ObjectId(user._id) // needed for the returnd obj
-//         }
-//         const collection = await dbService.getCollection(DB_NAME)
-//         await collection.updateOne({ _id: userToSave._id }, { $set: userToSave })
-//         return userToSave
-//     } catch (err) {
-//         logger.error(`cannot update user ${user._id}`, err)
-//         throw err
-//     }
-// }
+async function update(user) {
+    try {
+        // peek only updatable properties
+        const userToSave = {
+            ...user,
+            _id: ObjectId(user._id) // needed for the return obj
+        }
+        const collection = await dbService.getCollection(DB_NAME)
+        await collection.updateOne({ _id: userToSave._id }, { $set: userToSave })
+        return userToSave
+    } catch (err) {
+        logger.error(`cannot update user ${user._id}`, err)
+        throw err
+    }
+}
 
 async function add(user) {
     try {

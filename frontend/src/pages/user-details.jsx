@@ -6,12 +6,15 @@ import { IoMdApps } from 'react-icons/io'
 import { BsBookmark, BsPersonSquare } from 'react-icons/bs'
 import { useNavigate, useParams } from 'react-router-dom'
 import { loadUsers } from '../store/user.actions'
+import { userService } from '../services/user.service'
 
 export function UserDetails() {
   const user = useSelector(storeState => storeState.userModule.user)
   const users = useSelector(storeState => storeState.userModule.users)
   const stories = useSelector(storeState => storeState.storyModule.stories)
   const params = useParams()
+
+  const [follow, setFollow] = useState('')
   const [toggle, setToggle] = useState('posts')
 
   const navigate = useNavigate()
@@ -43,6 +46,41 @@ export function UserDetails() {
   }
 
 
+  function checkFollow() {
+    return user.following.some(user => user._id === userProfile._id)
+  }
+
+
+  function toggleFollow() {
+    if (checkFollow()) {
+      const idx = user.following.findIndex(user => user._id === userProfile._id)
+      user.following.splice(idx, 1)
+
+      const userProfileIdx = userProfile.followers.findIndex(userProfile => userProfile._id === user._id)
+      userProfile.followers.splice(userProfileIdx, 1)
+    }
+
+    else {
+      user.following.push({
+        _id: userProfile._id,
+        fullname: userProfile.fullname,
+        username: userProfile.username,
+        imgUrl: userProfile.imgUrl
+      })
+
+      userProfile.followers.push({
+        _id: user._id,
+        fullname: user.fullname,
+        username: user.username,
+        imgUrl: user.imgUrl
+      })
+    }
+    userService.update(user)
+    userService.update(userProfile)
+    setFollow(checkFollow())
+  }
+
+  if (!userProfile) return <div className="loading-page"><span className="loading"></span></div>
   return <div className="profile-page">
     <div className="profile-container">
       <section className="profile-header">
@@ -55,7 +93,7 @@ export function UserDetails() {
             :
             <div className="profile-info-header">
               <a>{userProfile.username}</a>
-              <button>Follow</button>
+              {checkFollow() ? <button onClick={toggleFollow}>Following</button> : <button onClick={toggleFollow} className='follow'>Follow</button>}
               <button>Message</button>
             </div>}
           <div className="user-info">
@@ -95,7 +133,7 @@ export function UserDetails() {
           </section>
           :
           <section className="profile-stories">
-            {savedStories.map(story => <img key={story._id} src={story.imgUrl} />)}
+            {savedStories.map(story => <img key={story._id} src={story.imgUrl[0]} />)}
           </section>
         }
       </div>
