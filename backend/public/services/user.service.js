@@ -1,4 +1,5 @@
 import { storageService } from './async-storage.service.js'
+import { socketService } from '../../services/socket.service'
 // import { httpService } from './http.service.js'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -48,7 +49,7 @@ async function login(userCred) {
     const user = users.find(user => user.username === userCred.username)
     // const user = await httpService.post('auth/login', userCred)
     if (user) {
-        // socketService.login(user._id)
+        socketService.login(user._id)
         return saveLocalUser(user)
     }
 }
@@ -57,7 +58,7 @@ async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     const user = await storageService.post('user', userCred)
     // const user = await httpService.post('auth/signup', userCred)
-    // socketService.login(user._id)
+    socketService.login(user._id)
     return saveLocalUser(user)
 }
 async function logout() {

@@ -3,13 +3,13 @@ import { createStore, combineReducers } from 'redux'
 import { storyReducer } from './story.reducer.js'
 import { userReducer } from './user.reducer.js'
 import { systemReducer } from './system.reducer'
-import { reviewReducer } from './review.reducer'
+import { messageReducer } from './message.reducer'
 
 const rootReducer = combineReducers({
     storyModule: storyReducer,
     userModule: userReducer,
     systemModule: systemReducer,
-    reviewModule: reviewReducer,
+    messageModule: messageReducer,
     
 })
 

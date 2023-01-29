@@ -13,7 +13,8 @@ import { useSelector } from 'react-redux'
 import { UserDetails } from './pages/user-details'
 import { MessagesPage } from './pages/messages'
 import { ChatApp } from './pages/chat-app'
-import { ReviewIndex } from './pages/review-index'
+// import { ReviewIndex } from './pages/review-index'
+import { Messanger } from './pages/messanger'
 
 
 
@@ -30,11 +31,11 @@ export function RootCmp() {
                         <Route path="/post/:id" element={<StoryDetails />} />
                     </Route>
                     <Route path="/" element={<StoryIndex />} />
-                    <Route path="/inbox" element={<MessagesPage />} />
                     <Route path="/:username" element={<UserDetails />} />
+                    <Route path="inbox" element={<Messanger />} />
                     <Route path="login" element={<LoginSignup />} />
                     <Route path="chat" element={<ChatApp />} />
-                    <Route path="review" element={<ReviewIndex />} />
+                    {/* <Route path="review" element={<ReviewIndex />} /> */}
                 </Routes>
             </main>
         </div>

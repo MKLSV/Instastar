@@ -26,9 +26,7 @@ async function login(username, password) {
 }
    
 
-// async function signup({username, password, fullname, imgUrl}) {
 async function signup(credentials) {
-    console.log('CREEEEEDD',credentials)
     const saltRounds = 10
 
     logger.debug(`auth.service - signup with username: ${credentials.username}, fullname: ${credentials.fullname}`)
@@ -45,7 +43,6 @@ async function signup(credentials) {
 
 function getLoginToken(user) {
     const userInfo = {_id : user._id, fullname: user.fullname, username: user.username}
-    // const userInfo = {_id : user._id, fullname: user.fullname, isAdmin: user.isAdmin}
     return cryptr.encrypt(JSON.stringify(userInfo))    
 }
 
