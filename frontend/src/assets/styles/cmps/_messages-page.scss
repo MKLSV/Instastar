@@ -23,7 +23,7 @@
             width: 309px;
             height: 60px;
             border-bottom: 1px solid #dbdbdb;
-            border-right: 1px solid #dbdbdb;
+            // border-right: 1px solid #dbdbdb;
 
             a {
                 cursor: pointer;
@@ -107,11 +107,13 @@
         }
     }
 
+
     .messanger-container {
         width: 543px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        border-left: 1px solid #dbdbdb;
         // height: 100%;
 
         header {
@@ -159,15 +161,15 @@
                 gap: 5px;
                 justify-content: flex-start;
                 align-items: flex-end;
-                
-                
+
+
                 img {
                     width: 24px;
                     height: 24px;
                     object-fit: cover;
                     border-radius: 50%;
                 }
-                
+
                 span {
                     max-width: 50%;
                     padding: 12px;
@@ -179,6 +181,7 @@
 
             .logged-user {
                 justify-content: flex-end;
+
                 span {
                     background-color: #efefef;
                 }
@@ -186,7 +189,7 @@
             }
         }
 
-        .input-section{
+        .input-section {
             font-size: 14px;
             border: 1px solid #dbdbdb;
             border-radius: 40px;

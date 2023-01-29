@@ -1,5 +1,5 @@
 import EmojiPicker from "emoji-picker-react"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { messageService } from "../services/message.service"
@@ -12,13 +12,24 @@ export function MessangerContainer({ currChat, onAddMessage }) {
     const [message, setMessage] = useState({ txt: '' })
 
     const [shouldRenderEmojiPicker, setShouldRenderEmojiPicker] = useState(false)
+    const divRef = useRef(null);
+    
+    useEffect(() => {
+        divRef.current.scrollTop = divRef.current.scrollHeight
+    }, [messages]);
+
+    // var objDiv = document.getElementsByClassName("messages-list");
+    // objDiv.scrollTop = objDiv.scrollHeight;
+
 
     const onReciveMessage = (msg) => {
         console.log(msg)
+        setMessages(prevMessages => [...prevMessages, msg])
     }
     useEffect(() => {
         // socketService.on('message-to-you', console.log('hello2'))
         socketService.on('message-to-user', onReciveMessage)
+
         return () => {
             // socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
             socketService.off('message-to-user', onReciveMessage)
@@ -79,7 +90,7 @@ export function MessangerContainer({ currChat, onAddMessage }) {
             </div>
         </header>
 
-        <div className="messages-list">
+        <div className="messages-list" ref={divRef}>
             {!!messages.length && messages.map(message => {
                 const isMyMessage = (message.toUserId === user._id)
                 return <section className={"user-message" + (!isMyMessage ? ' logged-user' : '')} key={message._id}>

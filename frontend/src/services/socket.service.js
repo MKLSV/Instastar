@@ -4,6 +4,8 @@ import { userService } from './user.service'
 export const SOCKET_SET_CHAT = 'set-chat'
 export const SOCKET_SEND_MSG = 'chat-send-msg'
 
+export const SOCKET_MESSAEGE_TO_USER = 'message-to-user'
+
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
 export const SOCKET_EMIT_SET_TOPIC = 'chat-set-topic'
