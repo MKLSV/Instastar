@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { toggleModal } from '../store/system.action'
 import { SearchModal } from './search-modal'
 import { Notifications } from './notifications'
@@ -9,6 +9,8 @@ import { Notifications } from './notifications'
 
 export function SideBar() {
     const user = useSelector(storeState => storeState.userModule.user)
+    const newMessage = useSelector(storeState => storeState.messageModule.newMessage)
+    console.log(newMessage)
     const [isExpanted, setIsExpanted] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
     const [notifications, notificationsModal] = useState(false)
@@ -18,8 +20,9 @@ export function SideBar() {
     const messagebtn = <svg aria-label="Messenger" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M12.003 2.001a9.705 9.705 0 1 1 0 19.4 10.876 10.876 0 0 1-2.895-.384.798.798 0 0 0-.533.04l-1.984.876a.801.801 0 0 1-1.123-.708l-.054-1.78a.806.806 0 0 0-.27-.569 9.49 9.49 0 0 1-3.14-7.175 9.65 9.65 0 0 1 10-9.7Z" fill="none" stroke="currentColor" strokeMiterlimit="10" strokeWidth="1.739"></path><path d="M17.79 10.132a.659.659 0 0 0-.962-.873l-2.556 2.05a.63.63 0 0 1-.758.002L11.06 9.47a1.576 1.576 0 0 0-2.277.42l-2.567 3.98a.659.659 0 0 0 .961.875l2.556-2.049a.63.63 0 0 1 .759-.002l2.452 1.84a1.576 1.576 0 0 0 2.278-.42Z" fillRule="evenodd"></path></svg>
 
     // useEffect(() => {
-    //     loadUsers()
-    //   }, [])
+    //     // elInputRef.current.focus()
+    //     // loadUsers()
+    // }, [newMessage])
 
     function onSearch() {
         setSearchModal(!searchModal)
@@ -55,7 +58,7 @@ export function SideBar() {
                 <nav>
                     <NavLink className='nav-btn' to='/'><span className='nav-icon'><i className="fa-solid fa-house"></i></span><span className='nav-name'>Home</span></NavLink>
                     <a onClick={onSearch} className='nav-btn'><span className='nav-icon'><i className="fa-solid fa-magnifying-glass"></i></span><span className='nav-name' >Search</span></a>
-                    <NavLink className='nav-btn' to='/inbox'><span className='nav-icon'>{messagebtn}</span><span className='nav-name'>Messages</span></NavLink>
+                    <NavLink className='nav-btn' to='/inbox'><span className='nav-icon'>{messagebtn}</span>{newMessage && newMessage.review ? <span className='new-msg'></span> : null}<span className='nav-name'>Messages</span></NavLink>
                     <a onClick={onNotifications} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-heart"></i></span><span className='nav-name'>Notifications</span></a>
                     <a onClick={toggleModal} className='nav-btn mobile'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span><span className='nav-name' >Create</span></a>
                     <NavLink className='nav-btn' to={user.username}><span className='nav-icon'><img src={user.imgUrl} /></span><span className='nav-name' >Profile</span></NavLink>

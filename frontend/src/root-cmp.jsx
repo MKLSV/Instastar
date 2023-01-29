@@ -15,6 +15,7 @@ import { MessagesPage } from './pages/messages'
 import { ChatApp } from './pages/chat-app'
 // import { ReviewIndex } from './pages/review-index'
 import { Messanger } from './pages/messanger'
+import { MessangerContainer } from './cmps/messanger-container'
 
 
 
@@ -32,7 +33,9 @@ export function RootCmp() {
                     </Route>
                     <Route path="/" element={<StoryIndex />} />
                     <Route path="/:username" element={<UserDetails />} />
-                    <Route path="inbox" element={<Messanger />} />
+                    <Route path="inbox" element={<Messanger />} >
+                        <Route path=":id" element={<Messanger />} />
+                    </Route>
                     <Route path="login" element={<LoginSignup />} />
                     <Route path="chat" element={<ChatApp />} />
                     {/* <Route path="review" element={<ReviewIndex />} /> */}

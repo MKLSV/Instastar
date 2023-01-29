@@ -133,11 +133,12 @@
                 font-size: 16px;
                 font-weight: 600;
                 color: #262626;
+                cursor: pointer;
 
                 img {
                     width: 24px;
                     height: 24px;
-                    object-fit: contain;
+                    object-fit: cover;
                     border-radius: 50%;
                 }
             }
@@ -197,6 +198,48 @@
             width: auto;
         }
 
+    }
+
+    .messanger-empty-container {
+        width: 543px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        border-left: 1px solid #dbdbdb;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .logo-text {
+                margin-top: 15px;
+                font-size: 20px;
+            }
+
+            .logo-some-text {
+                margin-top: 5px;
+                font-size: 14px;
+                color: #8e8e8e;
+            }
+
+            button {
+                margin-top: 24px;
+                background-color: #0095f6;
+                color: white;
+                font-weight: 600;
+                padding: 7px 16px;
+                border-radius: 8px;
+                border: none;
+                font-size: 14px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #007cce;
+                }
+            }
+        }
     }
 
 }

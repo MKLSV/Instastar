@@ -50,6 +50,10 @@ export function UserDetails() {
     return user.following.some(user => user._id === userProfile._id)
   }
 
+  function goToMessages() {
+    navigate(`/inbox/${userProfile._id}`)
+  }
+
 
   function toggleFollow() {
     if (checkFollow()) {
@@ -94,7 +98,7 @@ export function UserDetails() {
             <div className="profile-info-header">
               <a>{userProfile.username}</a>
               {checkFollow() ? <button onClick={toggleFollow}>Following</button> : <button onClick={toggleFollow} className='follow'>Follow</button>}
-              <button>Message</button>
+              <button onClick={goToMessages}>Message</button>
             </div>}
           <div className="user-info">
             <section><a className="user-number">{profileStories.length}</a><a> posts</a></section>

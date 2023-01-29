@@ -1,6 +1,6 @@
 import { reviewService } from '../services/review.service'
 import { store } from './store.js'
-import { ADD_MESSAGE, REMOVE_MESSAGE, SET_MESSAGES } from './message.reducer'
+import { ADD_MESSAGE, NEW_MESSAGE, REMOVE_MESSAGE, SET_MESSAGES } from './message.reducer'
 import { SET_SCORE, SET_WATCHED_USER } from './user.reducer'
 import { messageService } from '../services/message.service'
 
@@ -11,6 +11,12 @@ export function getActionRemoveReview(reviewId) {
 export function getActionAddReview(review) {
   return { type: ADD_MESSAGE, review }
 }
+
+export function gotNewMessage(review) {
+  console.log(review)
+  return { type: NEW_MESSAGE, review }
+}
+
 export function getActionSetWatchedUser(user) {
   return { type: SET_WATCHED_USER, user }
 }

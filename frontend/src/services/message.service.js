@@ -2,7 +2,7 @@ import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 
 import { socketService, SOCKET_MESSAEGE_TO_USER } from './socket.service'
-import { getActionAddReview } from '../store/message.actions'
+import { getActionAddReview, gotNewMessage } from '../store/message.actions'
 import { store } from '../store/store'
 
 
@@ -10,6 +10,7 @@ import { store } from '../store/store'
     socketService.on(SOCKET_MESSAEGE_TO_USER, (message) => {
         console.log('GOT from socket', message)
         store.dispatch(getActionAddReview(message))
+        store.dispatch(gotNewMessage(true))
     })
     // socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
     //     showSuccessMsg(`New review about me ${review.txt}`)

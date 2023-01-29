@@ -1,15 +1,30 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { MessangerContainer } from '../cmps/messanger-container'
 import { messageService } from '../services/message.service'
 import { socketService } from '../services/socket.service'
+import { gotNewMessage } from '../store/message.actions'
+import { store } from '../store/store'
 
 export function Messanger() {
   const [chatMap, setChatMap] = useState({})
   const [currChat, setCurrChat] = useState({})
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
+  const navigate = useNavigate()
+
+  store.dispatch(gotNewMessage(false))
 
   const user = useSelector(storeState => storeState.userModule.user)
+  const params = useParams()
+  const chatWithId = params.id
+
+  console.log(currChat)
+
+
+  // useEffect(() => {
+  //   console.log(params.id)
+  // }, [params])
 
 
   useEffect(() => {
@@ -41,6 +56,11 @@ export function Messanger() {
     setChatMap(chatMapCopy)
   }
 
+  function goToUserChat(user) {
+    // setCurrChat(user)
+    navigate(`${user.withUserId}`)
+  }
+
 
 
   return <div className="messages-page">
@@ -55,26 +75,32 @@ export function Messanger() {
 
         <div className="users-container" >
           {!!Object.keys(chatMap).length && Object.keys(chatMap).map(chatWith => {
-            return <div className="user-info" key={chatWith} onClick={() => setCurrChat(chatMap[chatWith])}>
+            return <div className="user-info" key={chatWith} onClick={() => goToUserChat(chatMap[chatWith])}>
+              {/* return <div className="user-info" key={chatWith} onClick={() => setCurrChat(chatMap[chatWith])}> */}
+              {/*  return <Link className="user-info" key={chatWith} to={`/inbox/${chatMap[chatWith].withUserId}`}> */}
               <img src={chatMap[chatWith].imgUrl} />
-              <section className="new">
+              <section>
                 <span className="username">{chatMap[chatWith].username}</span>
                 <div className="message"><span>{chatMap[chatWith].txt}</span><span className="time">•</span><span className="time">Just now</span></div>
               </section>
             </div>
+            // </Link>
           })}
         </div>
 
       </section>
-      {Object.keys(currChat).length === 0 ?
-        <div className="messanger-container">
-          <svg aria-label="Direct" class="_ab6-" color="#262626" fill="#262626" height="96" role="img" viewBox="0 0 96 96" width="96"><circle cx="48" cy="48" fill="none" r="47" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="69.286" x2="41.447" y1="33.21" y2="48.804"></line><polygon fill="none" points="47.254 73.123 71.376 31.998 24.546 32.002 41.448 48.805 47.254 73.123" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg>
-          <span>Your Messages</span>
-          <p>Send private photos and messages to a friend or group.</p>
-          <button>Send Message</button>
+      {Object.keys(currChat).length === 0 && !chatWithId ?
+        <div className="messanger-empty-container">
+          <div>
+            <svg aria-label="Direct" className="_ab6-" color="#262626" fill="#262626" height="96" role="img" viewBox="0 0 96 96" width="96"><circle cx="48" cy="48" fill="none" r="47" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></circle><line fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2" x1="69.286" x2="41.447" y1="33.21" y2="48.804"></line><polygon fill="none" points="47.254 73.123 71.376 31.998 24.546 32.002 41.448 48.805 47.254 73.123" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></polygon></svg>
+            <span className='logo-text'>Your Messages</span>
+            <span className='logo-some-text'>Send private messages to a friend or group.</span>
+            <button>Send Message</button>
+          </div>
         </div>
         :
-        <MessangerContainer currChat={currChat} onAddMessage={onAddMessage} />
+        <MessangerContainer chatWithId={chatWithId} currChat={currChat} onAddMessage={onAddMessage} />
+        // <MessangerContainer currChat={currChat} onAddMessage={onAddMessage} />
       }
 
     </div>
