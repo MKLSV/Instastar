@@ -72,9 +72,10 @@ async function remove(reviewId) {
 
 async function add(review) {
     try {
+        console.log(review)
         const reviewToAdd = {
-            byUserId: ObjectId(review.byUserId),
-            aboutUserId: ObjectId(review.aboutUserId),
+            byUserId: ObjectId(review.byUser._id),
+            aboutUserId: ObjectId(review.aboutUser._id),
             txt: review.txt
         }
         const collection = await dbService.getCollection('review')

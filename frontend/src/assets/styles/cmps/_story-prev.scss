@@ -185,23 +185,24 @@
 
 ///////// mobile//////
 @include for-mobile-layout {
+    .story-preview {
+        .story-header {
+            margin-top: 10px;
+            padding: 0 6px;
+            height: 48px;
+        }
 
-    .story-header {
-        margin-top: 10px;
-        padding: 0 6px;
-        height: 48px;
-    }
+        .story-img {
+            max-height: 400px;
+        }
 
-    .story-img {
-        max-height: 400px;
-    }
+        .story-footer {
+            padding: 0 16px;
+        }
 
-    .story-footer {
-        padding: 0 16px;
-    }
-
-    input {
-        display: none;
+        input {
+            display: none;
+        }
     }
 }
 

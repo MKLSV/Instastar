@@ -1,5 +1,6 @@
 // import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
+import { httpService } from './http.service'
 import { userService } from './user.service'
 
 
@@ -11,8 +12,8 @@ export const reviewService = {
 
 function query(filterBy) {
   var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-  // return httpService.get(`review${queryStr}`)
-  return storageService.query('review')
+  return httpService.get(`review${queryStr}`)
+  // return storageService.query('review')
 }
 
 async function remove(reviewId) {
@@ -21,10 +22,9 @@ async function remove(reviewId) {
 }
 
 async function add({txt, aboutUserId}) {
-  // const addedReview = await httpService.post(`review`, {txt, aboutUserId})
   
   const aboutUser = await userService.getById(aboutUserId)
-
+  
   const reviewToAdd = {
     txt,
     byUser: userService.getLoggedinUser(),
@@ -36,6 +36,7 @@ async function add({txt, aboutUserId}) {
   }
 
   await userService.update(reviewToAdd.byUser)
-  const addedReview = await storageService.post('review', reviewToAdd)
-  return addedReview
+  await httpService.post(`review`, reviewToAdd)
+  // const addedReview = await storageService.post('review', reviewToAdd)
+  return reviewToAdd
 }

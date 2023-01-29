@@ -35,33 +35,31 @@ async function addReview(req, res) {
 
     try {
         var review = req.body
-        review.byUserId = loggedinUser._id
+        // review.byUserId = loggedinUser._id
         review = await reviewService.add(review)
 
         // prepare the updated review for sending out
         review.aboutUser = await userService.getById(review.aboutUserId)
 
         // Give the user credit for adding a review
-        // var user = await userService.getById(review.byUserId)
+        var user = await userService.getById(review.byUserId)
         // user.score += 10
-        loggedinUser.score += 10
+        // loggedinUser.score += 10
 
-        loggedinUser = await userService.update(loggedinUser)
-        review.byUser = loggedinUser
+        // loggedinUser = await userService.update(loggedinUser)
+        // review.byUser = loggedinUser
 
         // User info is saved also in the login-token, update it
-        const loginToken = authService.getLoginToken(loggedinUser)
+        const loginToken = authService.getLoginToken(user)
         res.cookie('loginToken', loginToken)
 
         delete review.aboutUserId
         delete review.byUserId
-
-        socketService.broadcast({ type: 'review-added', data: review, userId: loggedinUser._id })
+        socketService.broadcast({ type: 'review-added', data: review, userId: user._id })
         socketService.emitToUser({ type: 'review-about-you', data: review, userId: review.aboutUser._id })
 
-        const fullUser = await userService.getById(loggedinUser._id)
+        const fullUser = await userService.getById(user._id)
         socketService.emitTo({ type: 'user-updated', data: fullUser, label: fullUser._id })
-
         res.send(review)
 
     } catch (err) {

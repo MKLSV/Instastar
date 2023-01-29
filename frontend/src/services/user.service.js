@@ -42,8 +42,8 @@ async function getUsers(filterBy = { txt: '' }) {
 }
 
 async function getById(userId) {
-    const user = await storageService.get('user', userId)
-    // const user = await httpService.get(`user/${userId}`)
+    // const user = await storageService.get('user', userId)
+    const user = await httpService.get(`user/${userId}`)
     return user
 }
 

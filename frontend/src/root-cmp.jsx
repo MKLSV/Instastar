@@ -12,6 +12,8 @@ import { LoginSignup } from './cmps/login-signup'
 import { useSelector } from 'react-redux'
 import { UserDetails } from './pages/user-details'
 import { MessagesPage } from './pages/messages'
+import { ChatApp } from './pages/chat-app'
+import { ReviewIndex } from './pages/review-index'
 
 
 
@@ -31,6 +33,8 @@ export function RootCmp() {
                     <Route path="/inbox" element={<MessagesPage />} />
                     <Route path="/:username" element={<UserDetails />} />
                     <Route path="login" element={<LoginSignup />} />
+                    <Route path="chat" element={<ChatApp />} />
+                    <Route path="review" element={<ReviewIndex />} />
                 </Routes>
             </main>
         </div>

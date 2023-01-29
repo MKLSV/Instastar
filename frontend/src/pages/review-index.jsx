@@ -61,7 +61,7 @@ export function ReviewIndex() {
 
   return (
     <div className="review-app">
-      <h1>Reviews and Gossip</h1>
+      <h1>Inbox</h1>
       {reviews && <ul className="review-list">
         {reviews.map(review => (
           <li key={review._id}>

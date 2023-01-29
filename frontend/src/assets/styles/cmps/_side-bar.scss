@@ -28,6 +28,21 @@
         .nav-icon {
             font-size: 22px;
         }
+
+        .nav-header-btns {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+
+            .nav-btn {
+                padding: 5px;
+                font-size: 22px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
 
     .side-bar {
@@ -35,6 +50,8 @@
         height: 50px;
         width: 100%;
         display: flex;
+        // justify-content: center;
+        // align-items: center;
         flex-direction: row;
         position: fixed;
         // top: 93.9vh;
@@ -42,7 +59,13 @@
         z-index: 2;
         border-top: 1px solid rgb(219, 219, 219);
         ;
-
+        .nav-btn {
+            padding: 5px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .nav-name {
             display: none;
         }
@@ -53,6 +76,10 @@
 
         .nav-btn {
             width: 30px;
+
+            &.mobile{
+                display: none;
+            }
         }
 
         nav {

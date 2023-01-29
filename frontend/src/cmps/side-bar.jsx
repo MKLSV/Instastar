@@ -36,10 +36,14 @@ export function SideBar() {
 
             {/* {searchModal && <SearchModal setSearchModal={setSearchModal} />} */}
             <SearchModal setSearchModal={setSearchModal} searchModal={searchModal} full={full} setFull={setFull} />
-            <Notifications setSearchModal={setSearchModal} searchModal={searchModal} full={full} setFull={setFull} notificationsModal={notificationsModal} notifications={notifications}/>
+            <Notifications setSearchModal={setSearchModal} searchModal={searchModal} full={full} setFull={setFull} notificationsModal={notificationsModal} notifications={notifications} />
             <div className='test'>
                 <a className='icon' href='/'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png' /></a>
-                <a onClick={toggleModal} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span></a>
+                <div className='nav-header-btns'>
+                    <a onClick={toggleModal} className='nav-btn'><i className="fa-regular fa-square-plus"></i></a>
+                    {/* <a onClick={onNotifications} className='nav-btn'><i className="fa-regular fa-heart"></i></a>
+                    <NavLink className='nav-btn' to='/inbox'>{messagebtn}</NavLink> */}
+                </div>
             </div>
             <section className={full ? "side-bar" : "side-bar mini"}>
                 <a className='icon' href='/'>
@@ -50,7 +54,7 @@ export function SideBar() {
                     <a onClick={onSearch} className='nav-btn'><span className='nav-icon'><i className="fa-solid fa-magnifying-glass"></i></span><span className='nav-name' >Search</span></a>
                     <NavLink className='nav-btn' to='/inbox'><span className='nav-icon'>{messagebtn}</span><span className='nav-name'>Messages</span></NavLink>
                     <a onClick={onNotifications} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-heart"></i></span><span className='nav-name'>Notifications</span></a>
-                    <a onClick={toggleModal} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span><span className='nav-name' >Create</span></a>
+                    <a onClick={toggleModal} className='nav-btn mobile'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span><span className='nav-name' >Create</span></a>
                     <NavLink className='nav-btn' to={user.username}><span className='nav-icon'><img src={user.imgUrl} /></span><span className='nav-name' >Profile</span></NavLink>
                 </nav>
                 <div>
