@@ -13,11 +13,15 @@ export function MessangerContainer({ currChat, onAddMessage }) {
 
     const [shouldRenderEmojiPicker, setShouldRenderEmojiPicker] = useState(false)
 
-
+    const onReciveMessage = (msg) => {
+        console.log(msg)
+    }
     useEffect(() => {
-        socketService.on('message-to-you', console.log('hello2'))
+        // socketService.on('message-to-you', console.log('hello2'))
+        socketService.on('message-to-user', onReciveMessage)
         return () => {
             // socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
+            socketService.off('message-to-user', onReciveMessage)
             // botTimeout && clearTimeout(botTimeout)
         }
     }, [])
@@ -25,6 +29,7 @@ export function MessangerContainer({ currChat, onAddMessage }) {
     useEffect(() => {
         const fetchMessages = async () => {
             try {
+                if (!currChat.withUserId) return
                 const messages = await messageService.query({ userId: currChat.withUserId })
                 setMessages(messages)
             } catch (err) {
@@ -54,7 +59,7 @@ export function MessangerContainer({ currChat, onAddMessage }) {
             await messageService.add(messageToSend)
             setMessages(prevMessages => [...prevMessages, messageToSend])
             onAddMessage({ ...messageToSend, toUser: currChat.username })
-            socketService.emit('message-to-you', messageToSend)
+            socketService.emit('message-to-user', messageToSend)
         } catch (err) {
             console.log(err)
         }

@@ -46,7 +46,8 @@ async function addMessage(req, res) {
   try {
     const message = req.body
     const addedMessage = await messageService.add(message)
-    socketService.emitToUser({type: 'message-to-you', data: message, userId: message.toUserId})
+    // socketService.emitToUser({type: 'message-to-you', data: message, userId: message.toUserId})
+    socketService.emitToUser({type: 'message-to-user', data: message, userId: message.toUserId})
     res.json(addedMessage)
   } catch (err) {
     logger.error('Failed to add message', err)

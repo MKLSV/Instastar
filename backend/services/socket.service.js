@@ -14,25 +14,26 @@ function setupSocketAPI(http) {
             logger.info(`Socket disconnected [id: ${socket.id}]`)
         })
 
-        socket.on('set-chat', withUser => {
-            if (socket.withUser === withUser) return
-            if (socket.withUser) {
-                socket.leave(socket.withUser)
-                logger.info(`Socket is leaving chat with ${socket.withUser} [id: ${socket.id}]`)
-            }
-            socket.join(withUser)
-            socket.withUser = withUser
-        })
+        // socket.on('set-chat', withUser => {
+        //     if (socket.withUser === withUser) return
+        //     if (socket.withUser) {
+        //         socket.leave(socket.withUser)
+        //         logger.info(`Socket is leaving chat with ${socket.withUser} [id: ${socket.id}]`)
+        //     }
+        //     socket.join(withUser)
+        //     socket.withUser = withUser
+        // })
+        
 
-        socket.on('chat-send-msg', msg => {
-            console.log(msg)
-            console.log(socket.withUser)
-            logger.info(`New chat msg from socket [id: ${socket.id}], emitting to topic ${socket.withUser}`)
-            // emits to all sockets:
-            // gIo.emit('chat addMsg', msg)
-            // emits only to sockets in the same room
-            gIo.to(socket.withUser).emit('chat-add-msg', msg)
-        })
+        // socket.on('chat-send-msg', msg => {
+        //     console.log(msg)
+        //     console.log(socket.withUser)
+        //     logger.info(`New chat msg from socket [id: ${socket.id}], emitting to topic ${socket.withUser}`)
+        //     // emits to all sockets:
+        //     // gIo.emit('chat addMsg', msg)
+        //     // emits only to sockets in the same room
+        //     gIo.to(socket.withUser).emit('chat-add-msg', msg)
+        // })
 
         // socket.on('chat-set-topic', topic => {
         //     if (socket.myTopic === topic) return
@@ -57,14 +58,14 @@ function setupSocketAPI(http) {
         //     socket.join('watching:' + userId)
 
         // })
-        // socket.on('set-user-socket', userId => {
-        //     logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
-        //     socket.userId = userId
-        // })
-        // socket.on('unset-user-socket', () => {
-        //     logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
-        //     delete socket.userId
-        // })
+        socket.on('set-user-socket', userId => {
+            logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
+            socket.userId = userId
+        })
+        socket.on('unset-user-socket', () => {
+            logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
+            delete socket.userId
+        })
 
     })
 }
