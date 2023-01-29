@@ -10,9 +10,10 @@
     .message-container {
         background-color: rgb(255, 255, 255);
         max-width: 933px;
-        height: 680px;
+        height: 95vh;
         border: 1px solid #dbdbdb;
         display: flex;
+        justify-content: space-between;
 
         header {
             display: flex;
@@ -42,7 +43,7 @@
     }
 
     .message-users {
-        height: 620px;
+        height: 86vh;
     }
 
     .users-container {
@@ -108,15 +109,19 @@
 
     .messanger-container {
         width: 543px;
-        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // height: 100%;
 
         header {
             width: 100%;
+            height: 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-right: none;
-            padding: 0 20px;
+            padding: 20px;
 
             .user-info {
                 display: flex;
@@ -135,12 +140,58 @@
                 }
             }
 
-            .msg-btns{
+            .msg-btns {
                 display: flex;
                 align-items: center;
                 gap: 16px;
             }
-          
+
+        }
+
+        .messages-list {
+            height: 100%;
+            overflow-y: auto;
+
+            .user-message {
+                padding: 10px;
+                min-height: 54px;
+                display: flex;
+                gap: 5px;
+                justify-content: flex-start;
+                align-items: flex-end;
+                
+                
+                img {
+                    width: 24px;
+                    height: 24px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                
+                span {
+                    max-width: 50%;
+                    padding: 12px;
+                    font-size: 14px;
+                    border: 1px solid #dbdbdb;
+                    border-radius: 30px;
+                }
+            }
+
+            .logged-user {
+                justify-content: flex-end;
+                span {
+                    background-color: #efefef;
+                }
+
+            }
+        }
+
+        .input-section{
+            font-size: 14px;
+            border: 1px solid #dbdbdb;
+            border-radius: 40px;
+            margin: 10px;
+            width: auto;
         }
 
     }
