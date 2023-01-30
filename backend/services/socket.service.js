@@ -6,7 +6,11 @@ function setupSocketAPI(http) {
     gIo = require('socket.io')(http, {
         cors: {
             origin: '*',
-        }
+            methods: ["GET", "POST"],
+            credentials: true,
+            transports: ['websocket', 'polling'],
+        },
+        allowEIO3: true
     })
     gIo.on('connection', socket => {
         logger.info(`New connected socket [id: ${socket.id}]`)

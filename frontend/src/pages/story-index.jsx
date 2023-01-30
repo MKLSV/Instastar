@@ -23,7 +23,8 @@ export function StoryIndex() {
     function goToProfile() {
         navigate('/profile')
     }
-
+    console.log('STORIES HEREEE', stories)
+    console.log('USER HEREEE', user)
 
     if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
     return (
