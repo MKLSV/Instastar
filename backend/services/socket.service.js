@@ -8,6 +8,7 @@ function setupSocketAPI(http) {
             origin: '*',
             methods: ["GET", "POST"],
             credentials: true,
+            allowedHeaders: ['Access-Control-Allow-Origin'],
             transports: ['websocket', 'polling'],
         },
         allowEIO3: true
