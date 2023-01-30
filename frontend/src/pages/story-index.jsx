@@ -16,8 +16,12 @@ export function StoryIndex() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        loadStories()
-        loadUsers()
+        if (stories.length && user) return
+        const fetchData = async () => {
+            await loadStories()
+            await loadUsers()
+        }
+        fetchData()
     }, [])
 
     function goToProfile() {
