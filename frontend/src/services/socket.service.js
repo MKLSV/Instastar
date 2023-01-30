@@ -32,7 +32,9 @@ function createSocketService() {
   var socket = null;
   const socketService = {
     setup() {
-      socket = io(baseUrl)
+      socket = io(baseUrl, {
+        withCredentials: true
+      })
       setTimeout(() => {
         const user = userService.getLoggedinUser()
         if (user) this.login(user._id)
