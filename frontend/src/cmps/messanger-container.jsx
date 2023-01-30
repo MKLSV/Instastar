@@ -43,6 +43,7 @@ export function MessangerContainer({ chatWithId, currChat, onAddMessage }) {
     useEffect(() => {
         // socketService.on('message-to-you', console.log('hello2'))
         socketService.on('message-to-user', onReciveMessage)
+        console.log('ref')
 
         return () => {
             // socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)

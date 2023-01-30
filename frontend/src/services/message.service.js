@@ -7,11 +7,11 @@ import { store } from '../store/store'
 
 
 (() => {
-    socketService.on(SOCKET_MESSAEGE_TO_USER, (message) => {
-        console.log('GOT from socket', message)
-        store.dispatch(getActionAddReview(message))
-        store.dispatch(gotNewMessage(true))
-    })
+    // socketService.on(SOCKET_MESSAEGE_TO_USER, (message) => {
+    //     console.log('GOT from socket', message)
+    //     store.dispatch(getActionAddReview(message))
+    //     store.dispatch(gotNewMessage(true))
+    // })
     // socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
     //     showSuccessMsg(`New review about me ${review.txt}`)
     // })

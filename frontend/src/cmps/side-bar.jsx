@@ -6,6 +6,8 @@ import { SearchModal } from './search-modal'
 import { Notifications } from './notifications'
 import { socketService } from '../services/socket.service'
 import { gotNewNotification } from '../store/user.actions'
+import { store } from '../store/store'
+import { gotNewMessage } from '../store/message.actions'
 
 
 
@@ -28,6 +30,28 @@ export function SideBar() {
     //     // elInputRef.current.focus()
     //     // loadUsers()
     // }, [newMessage])
+
+
+
+    // const onReciveMessage = (msg) => {
+    //     console.log(msg)
+    //     store.dispatch(gotNewMessage(true))
+    // }
+
+    // useEffect(() => {
+    //     // socketService.on('message-to-you', console.log('hello2'))
+    //     socketService.on('message-to-user', onReciveMessage)
+    //     console.log('ref')
+
+    //     return () => {
+    //         // socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
+    //         socketService.off('message-to-user', onReciveMessage)
+    //         // botTimeout && clearTimeout(botTimeout)
+    //     }
+    // }, [])
+
+
+
 
     function onSearch() {
         setSearchModal(!searchModal)
