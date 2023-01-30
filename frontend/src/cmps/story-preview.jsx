@@ -31,6 +31,20 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
         const newComment = storyService.createComment(comment.txt, user)
         story.comments.push(newComment)
         await storyService.save(story)
+
+        const notif = {
+            storyId: story._id,
+            imgUrl: story.imgUrl,
+            storyBy: story.by,
+            notif: `commented your post: ${comment.txt}`,
+            notifBy: {
+                _id: user._id,
+                username: user.username,
+                imgUrl: user.imgUrl
+            },
+        }
+        storyService.sendNotif(notif)
+
         setComment({ txt: '' })
     }
 
@@ -44,12 +58,27 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
             likedBy.splice(idx, 1)
         }
 
-        else likedBy.push({
-            _id: user._id,
-            fullname: user.fullname,
-            username: user.username,
-            imgUrl: user.imgUrl
-        })
+        else {
+            likedBy.push({
+                _id: user._id,
+                fullname: user.fullname,
+                username: user.username,
+                imgUrl: user.imgUrl
+            })
+
+            const notif = {
+                storyId: story._id,
+                imgUrl: story.imgUrl,
+                storyBy: story.by,
+                notif: `Liked your post!`,
+                notifBy: {
+                    _id: user._id,
+                    username: user.username,
+                    imgUrl: user.imgUrl
+                },
+            }
+            storyService.sendNotif(notif)
+        }
         storyService.save(story)
         setLike(checkLike())
     }

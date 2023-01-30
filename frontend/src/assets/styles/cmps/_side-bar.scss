@@ -1,14 +1,16 @@
-///////// mobile//////
+
 
 
 .side-bar {
 
     .nav-btn {
         position: relative;
+        // display: flex;
 
         .new-msg {
             width: 10px;
             height: 10px;
+            border: 1px solid #fafafa;
             background-color: red;
             border-radius: 50%;
             position: absolute;
@@ -16,6 +18,13 @@
             left: 28px;
         }
     }
+
+    .nav-icon{
+        display: flex;
+    }
+    nav{
+        gap: 10px
+    };
 }
 
 @include for-mobile-layout {

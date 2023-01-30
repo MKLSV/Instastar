@@ -3,9 +3,8 @@ import { useSelector } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { MessangerContainer } from '../cmps/messanger-container'
 import { messageService } from '../services/message.service'
-import { socketService } from '../services/socket.service'
 import { gotNewMessage } from '../store/message.actions'
-import { store } from '../store/store'
+
 
 export function Messanger() {
   const [chatMap, setChatMap] = useState({})
@@ -13,7 +12,7 @@ export function Messanger() {
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
   const navigate = useNavigate()
 
-  store.dispatch(gotNewMessage(false))
+  gotNewMessage(false)
 
   const user = useSelector(storeState => storeState.userModule.user)
   const params = useParams()

@@ -2,7 +2,7 @@ import { userService } from "../services/user.service.js";
 import { store } from '../store/store.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
+import { NEW_NOTIFICATION, REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
 
 export async function loadUsers() {
     try {
@@ -14,6 +14,20 @@ export async function loadUsers() {
     } finally {
         store.dispatch({ type: LOADING_DONE })
     }
+}
+
+export function gotNewNotification(review) {
+    console.log(review)
+    try {
+        store.dispatch({
+            type: NEW_NOTIFICATION,
+            review
+        })
+    } catch(err) {
+        console.log('Notification error', err)
+
+    }
+    // return { type: NEW_NOTIFICATION, action: review }
 }
 
 export async function removeUser(userId) {

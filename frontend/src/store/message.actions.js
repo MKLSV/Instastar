@@ -14,7 +14,8 @@ export function getActionAddReview(review) {
 
 export function gotNewMessage(review) {
   console.log(review)
-  return { type: NEW_MESSAGE, review }
+  store.dispatch({ type: NEW_MESSAGE, review })
+  // return { type: NEW_MESSAGE, review }
 }
 
 export function getActionSetWatchedUser(user) {

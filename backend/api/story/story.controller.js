@@ -41,12 +41,25 @@ async function updateStory(req, res) {
   try {
     const story = req.body
     const updatedStory = await storyService.update(story)
-    socketService.emitToUser({ type: 'new-reacting-activity', data: story, userId: updatedStory.by._id })
+    // socketService.emitToUser({ type: 'new-reacting-activity', data: story, userId: updatedStory.by._id })
     res.json(updatedStory)
   } catch (err) {
     logger.error('Failed to update story', err)
     res.status(500).send({ err: 'Failed to update story' })
 
+  }
+}
+
+async function storyNotification(req, res) {
+  console.log('here')
+  try {
+    const story = req.body
+    console.log(story)
+    console.log('IM HEREE')
+
+    socketService.emitToUser({ type: 'new-reacting-activity', data: story, userId: story.storyBy._id })
+  } catch (err) {
+    logger.error('Failed to send notification', err)
   }
 }
 
@@ -66,5 +79,6 @@ module.exports = {
   getStoryById,
   addStory,
   updateStory,
-  removeStory
+  removeStory,
+  storyNotification
 }

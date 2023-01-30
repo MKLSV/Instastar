@@ -5,16 +5,19 @@ import { toggleModal } from '../store/system.action'
 import { SearchModal } from './search-modal'
 import { Notifications } from './notifications'
 import { socketService } from '../services/socket.service'
-// import logo from '../../public/logo.png';
-// console.log(logo)
+import { gotNewNotification } from '../store/user.actions'
+
+
 
 export function SideBar() {
     const user = useSelector(storeState => storeState.userModule.user)
     const newMessage = useSelector(storeState => storeState.messageModule.newMessage)
-    console.log(newMessage)
+    const newNotification = useSelector(storeState => storeState.userModule.newNotification)
+    console.log('NEWNOT', newNotification)
     const [isExpanted, setIsExpanted] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
     const [notifications, notificationsModal] = useState(false)
+    const [activityNotif, setActivityNotif] = useState([])
     const [full, setFull] = useState(true)
 
 
@@ -33,11 +36,15 @@ export function SideBar() {
     function onNotifications() {
         // setSearchModal(!searchModal)
         notificationsModal(!notifications)
+        gotNewNotification(false)
         setFull(!full)
     }
 
     const onReciveNewActivity = (activity) => {
-        console.log(activity)
+        setActivityNotif(prevActivity => [...prevActivity, activity])
+        // activityNotif.unshift(activity)
+        console.log('ACTIVITY', activity)
+        gotNewNotification(true)
     }
 
     useEffect(() => {
@@ -55,7 +62,7 @@ export function SideBar() {
 
             {/* {searchModal && <SearchModal setSearchModal={setSearchModal} />} */}
             <SearchModal setSearchModal={setSearchModal} searchModal={searchModal} full={full} setFull={setFull} />
-            <Notifications setSearchModal={setSearchModal} searchModal={searchModal} full={full} setFull={setFull} notificationsModal={notificationsModal} notifications={notifications} />
+            <Notifications activityNotif={activityNotif} setSearchModal={setSearchModal} searchModal={searchModal} full={full} setFull={setFull} notificationsModal={notificationsModal} notifications={notifications} />
             <div className='test'>
                 <a className='icon' href='/'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png' /></a>
                 <div className='nav-header-btns'>
@@ -73,7 +80,7 @@ export function SideBar() {
                     <NavLink className='nav-btn' to='/'><span className='nav-icon'><i className="fa-solid fa-house"></i></span><span className='nav-name'>Home</span></NavLink>
                     <a onClick={onSearch} className='nav-btn'><span className='nav-icon'><i className="fa-solid fa-magnifying-glass"></i></span><span className='nav-name' >Search</span></a>
                     <NavLink className='nav-btn' to='/inbox'><span className='nav-icon'>{messagebtn}</span>{newMessage && newMessage.review ? <span className='new-msg'></span> : null}<span className='nav-name'>Messages</span></NavLink>
-                    <a onClick={onNotifications} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-heart"></i></span><span className='nav-name'>Notifications</span></a>
+                    <a onClick={onNotifications} className='nav-btn'><span className='nav-icon'><i className="fa-regular fa-heart"></i></span>{newNotification ? <span className='new-msg'></span> : null}<span className='nav-name'>Notifications</span></a>
                     <a onClick={toggleModal} className='nav-btn mobile'><span className='nav-icon'><i className="fa-regular fa-square-plus"></i></span><span className='nav-name' >Create</span></a>
                     <NavLink className='nav-btn' to={user.username}><span className='nav-icon'><img src={user.imgUrl} /></span><span className='nav-name' >Profile</span></NavLink>
                 </nav>

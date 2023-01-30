@@ -53,6 +53,19 @@ export function StoryDetails() {
         const newComment = storyService.createComment(comment.txt, user)
         story.comments.push(newComment)
         await storyService.save(story)
+
+        const notif = {
+            storyId: story._id,
+            imgUrl: story.imgUrl,
+            storyBy: story.by,
+            notif: `commented your post: ${comment.txt}`,
+            notifBy: {
+                _id: user._id,
+                username: user.username,
+                imgUrl: user.imgUrl
+            },
+        }
+        storyService.sendNotif(notif)
         setComment({ txt: '' })
     }
 
@@ -75,12 +88,27 @@ export function StoryDetails() {
             story.likedBy.splice(idx, 1)
         }
 
-        else story.likedBy.push({
-            _id: user._id,
-            fullname: user.fullname,
-            username: user.username,
-            imgUrl: user.imgUrl
-        })
+        else {
+            story.likedBy.push({
+                _id: user._id,
+                fullname: user.fullname,
+                username: user.username,
+                imgUrl: user.imgUrl
+            })
+
+            const notif = {
+                storyId: story._id,
+                imgUrl: story.imgUrl,
+                storyBy: story.by,
+                notif: `Liked your post!`,
+                notifBy: {
+                    _id: user._id,
+                    username: user.username,
+                    imgUrl: user.imgUrl
+                },
+            }
+            storyService.sendNotif(notif)
+        }
         storyService.save(story)
         setLike(checkLike())
     }

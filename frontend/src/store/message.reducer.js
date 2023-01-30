@@ -3,9 +3,11 @@ export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE'
 export const NEW_MESSAGE = 'NEW_MESSAGE'
 
+
 const initialState = {
   messages: [],
-  newMessage: false
+  newMessage: false,
+  
 }
 
 export function messageReducer(state = initialState, action = {}) {
@@ -17,7 +19,8 @@ export function messageReducer(state = initialState, action = {}) {
     case REMOVE_MESSAGE:
       return { ...state, messages: state.messages.filter(message => message._id !== action.messageId) }
     case NEW_MESSAGE:
-      return { ...state, newMessage: action}
+      return { ...state, newMessage: action }
+
 
 
     default:

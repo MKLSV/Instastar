@@ -12,7 +12,8 @@ export const storyService = {
   getEmptyStory,
   onRemoveStoryComment,
   saveLike,
-  createComment
+  createComment,
+  sendNotif
 }
 window.ss = storyService
 
@@ -51,6 +52,10 @@ function getById(storyId) {
 async function remove(storyId) {
   // await storageService.remove(STORAGE_KEY, storyId)
   return httpService.delete(`story/${storyId}`)
+}
+
+async function sendNotif(notif) {
+  await httpService.post(`story/notification`, notif)
 }
 
 async function save(story) {

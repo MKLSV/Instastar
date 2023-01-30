@@ -4,9 +4,10 @@ export const ADD_STORY = 'ADD_STORY'
 export const UPDATE_STORY = 'UPDATE_STORY'
 export const UNDO_REMOVE_STORY = 'UNDO_REMOVE_STORY'
 
+
 const initialState = {
     stories: [],
-    lastRemovedStory: null
+    lastRemovedStory: null,
 }
 
 export function storyReducer(state = initialState, action) {

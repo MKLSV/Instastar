@@ -28,10 +28,18 @@
 
     .user-info {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 10px;
         padding: 8px 20px;
         cursor: pointer;
+
+        img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        
+
 
         &:hover {
             background-color: rgb(249, 249, 249);
@@ -41,31 +49,37 @@
             background-color: rgb(242, 242, 242);
         }
 
-        img {
-            width: 56px;
-            height: 56px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
+        div {
+            display: flex;
+            gap: 12px;
+            align-items: center;
 
-        section {
-            font-size: 14px;
-            font-weight: 400;
-        }
-
-        .new {
-            font-size: 14px;
-            font-weight: 600;
-
-            .message {
-                // display: flex;
-                // gap: 5px;
-                color: #000000;
+            img {
+                // width: 56px;
+                // height: 56px;
+                // object-fit: cover;
+                border-radius: 50%;
             }
 
-            .time {
+            section {
+                font-size: 14px;
                 font-weight: 400;
-                color: #8e8e8e;
+            }
+
+            .new {
+                font-size: 14px;
+                font-weight: 600;
+
+                .message {
+                    // display: flex;
+                    // gap: 5px;
+                    color: #000000;
+                }
+
+                .time {
+                    font-weight: 400;
+                    color: #8e8e8e;
+                }
             }
 
         }

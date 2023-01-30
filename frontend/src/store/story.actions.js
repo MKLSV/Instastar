@@ -1,6 +1,6 @@
 
 import { store } from './store.js'
-import { ADD_STORY, REMOVE_STORY,  SET_STORIES,  UPDATE_STORY } from "./story.reducer.js";
+import { ADD_STORY, REMOVE_STORY, SET_STORIES, UPDATE_STORY } from "./story.reducer.js";
 import { storyService } from "../services/story.service.js";
 
 // Action Creators:SET_STORIES
@@ -10,6 +10,9 @@ export function getActionRemoveStory(storyId) {
         storyId
     }
 }
+
+
+
 export function getActionAddStory(story) {
     return {
         type: ADD_STORY,
