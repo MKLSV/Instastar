@@ -29,6 +29,7 @@ export function getActionUpdateStory(story) {
 export async function loadStories() {
     try {
         const stories = await storyService.query()
+        console.log(stories)
         store.dispatch({
             type: SET_STORIES,
             stories
