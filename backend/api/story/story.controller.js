@@ -1,5 +1,5 @@
 const storyService = require('./story.service.js')
-
+const socketService = require('../../services/socket.service.js')
 const logger = require('../../services/logger.service')
 const asyncLocalStorage = require('../../services/als.service.js')
 
@@ -41,6 +41,7 @@ async function updateStory(req, res) {
   try {
     const story = req.body
     const updatedStory = await storyService.update(story)
+    socketService.emitToUser({ type: 'new-reacting-activity', data: story, userId: updatedStory.by._id })
     res.json(updatedStory)
   } catch (err) {
     logger.error('Failed to update story', err)

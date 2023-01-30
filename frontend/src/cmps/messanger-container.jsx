@@ -39,6 +39,7 @@ export function MessangerContainer({ chatWithId, currChat, onAddMessage }) {
         console.log(msg)
         setMessages(prevMessages => [...prevMessages, msg])
     }
+    
     useEffect(() => {
         // socketService.on('message-to-you', console.log('hello2'))
         socketService.on('message-to-user', onReciveMessage)
@@ -83,7 +84,6 @@ export function MessangerContainer({ chatWithId, currChat, onAddMessage }) {
             await messageService.add(messageToSend)
             setMessages(prevMessages => [...prevMessages, messageToSend])
             onAddMessage({ ...messageToSend, toUser: watchedUser.username })
-            socketService.emit('message-to-user', messageToSend)
         } catch (err) {
             console.log(err)
         }
