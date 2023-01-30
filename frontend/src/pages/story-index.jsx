@@ -7,6 +7,7 @@ import { LikesModal } from '../cmps/likes-modal';
 import { LoginSwitch } from '../cmps/login-switch';
 import { loadUsers } from '../store/user.actions';
 import { Suggestions } from '../cmps/sugesstion';
+import { LoginSignup } from '../cmps/login-signup';
 
 export function StoryIndex() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
@@ -30,7 +31,9 @@ export function StoryIndex() {
     console.log('STORIES HEREEE', stories)
     console.log('USER HEREEE', user)
 
-    if (!stories.length || !user) return <div className="loading-page"><span className="loading"></span></div>
+    if (stories.length && !user) return <LoginSignup />
+
+    if (!stories.length) return <div className="loading-page"><span className="loading"></span></div>
     return (
         <Fragment>
             <div className="nested-route">
