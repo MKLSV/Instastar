@@ -98,12 +98,25 @@
 
 }
 
+@include for-narrow-layout {
+    .notifications-modal {
+    
+        &.hide {
+            transform: translateX(-130%);
+        }
+    }
+}
+
 
 @include for-mobile-layout {
 
     .notifications-modal {
         margin-left: 0;
         width: 100vw;
+
+        header{
+            padding: 0;
+        }
     }
 
 }

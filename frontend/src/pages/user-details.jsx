@@ -97,8 +97,10 @@ export function UserDetails() {
             :
             <div className="profile-info-header">
               <a>{userProfile.username}</a>
-              {checkFollow() ? <button onClick={toggleFollow}>Following</button> : <button onClick={toggleFollow} className='follow'>Follow</button>}
-              <button onClick={goToMessages}>Message</button>
+              <div>
+                {checkFollow() ? <button onClick={toggleFollow}>Following</button> : <button onClick={toggleFollow} className='follow'>Follow</button>}
+                <button onClick={goToMessages}>Message</button>
+              </div>
             </div>}
           <div className="user-info">
             <section><a className="user-number">{profileStories.length}</a><a> posts</a></section>

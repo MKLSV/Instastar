@@ -71,49 +71,58 @@ export function LoginSignup() {
 
     return (
         <div className="login-page">
-            <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-            </p>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                <select
-                    name="username"
-                    value={credentials.username}
-                    onChange={handleChange}
-                >
-                    <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                </select>
+            <div className='login-container'>
+                <div className='logo'>
+                    <img src="https://res.cloudinary.com/dz7gcu3ve/image/upload/v1675113929/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2023-01-31_002510_jnv2jy.png" />
+                </div>
 
-                <button>Login!</button>
-            </form>}
-            <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                    <input
-                        type="text"
-                        name="fullname"
-                        value={credentials.fullname}
-                        placeholder="Fullname"
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="text"
+                {!isSignup && <form className="login-form" onSubmit={onLogin}>
+                    <select
                         name="username"
                         value={credentials.username}
-                        placeholder="Username"
                         onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={credentials.password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    />
-                    <button >Signup!</button>
+                    >
+                        <option value="">Select User</option>
+                        {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
+                    </select>
+
+                    <button>Login!</button>
                 </form>}
+                <div className="signup-section">
+                    {isSignup && <form className="signup-form" onSubmit={onSignup}>
+                        <input
+                            type="text"
+                            name="fullname"
+                            value={credentials.fullname}
+                            placeholder="Fullname"
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="username"
+                            value={credentials.username}
+                            placeholder="Username"
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            value={credentials.password}
+                            placeholder="Password"
+                            onChange={handleChange}
+                            required
+                        />
+                        <button >Signup!</button>
+                    </form>}
+
+                </div>
+
+                <span className='or'><span>OR</span></span>
+                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
+
+
             </div>
         </div>
     )

@@ -95,7 +95,7 @@ function saveLocalUser(user) {
 
 function getLoggedinUser() {
     const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-    if (!user) userService.login(user1)
+    // if (!user) userService.login(user1)
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
@@ -114,44 +114,44 @@ function getEmptyUser() {
     }
 }
 
-const user1 = {
-    username: "Vasya",
-    password: "12345",
-    fullname: "Vasya Vasilivich",
-    imgUrl: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-    bio: 'Traveling and sharing my life! Folow me to see more!',
-    following: [
-        {
-            _id: "u106",
-            fullname: "Dob",
-            imgUrl: "http://some-img"
-        },
-        {
-            _id: "u100",
-            fullname: "Rob",
-            imgUrl: "http://some-img"
-        }
-    ],
-    followers: [
-        {
-            _id: "u115",
-            fullname: "Mob",
-            imgUrl: "http://some-img"
-        },
-        {
-            _id: "u125",
-            fullname: "Gob",
-            imgUrl: "http://some-img"
-        },
-        {
-            _id: "u135",
-            fullname: "Fob",
-            imgUrl: "http://some-img"
-        }
-    ],
-    savedStoryIds: [
-        "s104",
-        "s111",
-        "s123"
-    ]
-}
+// const user1 = {
+//     username: "Vasya",
+//     password: "12345",
+//     fullname: "Vasya Vasilivich",
+//     imgUrl: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+//     bio: 'Traveling and sharing my life! Folow me to see more!',
+//     following: [
+//         {
+//             _id: "u106",
+//             fullname: "Dob",
+//             imgUrl: "http://some-img"
+//         },
+//         {
+//             _id: "u100",
+//             fullname: "Rob",
+//             imgUrl: "http://some-img"
+//         }
+//     ],
+//     followers: [
+//         {
+//             _id: "u115",
+//             fullname: "Mob",
+//             imgUrl: "http://some-img"
+//         },
+//         {
+//             _id: "u125",
+//             fullname: "Gob",
+//             imgUrl: "http://some-img"
+//         },
+//         {
+//             _id: "u135",
+//             fullname: "Fob",
+//             imgUrl: "http://some-img"
+//         }
+//     ],
+//     savedStoryIds: [
+//         "s104",
+//         "s111",
+//         "s123"
+//     ]
+// }
