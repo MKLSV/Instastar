@@ -18,9 +18,10 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
     const user = useSelector(storeState => storeState.userModule.user)
 
 
-    async function onRemoveStory(storyId) {
+    async function onRemoveStory(story) {
+        if (story.by._id !== user._id) return
         try {
-            await removeStory(storyId)
+            await removeStory(story._id)
         } catch (err) {
             console.log(err)
         }
@@ -110,7 +111,7 @@ export function StoryPreview({ story, onRemoveStory, likesIsOpen }) {
                         <time>1h</time>
                     </div>
                 </div>
-                <svg onClick={() => onRemoveStory(story._id)} aria-label="More options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+                <svg onClick={() => onRemoveStory(story)} aria-label="More options" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
             </section>
             {imgUrl.length > 1 ?
                 <Slider dots={true} infinite={false}>

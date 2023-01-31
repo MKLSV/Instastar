@@ -71,6 +71,7 @@ export function StoryDetails() {
 
     function removeComment(commId) {
         const idx = story.comments.findIndex(comment => comment.id === commId)
+        if (story.comments[idx].by._id !== user._id) return
         story.comments.splice(idx, 1)
         updateStory(story)
         setStory(prevStory => {
