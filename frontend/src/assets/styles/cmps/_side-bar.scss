@@ -21,10 +21,12 @@
     }
 
     nav {
-        gap: 10px
+        gap: 10px;
     }
 
-    ;
+    .nav-more-btn {
+        cursor: pointer;
+    }
 }
 
 @include for-mobile-layout {
