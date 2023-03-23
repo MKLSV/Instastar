@@ -6,13 +6,14 @@ import { SearchModal } from './search-modal'
 import { Notifications } from './notifications'
 import { socketService } from '../services/socket.service'
 import { gotNewNotification } from '../store/user.actions'
+import { logout } from '../store/user.actions.js'
 
 export function SideBar() {
     const user = useSelector(storeState => storeState.userModule.user)
     const newMessage = useSelector(storeState => storeState.messageModule.newMessage)
     const newNotification = useSelector(storeState => storeState.userModule.newNotification)
 
-    
+
     const [isExpanted, setIsExpanted] = useState(false)
     const [searchModal, setSearchModal] = useState(false)
     const [notifications, notificationsModal] = useState(false)
@@ -60,7 +61,15 @@ export function SideBar() {
         gotNewNotification(false)
         setFull(!full)
     }
+    async function onLogout() {
+        try {
+             await logout()
+            console.log('USER FROM LOGOUT')
 
+        } catch (err) {
+            console.log(err)
+        }
+    }
     const onReciveNewActivity = (activity) => {
         setActivityNotif(prevActivity => [...prevActivity, activity])
         // activityNotif.unshift(activity)
@@ -108,7 +117,8 @@ export function SideBar() {
                 <div>
                     <div className={isExpanted ? 'nav-more open' : 'nav-more'}>
                         <Link className='nav-more-btn' to='switch'>Switch accounts</Link>
-                        <Link className='nav-more-btn' to='login'>Login</Link>
+                        <a className='nav-more-btn' onClick={onLogout}>Logout</a>
+                        {/* <Link className='nav-more-btn' to='login'>Logout</Link> */}
                     </div>
                 </div>
                 <a className="side-bar-more" onClick={() => setIsExpanted(!isExpanted)}><i className="fa-solid fa-bars"></i><span>More</span></a>

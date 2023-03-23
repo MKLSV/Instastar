@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { storyService } from "../services/story.service.js"
 import { updateStory } from "../store/story.actions.js";
 import { MsgForm } from "./msg-form.jsx";
@@ -45,6 +45,10 @@ export function StoryDetails() {
                 console.log('Had issues in story details', err)
                 navigate('/')
             })
+    }
+
+    function goToProfile(username) {
+        navigate(`/${username}`)
     }
 
     async function addStoryComment(ev) {
@@ -159,18 +163,18 @@ export function StoryDetails() {
 
                     <section className="details-header">
                         <div>
-                            <img className="prew-user-img" src={story.by.imgUrl} />
-                            <a className="details-username">{story.by.username}</a>
+                            <img className="prew-user-img" src={story.by.imgUrl} onClick={() => goToProfile(story.by.username)}/>
+                            <a className="details-username" onClick={() => goToProfile(story.by.username)}>{story.by.username} </a>
                         </div>
                         <button onClick={onClose}><i className="fa-solid fa-x"></i></button>
                     </section>
                     <section className="comments-container">
                         <div className="comments-list">
                             <section className="comment">
-                                <img className="prew-user-img" src={story.by.imgUrl} />
+                                <img className="prew-user-img" src={story.by.imgUrl} onClick={() => goToProfile(story.by.username)}/>
                                 <div>
                                     <section>
-                                        <span className="details-username">{story.by.username}</span>
+                                        <span className="details-username" onClick={() => goToProfile(story.by.username)}>{story.by.username}</span>
                                         <span className="story-text">&nbsp;{story.txt}</span>
                                     </section>
                                     <section className="comment-footer">
@@ -182,10 +186,10 @@ export function StoryDetails() {
                             {story.comments && story.comments.length ?
                                 <Fragment>
                                     {story.comments.map(comment => <section className="comment" key={comment.id}>
-                                        <img className="prew-user-img" src={comment.by.imgUrl} />
+                                        <img className="prew-user-img" src={comment.by.imgUrl} onClick={() => goToProfile(comment.by.username)}/>
                                         <div>
                                             <section>
-                                                <span className="details-username">{comment.by.username}</span>
+                                                <span className="details-username" onClick={() => goToProfile(comment.by.username)}>{comment.by.username}</span>
                                                 <span className="story-text">&nbsp;{comment.txt}</span>
                                             </section>
                                             <section className="comment-footer">

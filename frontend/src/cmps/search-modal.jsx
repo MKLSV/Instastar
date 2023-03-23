@@ -41,6 +41,7 @@ export function SearchModal({ setSearchModal, searchModal, full, setFull }) {
         setFull(true)
         navigate(username)
     }
+    
     if (!users.length) return
     return <div className={!full && searchModal ? "search-modal" : "search-modal hide"}>
         <section className="car-filter full main-layout">

@@ -64,7 +64,6 @@ async function update(userToUpdate) {
 }
 
 async function login(userCred) {
-    console.log('heyy')
     // const users = await storageService.query('user')
     // const user = users.find(user => user.username === userCred.username)
     const user = await httpService.post('auth/login', userCred)

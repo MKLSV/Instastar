@@ -1,3 +1,4 @@
+import { FileUploader } from "react-drag-drop-files";
 
 import { useState } from "react";
 import { storyService } from "../services/story.service";
@@ -10,6 +11,13 @@ const CreateStoryModal = () => {
     const [showPicker, setShowPicker] = useState(false);
     const [createdStory, setCreatedStory] = useState(storyService.getEmptyStory())
     const logedinUser = useSelector(storeState => storeState.userModule.user)
+
+    const fileTypes = ["JPEG", "PNG", "GIF"];
+
+    const [file, setFile] = useState(null);
+    const fileHandleChange = (file) => {
+        setFile(file);
+    };
 
     const onEmojiClick = (emojiObject, event) => {
         setCreatedStory(prevStory => ({ ...prevStory, txt: createdStory.txt + emojiObject.emoji }))
@@ -28,7 +36,7 @@ const CreateStoryModal = () => {
 
     function onSaveStory(ev) {
         ev.preventDefault()
-        if(!createdStory.imgUrl.length) return
+        if (!createdStory.imgUrl.length) return
         storyService.save(createdStory).then(() => {
             toggleModal()
             window.location.reload(false)
@@ -42,7 +50,7 @@ const CreateStoryModal = () => {
     return (
         <div className='create-modal' onClick={toggleModal}>
 
-            <div className="picker-container">  
+            <div className="picker-container">
 
                 {showPicker && <EmojiPicker
                     pickerStyle={{ width: '100%' }}
@@ -60,6 +68,14 @@ const CreateStoryModal = () => {
                         {createdStory.imgUrl.length ? <img src={createdStory.imgUrl} /> :
                             <ImgUploader onUploadSuccess={onUploadSuccess} />}
                     </section>
+                    {/* <FileUploader
+                        multiple={true}
+                        handleChange={fileHandleChange}
+                        name="file"
+                        types={fileTypes}
+                    /> */}
+                    {/* <p>{file ? `File name: ${file[0].name}` : "no files uploaded yet"}</p> */}
+
                     <section className='post-info'>
                         <div className='post-user-info'>
                             <section>
